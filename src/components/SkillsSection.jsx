@@ -5,7 +5,7 @@ import { Code, Database, PaintBucket, Trophy, Layout, Server } from 'lucide-reac
 const skills = [
   {
     category: "Frontend",
-    icon: <Layout className="h-6 w-6 text-purple-600" />,
+    icon: <Layout className="h-6 w-6 text-mono-800" />,
     skills: [
       { name: "React.js", level: 95 },
       { name: "Next.js", level: 90 },
@@ -17,7 +17,7 @@ const skills = [
   },
   {
     category: "Backend",
-    icon: <Server className="h-6 w-6 text-purple-600" />,
+    icon: <Server className="h-6 w-6 text-mono-800" />,
     skills: [
       { name: "Node.js", level: 90 },
       { name: "Express.js", level: 85 },
@@ -28,7 +28,7 @@ const skills = [
   },
   {
     category: "Tools & Other",
-    icon: <Code className="h-6 w-6 text-purple-600" />,
+    icon: <Code className="h-6 w-6 text-mono-800" />,
     skills: [
       { name: "Git & GitHub", level: 85 },
       { name: "Docker", level: 70 },
@@ -74,13 +74,13 @@ const SkillBar = ({ name, level }) => {
   return (
     <div className="mb-4">
       <div className="flex justify-between mb-1">
-        <span className="text-navy-700 font-medium">{name}</span>
-        <span className="text-navy-600">{level}%</span>
+        <span className="text-mono-700 font-medium">{name}</span>
+        <span className="text-mono-600">{level}%</span>
       </div>
-      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+      <div className="h-2 bg-mono-200 rounded-full overflow-hidden">
         <div
           ref={progressRef}
-          className="h-full bg-gradient-to-r from-purple-600 to-indigo-500 rounded-full w-0 opacity-0 transition-all duration-1000 ease-out"
+          className="h-full bg-gradient-to-r from-mono-800 to-mono-600 rounded-full w-0 opacity-0 transition-all duration-1000 ease-out"
         ></div>
       </div>
     </div>
@@ -92,11 +92,11 @@ const SkillsSection = () => {
     <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy-900">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-mono-900">
             My <span className="text-gradient">Skills</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto mb-6 rounded-full"></div>
-          <p className="text-navy-700 max-w-2xl mx-auto text-lg">
+          <div className="w-24 h-1 bg-gradient-to-r from-mono-800 to-mono-500 mx-auto mb-6 rounded-full"></div>
+          <p className="text-mono-700 max-w-2xl mx-auto text-lg">
             I've spent years honing my skills in modern web technologies.
             Here's an overview of my technical expertise.
           </p>
@@ -105,21 +105,21 @@ const SkillsSection = () => {
         {/* Tech Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-20">
           {[
-            { label: "Years Experience", value: "6+", icon: <Trophy className="h-5 w-5 text-purple-600" /> },
-            { label: "Projects Completed", value: "80+", icon: <Layout className="h-5 w-5 text-purple-600" /> },
-            { label: "Technologies", value: "15+", icon: <Code className="h-5 w-5 text-purple-600" /> },
-            { label: "Satisfied Clients", value: "40+", icon: <PaintBucket className="h-5 w-5 text-purple-600" /> },
+            { label: "Years Experience", value: "6+", icon: <Trophy className="h-5 w-5 text-mono-800" /> },
+            { label: "Projects Completed", value: "80+", icon: <Layout className="h-5 w-5 text-mono-800" /> },
+            { label: "Technologies", value: "15+", icon: <Code className="h-5 w-5 text-mono-800" /> },
+            { label: "Satisfied Clients", value: "40+", icon: <PaintBucket className="h-5 w-5 text-mono-800" /> },
           ].map((stat, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl shadow-md p-6 text-center card-hover animate-fade-in"
+              className="bg-white rounded-xl shadow-md p-6 text-center card-hover animate-fade-in gradient-border"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="bg-purple-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-mono-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 {stat.icon}
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-navy-900 mb-2">{stat.value}</h3>
-              <p className="text-navy-600">{stat.label}</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-mono-900 mb-2">{stat.value}</h3>
+              <p className="text-mono-600">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -129,14 +129,14 @@ const SkillsSection = () => {
           {skills.map((category, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl shadow-md p-6 animate-fade-in-up"
+              className="bg-white rounded-xl shadow-md p-6 animate-fade-in-up gradient-border"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="flex items-center mb-6">
-                <div className="p-2 bg-purple-50 rounded-lg mr-3">
+                <div className="p-2 bg-mono-100 rounded-lg mr-3">
                   {category.icon}
                 </div>
-                <h3 className="text-xl font-bold text-navy-900">{category.category}</h3>
+                <h3 className="text-xl font-bold text-mono-900">{category.category}</h3>
               </div>
               
               {category.skills.map((skill, idx) => (

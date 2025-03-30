@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 230 30% 96%;
-    --foreground: 222 47% 11%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
     
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 0 0% 5%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 0 0% 5%;
     
-    --primary: 253 80% 57%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 0 0% 98%;
     
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
     
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
     
-    --accent: 273 80% 57%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 92%;
+    --accent-foreground: 0 0% 10%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
     
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 5%;
     
     --radius: 0.5rem;
   }
@@ -52,20 +52,20 @@
 
 @layer components {
   .btn-primary {
-    @apply py-3 px-6 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-md shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50;
+    @apply py-3 px-6 bg-gradient-to-r from-mono-900 to-mono-800 text-white font-semibold rounded-md shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-mono-800 focus:ring-opacity-50;
   }
   
   .btn-secondary {
-    @apply py-3 px-6 bg-white text-navy-800 font-semibold rounded-md shadow-sm border border-navy-200 hover:bg-navy-50 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-opacity-50;
+    @apply py-3 px-6 bg-white text-mono-900 font-semibold rounded-md shadow-sm border border-mono-200 hover:bg-mono-50 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-mono-800 focus:ring-opacity-50;
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 text-navy-900 relative;
+    @apply text-3xl md:text-4xl font-bold mb-6 text-mono-900 relative;
   }
   
   .section-title::after {
     content: "";
-    @apply absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full;
+    @apply absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-mono-800 to-mono-500 rounded-full;
   }
   
   .card-hover {
@@ -75,10 +75,37 @@
 
 @layer utilities {
   .text-gradient {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-500;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-mono-900 to-mono-600;
   }
   
   .glass-effect {
     @apply bg-white/70 backdrop-blur-sm border border-white/20 shadow-lg;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+  
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(60,60,60,0.5));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .mono-gradient {
+    @apply bg-gradient-to-br from-mono-700 via-mono-800 to-mono-900;
+  }
+  
+  .light-gradient {
+    @apply bg-gradient-to-br from-mono-100 via-mono-200 to-mono-300;
   }
 }

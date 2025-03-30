@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import SkillsSection from '../components/SkillsSection';
@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white text-mono-900">
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
