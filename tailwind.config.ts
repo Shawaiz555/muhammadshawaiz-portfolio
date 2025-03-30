@@ -77,6 +77,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        '3xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
