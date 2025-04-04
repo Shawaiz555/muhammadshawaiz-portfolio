@@ -45,16 +45,6 @@ const projects = [
   },
   {
     id: 5,
-    title: "API Gateway",
-    description: "A scalable API gateway service that handles routing, rate limiting, and authentication for microservices architecture.",
-    image: "https://images.unsplash.com/photo-1596606272502-d5387d8f8b56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    tags: ["Node.js", "Express", "Redis", "MongoDB", "Docker"],
-    category: "backend",
-    github: "https://github.com",
-    demo: null,
-  },
-  {
-    id: 6,
     title: "Social Network",
     description: "A social media platform with features like news feed, user profiles, friend requests, and real-time notifications.",
     image: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80",
@@ -96,7 +86,7 @@ const ProjectsSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy-900">
             My <span className="text-gradient">Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto mb-6 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-black mx-auto mb-6 rounded-full"></div>
           <p className="text-navy-700 max-w-2xl mx-auto text-lg">
             Browse through my recent work showcasing my expertise in building modern web applications.
           </p>
@@ -112,7 +102,7 @@ const ProjectsSection = () => {
                   onClick={() => setFilter(button.value)}
                   className={`flex items-center px-4 py-2 rounded-full transition-all ${
                     filter === button.value
-                      ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white'
+                      ? 'bg-gradient-to-r from-gray-700 to-black text-white'
                       : 'bg-white text-navy-700 hover:bg-purple-50'
                   } shadow-sm`}
                 >
@@ -158,9 +148,9 @@ const ProjectsSection = () => {
                   <h3 className="text-xl font-bold text-navy-900 mb-2">{project.title}</h3>
                   <p className="text-navy-600 mb-4 line-clamp-3">{project.description}</p>
                   
-                  <div className="flex flex-wrap gap-2 mb-5">
+                  <div className="flex flex-wrap gap-3 mb-5">
                     {project.tags.slice(0, 3).map((tag, idx) => (
-                      <span key={idx} className="text-xs px-2 py-1 bg-purple-50 text-purple-700 rounded-full">
+                      <span key={idx} className="text-xs px-5 py-1 bg-black text-white rounded-full">
                         {tag}
                       </span>
                     ))}

@@ -51,7 +51,7 @@ const ContactSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy-900">
             Let's <span className="text-gradient">Connect</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto mb-6 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-black mx-auto mb-6 rounded-full"></div>
           <p className="text-navy-700 max-w-2xl mx-auto text-lg">
             Have a project in mind or want to discuss opportunities? I'd love to hear from you.
           </p>
@@ -65,37 +65,37 @@ const ContactSection = () => {
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="p-2 bg-purple-50 rounded-lg mr-4">
-                    <Mail className="h-5 w-5 text-purple-600" />
+                  <div className="p-2 bg-gray-100 rounded-lg mr-4">
+                    <Mail className="h-5 w-5 text-black" />
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-gray-500 mb-1">Email</h4>
-                    <a href="mailto:alex@example.com" className="text-navy-800 hover:text-purple-600 transition-colors">
-                      alex@example.com
-                    </a>
+                    <p className="text-navy-800 transition-colors">
+                      shawaizbutt555@gmail.com
+                    </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="p-2 bg-purple-50 rounded-lg mr-4">
-                    <Phone className="h-5 w-5 text-purple-600" />
+                  <div className="p-2 bg-gray-100 rounded-lg mr-4">
+                    <Phone className="h-5 w-5 text-black" />
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-gray-500 mb-1">Phone</h4>
-                    <a href="tel:+1234567890" className="text-navy-800 hover:text-purple-600 transition-colors">
-                      +1 (234) 567-890
-                    </a>
+                    <p className="text-navy-800 transition-colors">
+                      +92 3433326500
+                    </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="p-2 bg-purple-50 rounded-lg mr-4">
-                    <MapPin className="h-5 w-5 text-purple-600" />
+                  <div className="p-2 bg-gray-100 rounded-lg mr-4">
+                    <MapPin className="h-5 w-5 text-black" />
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-gray-500 mb-1">Location</h4>
                     <p className="text-navy-800">
-                      San Francisco, California
+                      Gujrat, Pakistan
                     </p>
                   </div>
                 </div>
@@ -108,7 +108,7 @@ const ContactSection = () => {
                     <a 
                       key={social}
                       href="#" 
-                      className="w-10 h-10 rounded-full bg-navy-50 flex items-center justify-center hover:bg-purple-100 hover:text-purple-600 transition-colors text-navy-700"
+                      className="w-10 h-10 rounded-full bg-navy-50 flex items-center justify-center hover:bg-gray-100 hover:text-black transition-colors text-navy-700"
                     >
                       <img 
                         src={`https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/${social}.svg`}
@@ -121,12 +121,12 @@ const ContactSection = () => {
               </div>
             </div>
             
-            <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl shadow-md p-6 mt-6 text-white animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            <div className="bg-gradient-to-r from-gray-700 to-black rounded-xl shadow-md p-6 mt-6 text-white animate-fade-in-up" style={{ animationDelay: '200ms' }}>
               <h3 className="text-xl font-bold mb-4">Available for Freelance</h3>
               <p className="mb-4">
                 I'm currently accepting new projects and would love to hear about yours. Let's build something amazing together.
               </p>
-              <a href="#" className="inline-block py-2 px-4 bg-white text-purple-600 font-medium rounded-md hover:bg-purple-50 transition-colors">
+              <a href="#" className="inline-block py-2 px-6 bg-gray-200 text-black font-medium rounded-md hover:bg-purple-50 transition-colors">
                 Hire Me
               </a>
             </div>

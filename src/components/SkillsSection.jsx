@@ -184,7 +184,7 @@ const SkillCategoryCard = ({ category, index }) => {
 // === Main Component ===
 export default function SkillsShowcase() {
   return (
-    <div className="px-6 py-12 space-y-16 bg-gray-50 min-h-screen">
+    <div className="px-6 py-12 space-y-16 bg-gray-50 min-h-screen" id='skills'>
       <h1 className="text-4xl font-bold text-center text-gray-800">Skills & Expertise</h1>
 
       {/* Skill Categories */}

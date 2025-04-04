@@ -11,12 +11,12 @@ const Footer = () => {
   };
   
   return (
-    <footer className="bg-mono-950 text-white py-12">
+    <footer className="bg-gradient-to-r from-gray-700 to-black text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <Code className="h-8 w-8 text-mono-400" />
+              <Code className="h-8 w-8 text-mono-600" />
               <span className="text-xl font-bold">DevPortfolio</span>
             </div>
             <p className="text-mono-400 mb-4">

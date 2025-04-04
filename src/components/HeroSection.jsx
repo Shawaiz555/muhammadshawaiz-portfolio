@@ -38,7 +38,7 @@ const HeroSection = () => {
   }, [typedText, isDeleting, currentPhraseIndex, phrases]);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center relative overflow-hidden">
+    <section id="about" className="min-h-screen flex items-center relative overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-mono-50 to-mono-100 z-0" />
       <div className="absolute inset-0 opacity-20 bg-dots-pattern z-0" />
@@ -82,8 +82,8 @@ const HeroSection = () => {
           
           <div className="lg:w-1/2 animate-fade-in">
             <div className="relative">
-              <div className="relative z-10 p-2 rounded-2xl transform transition-all duration-500 hover:scale-[1.02]">
-                <div className='flex justify-center'>
+              <div className="relative z-10 p-2 rounded-2xl">
+                <div className='flex justify-center transform transition-all duration-500 hover:scale-[1.02]'>
                 <img
                   src="/profilePic.jpg"
                   alt="Muhammad Shawaiz - Web Developer"
