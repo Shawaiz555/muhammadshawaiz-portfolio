@@ -9,7 +9,7 @@ const HeroSection = () => {
   
   const phrases = [
     'MERN Stack Developer',
-    'Next.js Expert',
+    'Front-end Expert',
     'UI/UX Designer',
     'Full Stack Engineer'
   ];
@@ -55,7 +55,7 @@ const HeroSection = () => {
               <h4 className="relative text-mono-700 font-semibold px-3 py-1 bg-white rounded-lg">Hello, I'm</h4>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-mono-900 mb-4 tracking-tight">
-              Alex Johnson
+              Muhammad Shawaiz
             </h1>
             <div className="h-12 overflow-hidden">
               <h2 className="text-2xl md:text-3xl font-bold text-gradient">
@@ -82,29 +82,18 @@ const HeroSection = () => {
           
           <div className="lg:w-1/2 animate-fade-in">
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-mono-600 to-mono-400 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
-              <div className="relative z-10 p-2 rounded-2xl shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-3xl">
-                <div className="absolute inset-0 bg-gradient-to-tr from-mono-800 to-mono-500 rounded-2xl opacity-20"></div>
-                <div className="absolute inset-0 backdrop-blur-sm rounded-2xl border border-white/10"></div>
+              <div className="relative z-10 p-2 rounded-2xl transform transition-all duration-500 hover:scale-[1.02]">
+                <div className='flex justify-center'>
                 <img
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961&ixlib=rb-4.0.3"
-                  alt="Alex Johnson - Web Developer"
-                  className="rounded-xl relative z-10"
+                  src="/profilePic.jpg"
+                  alt="Muhammad Shawaiz - Web Developer"
+                  className="rounded-3xl relative z-10 lg:w-3/5 lg:h-1/2"
                   width={500}
                   height={500}
                 />
+                </div>
               </div>
               
-              {/* Enhanced Tech Icons */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-3 rounded-xl shadow-lg animate-float gradient-border transform hover:scale-105 transition-transform cursor-pointer">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width={40} height={40} alt="React" className="transition-transform hover:rotate-180 duration-1000" />
-              </div>
-              <div className="absolute -top-6 -right-6 bg-white p-3 rounded-xl shadow-lg animate-float gradient-border transform hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: "0.5s" }}>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width={40} height={40} alt="Node.js" className="transition-transform hover:rotate-12 duration-300" />
-              </div>
-              <div className="absolute top-1/2 -right-6 bg-white p-3 rounded-xl shadow-lg animate-float gradient-border transform hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: "1s" }}>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width={40} height={40} alt="MongoDB" className="transition-transform hover:rotate-12 duration-300" />
-              </div>
             </div>
           </div>
         </div>
