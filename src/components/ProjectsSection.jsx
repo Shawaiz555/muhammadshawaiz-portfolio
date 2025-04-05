@@ -136,7 +136,7 @@ const ProjectsSection = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-md card-hover animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="relative overflow-hidden h-48">
+                <div className="relative overflow-hidden h-64">
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -148,9 +148,9 @@ const ProjectsSection = () => {
                   <h3 className="text-xl font-bold text-navy-900 mb-2">{project.title}</h3>
                   <p className="text-navy-600 mb-4 line-clamp-3">{project.description}</p>
                   
-                  <div className="flex flex-wrap gap-3 mb-5">
+                  <div className="flex flex-wrap gap-3 mb-5 mt-5">
                     {project.tags.slice(0, 3).map((tag, idx) => (
-                      <span key={idx} className="text-xs px-5 py-1 bg-black text-white rounded-full">
+                      <span key={idx} className="text-xs px-5 py-2 bg-gradient-to-r from-gray-700 to-black text-white rounded-full">
                         {tag}
                       </span>
                     ))}

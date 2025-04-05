@@ -57,7 +57,7 @@ const ContactSection = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Info */}
           <div className="md:col-span-1">
             <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in-up">
@@ -134,7 +134,7 @@ const ContactSection = () => {
           
           {/* Contact Form */}
           <div className="md:col-span-2 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-            <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+            <div className="bg-white rounded-xl shadow-md p-6 md:p-10">
               <h3 className="text-xl font-bold text-navy-900 mb-6">Send Me a Message</h3>
               
               {submitMessage && (

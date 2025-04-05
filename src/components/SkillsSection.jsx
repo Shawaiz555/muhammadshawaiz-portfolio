@@ -6,7 +6,7 @@ const skills = [
   {
     category: "Frontend",
     icon: <Layout className="h-6 w-6 text-white" />,
-    color: "from-gray-700 to-black",
+    color: "from-gray-100 to-gray-200",
     skills: [
       { name: "React.js", level: 85 },
       { name: "Next.js", level: 85 },
@@ -19,7 +19,7 @@ const skills = [
   {
     category: "Backend",
     icon: <Server className="h-6 w-6 text-white" />,
-    color: "from-gray-700 to-black",
+    color: "from-gray-100 to-gray-200",
     skills: [
       { name: "Node.js", level: 90 },
       { name: "Express.js", level: 85 },
@@ -30,7 +30,7 @@ const skills = [
   {
     category: "Tools & Other",
     icon: <Code className="h-6 w-6 text-white" />,
-    color: "from-gray-700 to-black",
+    color: "from-gray-100 to-gray-200",
     skills: [
       { name: "Git & GitHub", level: 85 },
       { name: "Docker", level: 70 },
@@ -74,25 +74,44 @@ const SkillCircle = ({ name, level, delay }) => {
       ref={circleRef}
       className="flex flex-col items-center transition-opacity duration-700 ease-out"
     >
-      <div className="relative">
-        <svg width="100" height="100" className="-rotate-90">
-          <circle cx="50" cy="50" r={radius} stroke="#eee" strokeWidth="8" fill="none" />
-          <circle
-            cx="50" cy="50" r={radius}
-            stroke="orange"
-            strokeWidth="8"
-            fill="none"
-            strokeDasharray={circumference}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-            className="transition-all duration-1000 ease-out"
-          />
-        </svg>
-        <div className="absolute inset-0 flex items-center justify-center text-xl font-bold">
-          {progress}%
-        </div>
-      </div>
-      <h4 className="mt-2 text-white font-semibold">{name}</h4>
+      <div className="relative w-[140px] h-[140px]">
+  <svg width="140" height="140" className="-rotate-90">
+    <circle
+      cx="70"
+      cy="70"
+      r={radius + 15} 
+      stroke="#e5e7eb" 
+      strokeWidth="12"
+      fill="none"
+    />
+    <circle
+      cx="70"
+      cy="70"
+      r={radius + 15}
+      stroke="url(#grad)"
+      strokeWidth="12"
+      fill="none"
+      strokeDasharray={2 * Math.PI * (radius + 15)}
+      strokeDashoffset={
+        2 * Math.PI * (radius + 15) - (progress / 100) * 2 * Math.PI * (radius + 15)
+      }
+      strokeLinecap="round"
+      className="transition-all duration-1000 ease-out"
+    />
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="black" /> 
+        <stop offset="100%" stopColor="black" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div className="absolute inset-0 flex flex-col items-center justify-center">
+    <span className="text-2xl font-bold text-black">{progress}%</span>
+  </div>
+</div>
+
+      <h4 className="mt-2 text-black text-lg font-semibold">{name}</h4>
     </div>
   );
 };
@@ -155,8 +174,8 @@ const SkillCategoryCard = ({ category, index }) => {
       ref={cardRef}
       onMouseMove={onMove}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`relative bg-gradient-to-br ${category.color} hover:cursor-pointer text-white rounded-2xl shadow-xl p-6 transform transition duration-500`}
+      onMouseLeave={() => setHovered(false)}s
+      className={`relative hover:cursor-pointer text-black rounded-2xl shadow-xl p-6 transform transition duration-500`}
       style={{
         transform: hovered
           ? `perspective(1000px) rotateX(${mouse.y * 10}deg) rotateY(${mouse.x * -10}deg)`
@@ -164,10 +183,10 @@ const SkillCategoryCard = ({ category, index }) => {
       }}
     >
       <div className="flex items-center gap-4 mb-4">
-        <div className="bg-white/20 p-3 rounded-full">{category.icon}</div>
-        <h2 className="text-2xl font-bold">{category.category}</h2>
+        <div className="bg-black p-3 rounded-full">{category.icon}</div>
+        <h2 className="text-2xl text-black font-bold">{category.category}</h2>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-black">
         {category.skills.map((skill, idx) => (
           <SkillCircle
             key={skill.name}
@@ -188,7 +207,7 @@ export default function SkillsShowcase() {
       <h1 className="text-4xl font-bold text-center text-gray-800">Skills & Expertise</h1>
 
       {/* Skill Categories */}
-      <div className="grid md:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-1 gap-16">
         {skills.map((cat, idx) => (
           <SkillCategoryCard key={cat.category} category={cat} index={idx} />
         ))}

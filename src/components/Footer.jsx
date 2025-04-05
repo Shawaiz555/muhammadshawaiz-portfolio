@@ -11,9 +11,9 @@ const Footer = () => {
   };
   
   return (
-    <footer className="bg-gradient-to-r from-gray-700 to-black text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+    <footer className="w-full overflow-hidden bg-gradient-to-r from-gray-700 to-black text-white py-12">
+      <div className="container mx-auto px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center gap-8 mb-8">
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <Code className="h-8 w-8 text-mono-600" />
@@ -64,9 +64,9 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-mono-400">
-              <li>San Francisco, California</li>
-              <li>alex@example.com</li>
-              <li>+1 (234) 567-890</li>
+              <li>Gujrat, Pakistan</li>
+              <li>shawaizbutt555@gmail.com</li>
+              <li>+92 3433326500</li>
             </ul>
             
             <button 
@@ -77,12 +77,6 @@ const Footer = () => {
               <ArrowUp className="h-4 w-4" />
             </button>
           </div>
-        </div>
-        
-        <div className="pt-8 border-t border-mono-800 text-center">
-          <p className="text-mono-400 flex items-center justify-center">
-            Made with <Heart className="h-4 w-4 text-red-500 mx-1" fill="currentColor" /> by Alex Johnson &copy; {new Date().getFullYear()}
-          </p>
         </div>
       </div>
     </footer>

@@ -49,7 +49,7 @@ const HeroSection = () => {
       
       <div className="container mx-auto px-4 z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-          <div className="lg:w-1/2 animate-fade-in-up">
+          <div className="mt-20 lg:mt-0 lg:w-1/2 animate-fade-in-up">
             <div className="inline-block relative mb-4">
               <span className="absolute -inset-1 bg-gradient-to-r from-mono-800 to-mono-600 blur rounded-lg opacity-75"></span>
               <h4 className="relative text-mono-700 font-semibold px-3 py-1 bg-white rounded-lg">Hello, I'm</h4>
