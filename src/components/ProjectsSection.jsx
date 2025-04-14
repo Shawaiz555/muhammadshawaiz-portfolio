@@ -5,54 +5,33 @@ import { Github, ExternalLink, Code, Layout, Server, Search } from 'lucide-react
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform built with the MERN stack featuring product search, filtering, cart functionality, payment processing, and admin dashboard.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    tags: ["Next.js", "MongoDB", "Express", "React", "Node.js", "Tailwind CSS"],
-    category: "fullstack",
-    github: "https://github.com",
-    demo: "https://demo.com",
+    title: "Multikart E-Commerce Website",
+    description: "Multikart is a responsive front-end e-commerce website built with React, Tailwind CSS, Redux, JavaScript, and HTML5. It offers a smooth user experience with category-wise browsing of products like clothes, shoes, electronics, and jewelry. Features include product listing, detail view, cart management, and filtering. Designed for performance and modern UI, Multikart focuses on showcasing front-end development and user-centric design without backend integration.",
+    image: "/images/Multikart website.png",
+    tags: ["React","Javascript", "Tailwind CSS","Html5"],
+    category: "frontend",
+    github: "https://github.com/Shawaiz555/multikart-website",
   },
+  
   {
     id: 2,
-    title: "Real-time Chat Application",
-    description: "A real-time messaging platform with features like user authentication, private messaging, group chats, and file sharing built with Socket.io and the MERN stack.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
+    title: "Event Management Website",
+    description: "Ms-EventSphere is an intuitive event management platform connecting users and admins. Users sign up, submit events, and view approved ones. Admins review, edit, approve, or delete events, ensuring quality control. Users request changes via the Contact Page, and admins update and republish events. The Partner Page highlights collaborations. With seamless communication and efficient workflows, Ms-EventSphere simplifies event handling.",
+    image: "/images/Event Management Website.png",
+    tags: ["Next.js", "Tailwind CSS", "React", "MongoDB","NextAuth"],
     category: "fullstack",
-    github: "https://github.com",
-    demo: "https://demo.com",
+    github: "https://github.com/Shawaiz555/ms-eventsphere",
   },
   {
     id: 3,
-    title: "Task Management Dashboard",
-    description: "A comprehensive task management system with drag-and-drop functionality, team collaboration features, and progress tracking.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    tags: ["Next.js", "Tailwind CSS", "React Query", "MongoDB"],
+    title: "Digital Marketing Website",
+    description: "MarketiVerse needed a professional, engaging website to showcase their digital marketing services—Email Marketing, Social Media, Website Design, and Digital Marketing. They wanted a user-friendly, cohesive platform optimized for SEO and integrated with analytics to track engagement and refine strategies.",
+    image: "/images/Digital marketing website.png",
+    tags: ["Html5","Tailwind CSS","Javascript"],
     category: "frontend",
-    github: "https://github.com",
-    demo: "https://demo.com",
+    github: "https://github.com/Shawaiz555/marketing-website",
   },
-  {
-    id: 4,
-    title: "Blog Platform",
-    description: "A modern content publishing platform with rich text editing, categories, and social sharing features, using Next.js for server-side rendering.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
-    tags: ["Next.js", "Sanity.io", "Tailwind CSS"],
-    category: "frontend",
-    github: "https://github.com",
-    demo: "https://demo.com",
-  },
-  {
-    id: 5,
-    title: "Social Network",
-    description: "A social media platform with features like news feed, user profiles, friend requests, and real-time notifications.",
-    image: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80",
-    tags: ["React", "Node.js", "GraphQL", "MongoDB", "Express"],
-    category: "fullstack",
-    github: "https://github.com",
-    demo: "https://demo.com",
-  },
+  
 ];
 
 const ProjectsSection = () => {
@@ -172,17 +151,6 @@ const ProjectsSection = () => {
                       <span>Code</span>
                     </a>
                     
-                    {project.demo && (
-                      <a 
-                        href={project.demo} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center text-navy-800 hover:text-purple-600 transition-colors"
-                      >
-                        <ExternalLink className="h-5 w-5 mr-1" />
-                        <span>Demo</span>
-                      </a>
-                    )}
                   </div>
                 </div>
               </div>

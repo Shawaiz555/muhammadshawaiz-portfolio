@@ -21,7 +21,7 @@ const skills = [
     icon: <Server className="h-6 w-6 text-white" />,
     color: "from-gray-100 to-gray-200",
     skills: [
-      { name: "Node.js", level: 90 },
+      { name: "Node.js", level: 85 },
       { name: "Express.js", level: 85 },
       { name: "MongoDB", level: 90 },
       { name: "RESTful APIs", level: 90 },
@@ -34,7 +34,7 @@ const skills = [
     skills: [
       { name: "Git & GitHub", level: 85 },
       { name: "Docker", level: 70 },
-      { name: "AWS", level: 60 },
+      { name: "AWS", level: 70 },
     ]
   }
 ];
@@ -81,7 +81,7 @@ const SkillCircle = ({ name, level, delay }) => {
       cy="70"
       r={radius + 15} 
       stroke="#e5e7eb" 
-      strokeWidth="12"
+      strokeWidth="10"
       fill="none"
     />
     <circle
@@ -89,7 +89,7 @@ const SkillCircle = ({ name, level, delay }) => {
       cy="70"
       r={radius + 15}
       stroke="url(#grad)"
-      strokeWidth="12"
+      strokeWidth="10"
       fill="none"
       strokeDasharray={2 * Math.PI * (radius + 15)}
       strokeDashoffset={
@@ -186,7 +186,7 @@ const SkillCategoryCard = ({ category, index }) => {
         <div className="bg-black p-3 rounded-full">{category.icon}</div>
         <h2 className="text-2xl text-black font-bold">{category.category}</h2>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-black">
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-10 py-4 text-black">
         {category.skills.map((skill, idx) => (
           <SkillCircle
             key={skill.name}
@@ -207,14 +207,14 @@ export default function SkillsShowcase() {
       <h1 className="text-4xl font-bold text-center text-gray-800">Skills & Expertise</h1>
 
       {/* Skill Categories */}
-      <div className="grid md:grid-cols-1 gap-16">
+      <div className="grid md:grid-cols-1 gap-16 md:mx-10">
         {skills.map((cat, idx) => (
           <SkillCategoryCard key={cat.category} category={cat} index={idx} />
         ))}
       </div>
 
       {/* Expertise Cards */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 md:mx-10 gap-6">
         {expertiseData.map((exp, idx) => (
           <ExpertiseCard key={exp.title} {...exp} index={idx} />
         ))}

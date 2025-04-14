@@ -69,11 +69,11 @@ const HeroSection = () => {
               Express, MongoDB, and Next.js.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="btn-primary flex items-center group transition-all duration-300">
+              <a href="https://www.upwork.com/freelancers/~016b5a1c020c5b6c5b?mp_source=share" target='_blank' className="btn-primary flex items-center group transition-all duration-300">
                 Hire Me
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#" className="btn-secondary flex items-center group transition-all duration-300">
+              <a href="/MuhammadShawaizCV.doc" download className="btn-secondary flex items-center group transition-all duration-300">
                 Download CV
                 <Download className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
               </a>
@@ -82,12 +82,12 @@ const HeroSection = () => {
           
           <div className="lg:w-1/2 animate-fade-in">
             <div className="relative">
-              <div className="relative z-10 p-2 rounded-2xl">
-                <div className='flex justify-center transform transition-all duration-500 hover:scale-[1.02]'>
+              <div className="relative z-10 p-2">
+                <div className='flex justify-center transform transition-all duration-500 hover:scale-[1.02] mt-5'>
                 <img
-                  src="/profilePic.jpg"
+                  src="/images/profilePic.png"
                   alt="Muhammad Shawaiz - Web Developer"
-                  className="rounded-3xl relative z-10 lg:w-3/5 lg:h-1/2"
+                  className="relative z-10 lg:w-4/5 lg:h-full"
                   width={500}
                   height={500}
                 />

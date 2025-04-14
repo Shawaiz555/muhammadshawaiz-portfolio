@@ -11,7 +11,7 @@ const experiences = [
     period: "2020 - Present",
     type: "work",
     description: "Lead developer for the company's flagship e-commerce platform, managing a team of 5 developers. Implemented microservices architecture using Node.js and MongoDB that improved scalability by 40%. Rebuilt frontend with Next.js and Tailwind CSS, increasing conversion rates by 25%.",
-    skills: ["Next.js", "Node.js", "MongoDB", "AWS", "Docker", "CI/CD"]
+    skills: ["Next.js", "Node.js", "MongoDB", "AWS", "Docker"]
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const experiences = [
     period: "2018 - 2020",
     type: "work",
     description: "Developed and maintained multiple client projects using the MERN stack. Created a real-time dashboard that processed over 10,000 data points per minute. Implemented authentication systems using JWT and OAuth for various client applications.",
-    skills: ["React", "Express", "MongoDB", "Node.js", "Redux", "Socket.io"]
+    skills: ["React", "Express", "MongoDB", "Node.js", "Redux"]
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const experiences = [
     period: "2016 - 2018",
     type: "work",
     description: "Built responsive web applications and websites for clients across various industries. Developed a component library that reduced development time by 30%. Collaborated with design team to implement pixel-perfect UIs.",
-    skills: ["React", "JavaScript", "HTML/CSS", "Sass", "Webpack"]
+    skills: ["React", "JavaScript", "HTML/CSS"]
   },
   {
     id: 4,
@@ -45,13 +45,13 @@ const experiences = [
   },
   {
     id: 5,
-    title: "Bachelor's in Computer Engineering",
+    title: "Bachelor's in Computer Science",
     company: "State University",
     location: "Chicago, IL",
     period: "2010 - 2014",
     type: "education",
     description: "Graduated with honors. Participated in multiple hackathons and coding competitions. Academic focus on software development and computer networks.",
-    skills: ["Data Structures", "Networking", "Database Systems", "Java", "C++"]
+    skills: ["Data Structures", "Networking", "Database Systems", "C#", "C++","React","NextJs"]
   }
 ];
 

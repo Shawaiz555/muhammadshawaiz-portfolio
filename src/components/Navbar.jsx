@@ -47,9 +47,7 @@ const Navbar = () => {
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
               <Github className="h-5 w-5" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
-              <Twitter className="h-5 w-5" />
-            </a>
+            
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
               <Linkedin className="h-5 w-5" />
             </a>
