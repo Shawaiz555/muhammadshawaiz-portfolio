@@ -75,7 +75,7 @@ const SkillCircle = ({ name, level, delay }) => {
       ref={circleRef}
       className="flex flex-col items-center transition-opacity duration-700 ease-out"
     >
-      <div className="relative w-[140px] h-[140px]">
+      <div className="relative w-[90px] h-[90px] lg:w-[140px] lg:h-[140px]">
   <svg width="140" height="140" className="-rotate-90">
     <circle
       cx="70"
