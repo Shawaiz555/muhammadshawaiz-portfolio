@@ -130,7 +130,7 @@ const ContactSection = () => {
                   </a>
                 </div>
               </div>
-            </div> 
+            </div>
 
             <div className="bg-gradient-to-r from-gray-700 to-black rounded-xl shadow-md p-6 mt-6 text-white animate-fade-in-up" style={{ animationDelay: '200ms' }}>
               <h3 className="text-xl font-bold mb-4">Available for Freelance</h3>

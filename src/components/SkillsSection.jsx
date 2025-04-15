@@ -76,41 +76,41 @@ const SkillCircle = ({ name, level, delay }) => {
       className="flex flex-col items-center transition-opacity duration-700 ease-out"
     >
       <div className="relative w-[120px] h-[120px]">
-  <svg width="120" height="120" className="-rotate-90">
-    <circle
-      cx="60"
-      cy="60"
-      r={radius + 15} 
-      stroke="#e5e7eb" 
-      strokeWidth="10"
-      fill="none"
-    />
-    <circle
-      cx="60"
-      cy="60"
-      r={radius + 15}
-      stroke="url(#grad)"
-      strokeWidth="10"
-      fill="none"
-      strokeDasharray={2 * Math.PI * (radius + 15)}
-      strokeDashoffset={
-        2 * Math.PI * (radius + 15) - (progress / 100) * 2 * Math.PI * (radius + 15)
-      }
-      strokeLinecap="round"
-      className="transition-all duration-1000 ease-out"
-    />
-    <defs>
-      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="black" /> 
-        <stop offset="100%" stopColor="black" />
-      </linearGradient>
-    </defs>
-  </svg>
+        <svg width="120" height="120" className="-rotate-90">
+          <circle
+            cx="60"
+            cy="60"
+            r={radius + 15}
+            stroke="#e5e7eb"
+            strokeWidth="10"
+            fill="none"
+          />
+          <circle
+            cx="60"
+            cy="60"
+            r={radius + 15}
+            stroke="url(#grad)"
+            strokeWidth="10"
+            fill="none"
+            strokeDasharray={2 * Math.PI * (radius + 15)}
+            strokeDashoffset={
+              2 * Math.PI * (radius + 15) - (progress / 100) * 2 * Math.PI * (radius + 15)
+            }
+            strokeLinecap="round"
+            className="transition-all duration-1000 ease-out"
+          />
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="black" />
+              <stop offset="100%" stopColor="black" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-  <div className="absolute inset-0 flex flex-col items-center justify-center">
-    <span className="text-2xl font-bold text-black">{progress}%</span>
-  </div>
-</div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-2xl font-bold text-black">{progress}%</span>
+        </div>
+      </div>
 
       <h4 className="mt-2 text-black text-lg font-semibold">{name}</h4>
     </div>
@@ -175,7 +175,7 @@ const SkillCategoryCard = ({ category, index }) => {
       ref={cardRef}
       onMouseMove={onMove}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}s
+      onMouseLeave={() => setHovered(false)} s
       className={`relative hover:cursor-pointer text-black rounded-2xl shadow-xl p-6 transform transition duration-500`}
       style={{
         transform: hovered

@@ -6,7 +6,7 @@ const HeroSection = () => {
   const [typedText, setTypedText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  
+
   const phrases = [
     'MERN Stack Developer',
     'Front-end Expert',
@@ -18,13 +18,13 @@ const HeroSection = () => {
     const type = () => {
       const currentPhrase = phrases[currentPhraseIndex];
       const shouldDelete = isDeleting;
-      
-      setTypedText(current => 
-        shouldDelete 
-          ? currentPhrase.substring(0, current.length - 1) 
+
+      setTypedText(current =>
+        shouldDelete
+          ? currentPhrase.substring(0, current.length - 1)
           : currentPhrase.substring(0, current.length + 1)
       );
-      
+
       if (!isDeleting && typedText === currentPhrase) {
         setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && typedText === '') {
@@ -32,7 +32,7 @@ const HeroSection = () => {
         setCurrentPhraseIndex((current) => (current + 1) % phrases.length);
       }
     };
-    
+
     const timer = setTimeout(type, isDeleting ? 100 : 150);
     return () => clearTimeout(timer);
   }, [typedText, isDeleting, currentPhraseIndex, phrases]);
@@ -42,11 +42,11 @@ const HeroSection = () => {
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-mono-50 to-mono-100 z-0" />
       <div className="absolute inset-0 opacity-20 bg-dots-pattern z-0" />
-      
+
       {/* Animated Shapes */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-tr from-mono-200 to-mono-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-pulse-slow"></div>
       <div className="absolute bottom-20 right-10 w-64 h-64 bg-gradient-to-tr from-mono-200 to-mono-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
-      
+
       <div className="container mx-auto px-4 z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           <div className="mt-20 lg:mt-0 lg:w-1/2 animate-fade-in-up">
@@ -64,8 +64,8 @@ const HeroSection = () => {
               </h2>
             </div>
             <p className="text-mono-700 text-lg mt-6 mb-8 max-w-xl leading-relaxed">
-              I create exceptional digital experiences with modern technologies. 
-              Specializing in building robust web applications with React, Node.js, 
+              I create exceptional digital experiences with modern technologies.
+              Specializing in building robust web applications with React, Node.js,
               Express, MongoDB, and Next.js.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -79,26 +79,26 @@ const HeroSection = () => {
               </a>
             </div>
           </div>
-          
+
           <div className="lg:w-1/2 animate-fade-in">
             <div className="relative">
               <div className="relative z-10 p-2">
                 <div className='flex justify-center transform transition-all duration-500 hover:scale-[1.02] mt-5'>
-                <img
-                  src="/images/profilePic.png"
-                  alt="Muhammad Shawaiz - Web Developer"
-                  className="relative z-10 lg:w-4/5 lg:h-full"
-                  width={500}
-                  height={500}
-                />
+                  <img
+                    src="/images/profilePic.png"
+                    alt="Muhammad Shawaiz - Web Developer"
+                    className="relative z-10 lg:w-4/5 lg:h-full"
+                    width={500}
+                    height={500}
+                  />
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Scroll down indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center">
         <span className="text-mono-600 mb-2 text-sm">Scroll Down</span>
