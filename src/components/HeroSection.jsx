@@ -73,7 +73,7 @@ const HeroSection = () => {
                 Hire Me
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="/MuhammadShawaizCV.doc" download className="btn-secondary flex items-center group transition-all duration-300">
+              <a href="/MuhammadShawaizCV.docx" download className="btn-secondary flex items-center group transition-all duration-300">
                 Download CV
                 <Download className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
               </a>
