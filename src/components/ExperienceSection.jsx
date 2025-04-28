@@ -3,52 +3,33 @@ import React, { useEffect, useRef } from 'react';
 import { Briefcase, GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 
 const experiences = [
+  
   {
     id: 1,
-    title: "Senior Full Stack Developer",
-    company: "TechCorp Inc.",
-    location: "San Francisco, CA",
-    period: "2020 - Present",
+    title: "Frontend Developer",
+    company: "Arid Agricultural University",
+    location: "Pakistan, Gujrat",
+    period: "2023 - 2024",
     type: "work",
-    description: "Lead developer for the company's flagship e-commerce platform, managing a team of 5 developers. Implemented microservices architecture using Node.js and MongoDB that improved scalability by 40%. Rebuilt frontend with Next.js and Tailwind CSS, increasing conversion rates by 25%.",
-    skills: ["Next.js", "Node.js", "MongoDB", "AWS", "Docker"]
+    description: "Built responsive web applications and websites for clients across various industries. Developed a component library that reduced development time by 30%. Collaborated with design team to implement pixel-perfect UIs.",
+    skills: ["React", "JavaScript", "HTML/CSS"]
   },
   {
     id: 2,
     title: "Full Stack Developer",
-    company: "InnovateSoft",
-    location: "Boston, MA",
-    period: "2018 - 2020",
+    company: "Freelancing",
+    location: "Pakistan, Gujrat",
+    period: "2024 - 2025",
     type: "work",
     description: "Developed and maintained multiple client projects using the MERN stack. Created a real-time dashboard that processed over 10,000 data points per minute. Implemented authentication systems using JWT and OAuth for various client applications.",
     skills: ["React", "Express", "MongoDB", "Node.js", "Redux"]
   },
   {
     id: 3,
-    title: "Frontend Developer",
-    company: "WebCreate Solutions",
-    location: "Austin, TX",
-    period: "2016 - 2018",
-    type: "work",
-    description: "Built responsive web applications and websites for clients across various industries. Developed a component library that reduced development time by 30%. Collaborated with design team to implement pixel-perfect UIs.",
-    skills: ["React", "JavaScript", "HTML/CSS"]
-  },
-  {
-    id: 4,
-    title: "Master's in Computer Science",
-    company: "Tech University",
-    location: "San Francisco, CA",
-    period: "2014 - 2016",
-    type: "education",
-    description: "Specialized in Web Technologies and Distributed Systems. Thesis on scalable real-time web application architectures. GPA: 3.9/4.0",
-    skills: ["Algorithms", "System Design", "Distributed Systems", "Web Architecture"]
-  },
-  {
-    id: 5,
     title: "Bachelor's in Computer Science",
-    company: "State University",
-    location: "Chicago, IL",
-    period: "2010 - 2014",
+    company: "Arid Agricultural University",
+    location: "Pakistan, Gujrat",
+    period: "2020 - 2024",
     type: "education",
     description: "Graduated with honors. Participated in multiple hackathons and coding competitions. Academic focus on software development and computer networks.",
     skills: ["Data Structures", "Networking", "Database Systems", "C#", "C++", "React", "NextJs"]

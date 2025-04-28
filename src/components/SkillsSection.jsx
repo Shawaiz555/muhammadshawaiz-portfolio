@@ -41,7 +41,7 @@ const skills = [
 ];
 
 const expertiseData = [
-  { title: "Projects Completed", value: "10+", icon: <Trophy /> },
+  { title: "Projects Completed", value: "3+", icon: <Trophy /> },
   { title: "Years Experience", value: "2+", icon: <Trophy /> },
   { title: "Happy Clients", value: "20+", icon: <Trophy /> },
 ];
