@@ -20,7 +20,7 @@ const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+  
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
@@ -28,7 +28,10 @@ const ContactSection = () => {
         type: 'success',
         text: 'Thank you! Your message has been sent successfully.'
       });
-
+  
+      // Save formData in localStorage
+      localStorage.setItem("UserData", JSON.stringify(formData));
+  
       // Reset form
       setFormData({
         name: '',
@@ -36,13 +39,14 @@ const ContactSection = () => {
         subject: '',
         message: ''
       });
-
+  
       // Clear message after 5 seconds
       setTimeout(() => {
         setSubmitMessage(null);
       }, 5000);
     }, 1500);
   };
+  
 
   return (
     <section id="contact" className="py-20 bg-gray-50">
