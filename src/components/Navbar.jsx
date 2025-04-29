@@ -70,13 +70,10 @@ const Navbar = () => {
           <a href="#contact" className="text-mono-700 hover:text-mono-900 font-medium py-2 transition-colors" onClick={toggleMenu}>Contact</a>
 
           <div className="flex items-center space-x-4 py-2 border-t border-mono-200">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
+            <a href="https://github.com/Shawaiz555" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
               <Github className="h-5 w-5" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
+            <a href="https://www.linkedin.com/in/muhammad-shawaiz-b52483280/" target="_blank" rel="noopener noreferrer" className="text-mono-600 hover:text-mono-900 transition-colors">
               <Linkedin className="h-5 w-5" />
             </a>
           </div>
