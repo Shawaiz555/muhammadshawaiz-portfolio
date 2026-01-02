@@ -1,1034 +1,2010 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Muhammad Shawaiz | MERN Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
     <style>
-        /* Custom Animations */
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes fadeScale { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        @keyframes float-slow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
-        @keyframes float-medium { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-25px); } }
-        @keyframes gradient-xy { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        @keyframes shine { 0% { left: -100%; opacity: 0; } 20% { opacity: 0.5; } 100% { left: 100%; opacity: 0; } }
-        @keyframes pulse-soft { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
-        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes spin-reverse-slow { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-        
-        .animate-gradient-text { background-size: 200% auto; animation: gradient-xy 4s linear infinite; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
-        .glass-card-high { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); }
-        
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #10b981, #06b6d4); border-radius: 4px; }
+      /* Custom Animations */
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeScale {
+        from {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes float-slow {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+      @keyframes float-medium {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-25px);
+        }
+      }
+      @keyframes gradient-xy {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      @keyframes shine {
+        0% {
+          left: -100%;
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.5;
+        }
+        100% {
+          left: 100%;
+          opacity: 0;
+        }
+      }
+      @keyframes pulse-soft {
+        0%,
+        100% {
+          opacity: 0.4;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.05);
+        }
+      }
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spin-reverse-slow {
+        from {
+          transform: rotate(360deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      .animate-gradient-text {
+        background-size: 200% auto;
+        animation: gradient-xy 4s linear infinite;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+      .glass-card-high {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #10b981, #06b6d4);
+        border-radius: 4px;
+      }
     </style>
-</head>
-<body class="bg-black text-white overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-200">
-    
+  </head>
+  <body
+    class="bg-black text-white overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-200"
+  >
     <!-- Cursor -->
-    <div id="cursor" class="fixed w-6 h-6 rounded-full pointer-events-none z-50 mix-blend-difference bg-white hidden lg:block transition-transform duration-100 ease-out" style="transform: translate(-50%, -50%);"></div>
-    <div id="cursor-follower" class="fixed w-12 h-12 rounded-full pointer-events-none z-50 border border-white/30 hidden lg:block transition-transform duration-300 ease-out" style="transform: translate(-50%, -50%);"></div>
+    <div
+      id="cursor"
+      class="fixed w-6 h-6 rounded-full pointer-events-none z-50 mix-blend-difference bg-white hidden lg:block transition-transform duration-100 ease-out"
+      style="transform: translate(-50%, -50%)"
+    ></div>
+    <div
+      id="cursor-follower"
+      class="fixed w-12 h-12 rounded-full pointer-events-none z-50 border border-white/30 hidden lg:block transition-transform duration-300 ease-out"
+      style="transform: translate(-50%, -50%)"
+    ></div>
 
     <!-- 3D Canvas Background -->
     <canvas id="bg-canvas" class="fixed inset-0 z-0 opacity-30"></canvas>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4 transition-all duration-300 backdrop-blur-md bg-black/50 border-b border-white/5">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#" class="group flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center font-bold text-black" style="font-family: 'Space Grotesk';">M</div>
-                <span class="text-xl font-semibold tracking-tight group-hover:text-white transition-colors" style="font-family: 'Space Grotesk';">Shawaiz</span>
-            </a>
-            
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-white/70 hover:text-white transition-colors">
-                <span class="iconify" data-icon="lucide:menu" data-width="24" style="stroke-width: 1.5;"></span>
-            </button>
-            
-            <div class="hidden lg:flex items-center gap-8">
-                <div class="flex items-center gap-6 px-6 py-2 rounded-full bg-white/5 border border-white/5 backdrop-blur-sm">
-                    <a href="#about" class="text-sm font-medium text-emerald-400 hover:text-white transition-colors">About</a>
-                    <a href="#skills" class="text-sm font-medium text-emerald-400 hover:text-white transition-colors">Skills</a>
-                    <a href="#projects" class="text-sm font-medium text-emerald-400 hover:text-white transition-colors">Projects</a>
-                    <a href="#experience" class="text-sm font-medium text-emerald-400 hover:text-white transition-colors">Experience</a>
-                </div>
-                <a href="#contact" class="px-5 py-2 bg-white text-black text-sm font-medium rounded-full hover:bg-emerald-50 transition-all hover:scale-105 flex items-center gap-2">
-                    Let's Talk
-                    <span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span>
-                </a>
-            </div>
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4 transition-all duration-300 backdrop-blur-md bg-black/50 border-b border-white/5"
+    >
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="#" class="group flex items-center gap-2">
+          <div
+            class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center font-bold text-black"
+            style="font-family: 'Space Grotesk'"
+          >
+            MU
+          </div>
+          <span
+            class="text-xl font-bold tracking-tight group-hover:text-white transition-colors"
+            style="font-family: 'Space Grotesk', sans-serif"
+            >Shawaiz</span
+          >
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 text-white/70 hover:text-white transition-colors"
+        >
+          <span
+            class="iconify"
+            data-icon="lucide:menu"
+            data-width="24"
+            style="stroke-width: 1.5"
+          ></span>
+        </button>
+
+        <div class="hidden lg:flex items-center gap-8">
+          <div
+            class="flex items-center gap-10 px-6 py-2 rounded-full bg-white/5 border border-white/5 backdrop-blur-sm"
+          >
+            <a
+              href="#about"
+              class="text-sm font-medium text-emerald-400 hover:text-white transition-colors"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="text-sm font-medium text-emerald-400 hover:text-white transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="text-sm font-medium text-emerald-400 hover:text-white transition-colors"
+              >Projects</a
+            >
+            <a
+              href="#experience"
+              class="text-sm font-medium text-emerald-400 hover:text-white transition-colors"
+              >Experience</a
+            >
+          </div>
+          <a
+            href="#contact"
+            class="px-5 py-2 bg-white text-black text-sm font-medium rounded-full hover:bg-emerald-300 transition-all hover:scale-105 flex items-center gap-2"
+          >
+            Let's Talk
+            <span
+              class="iconify"
+              data-icon="lucide:arrow-right"
+              data-width="16"
+            ></span>
+          </a>
         </div>
-        
-        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 py-6 px-4">
-            <div class="flex flex-col gap-4">
-                <a href="#about" class="text-sm text-emerald-400 hover:text-white transition-colors py-2">About</a>
-                <a href="#skills" class="text-sm text-emerald-400 hover:text-white transition-colors py-2">Skills</a>
-                <a href="#projects" class="text-sm text-emerald-400 hover:text-white transition-colors py-2">Projects</a>
-                <a href="#experience" class="text-sm text-emerald-400 hover:text-white transition-colors py-2">Experience</a>
-                <a href="#contact" class="px-5 py-3 bg-white text-black text-sm font-medium rounded-lg text-center mt-2">Let's Talk</a>
-            </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 py-6 px-6"
+      >
+        <div class="flex flex-col gap-6">
+          <a
+            href="#about"
+            class="text-sm text-emerald-400 hover:text-white transition-colors py-2"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="text-sm text-emerald-400 hover:text-white transition-colors py-2"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="text-sm text-emerald-400 hover:text-white transition-colors py-2"
+            >Projects</a
+          >
+          <a
+            href="#experience"
+            class="text-sm text-emerald-400 hover:text-white transition-colors py-2"
+            >Experience</a
+          >
+          <a
+            href="#contact"
+            class="px-5 py-3 bg-white text-black text-sm font-medium rounded-lg text-center mt-2"
+            >Let's Talk</a
+          >
         </div>
+      </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 sm:pt-32 pb-16 overflow-hidden">
-        <!-- Ambient Glows -->
-        <div class="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <section
+      id="hero"
+      class="relative min-h-screen flex items-center justify-center pt-24 sm:pt-32 pb-16 overflow-hidden"
+    >
+      <!-- Ambient Glows -->
+      <div
+        class="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"
+      ></div>
 
-        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-20 w-full relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                
-                <!-- Left Content: Typography -->
-                <div class="order-2 lg:order-1 relative">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/5 border border-emerald-500/20 backdrop-blur-md mb-8 animate-[fadeScale_1s_ease-out]">
-                        <span class="relative flex h-2 w-2">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                        </span>
-                        <span class="text-xs font-medium text-emerald-400 tracking-wide uppercase">Available for work</span>
-                    </div>
-
-                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-10 leading-[1.05] animate-[slideUp_1s_ease-out_0.2s_both]" style="font-family: 'Space Grotesk', sans-serif;">
-                        Building the <br>
-                        <span class="text-white relative">
-                            Digital
-                            <svg class="absolute w-full h-3 -bottom-1 left-0 text-emerald-500 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none"></path>
-                            </svg>
-                        </span> 
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-text">Future.</span>
-                    </h1>
-
-                    <p class="text-lg sm:text-xl text-white/60 mb-8 max-w-lg leading-relaxed animate-[slideUp_1s_ease-out_0.4s_both]">
-                        I'm <span class="text-white font-medium">Muhammad Shawaiz</span>, a MERN Stack Developer transforming complex concepts into seamless, high-performance web applications.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 animate-[slideUp_1s_ease-out_0.6s_both]">
-                        <a href="#projects" class="relative group px-8 py-4 bg-white text-black rounded-full font-semibold text-sm overflow-hidden transition-transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
-                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent -skew-x-12 translate-x-[-200%] group-hover:animate-[shine_1s_infinite]"></div>
-                            <div class="relative flex items-center justify-center gap-2">
-                                View Featured Work
-                                <span class="iconify transition-transform group-hover:translate-x-1" data-icon="lucide:arrow-right" data-width="18"></span>
-                            </div>
-                        </a>
-                        <a href="#contact" class="px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/20 transition-all hover:scale-105 flex items-center justify-center gap-2 backdrop-blur-sm">
-                            <span class="iconify" data-icon="lucide:download" data-width="18"></span>
-                            Download Resume
-                        </a>
-                    </div>
-                    
-                    <div class="mt-12 flex items-center gap-8 text-white/30 animate-[slideUp_1s_ease-out_0.8s_both]">
-                        <div class="flex items-center gap-2 hover:text-emerald-400 transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:check-circle" data-width="18"></span>
-                            <span class="text-xs uppercase tracking-widest font-medium">Verified Pro</span>
-                        </div>
-                        <div class="w-px h-8 bg-white/10"></div>
-                        <div class="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:zap" data-width="18"></span>
-                            <span class="text-xs uppercase tracking-widest font-medium">Fast Delivery</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Content: Profile & Animated Ecosystem -->
-                <div class="order-1 lg:order-2 relative flex justify-center items-center h-[500px] lg:h-[600px] animate-[fadeScale_1.2s_ease-out]">
-                    
-                    <!-- Background Orbit Rings (Behind Image) -->
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div class="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] border border-white/5 rounded-full animate-[spin-slow_20s_linear_infinite]"></div>
-                        <div class="absolute w-[450px] h-[450px] border border-emerald-500/10 rounded-full animate-[spin-reverse-slow_25s_linear_infinite]"></div>
-                    </div>
-
-                    <!-- Profile Image Card Container -->
-                    <div class="relative z-10 w-64 h-80 sm:w-96 sm:h-[450px] group perspective-1000">
-                        <!-- Card Glow -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-cyan-500/30 rounded-[32px] blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                        
-                        <!-- Main Image Card -->
-                        <div class="relative w-full h-full rounded-[32px] p-2 bg-gradient-to-b from-white/10 via-white/5 to-transparent border border-white/10 backdrop-blur-sm shadow-2xl transition-transform duration-500 animate-[float-slow_6s_ease-in-out_infinite]">
-                            <div class="relative w-full h-full rounded-[24px] overflow-hidden bg-black/50">
-                                <!-- Placeholder Image -->
-                                <img src="Images/profilePic.png" alt="Muhammad Shawaiz" class="w-full h-full object-cover object-top">
-                                
-                                <!-- Overlay Gradient -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-
-                                <!-- Floating Badge inside Image -->
-                                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] glass-card p-3 rounded-2xl flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-black font-bold text-xs">
-                                        MS
-                                    </div>
-                                    <div class="flex-1">
-                                        <div class="text-xs font-semibold text-white">Muhammad Shawaiz</div>
-                                        <div class="text-[10px] text-emerald-300">MERN Stack Expert</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Floating Animated Tech Cards (Orbiting/Floating Effect) -->
-                        
-                        <!-- React Card (Top Left) -->
-                        <div class="absolute -top-6 -left-8 sm:-left-12 p-3 glass-card-high rounded-2xl animate-[float-medium_5s_ease-in-out_infinite_1s] z-20">
-                            <div class="flex items-center gap-3">
-                                <div class="p-2 rounded-lg bg-[#20232a]">
-                                    <span class="iconify text-[#61DAFB]" data-icon="lucide:atom" data-width="24"></span>
-                                </div>
-                                <div class="hidden sm:block">
-                                    <div class="text-xs font-medium text-white">React</div>
-                                    <div class="text-[10px] text-white/40">Frontend</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Node Card (Bottom Right) -->
-                        <div class="absolute top-2/3 -right-8 sm:-right-16 p-3 glass-card-high rounded-2xl animate-[float-medium_7s_ease-in-out_infinite_0.5s] z-20">
-                            <div class="flex items-center gap-3">
-                                <div class="p-2 rounded-lg bg-[#303030]">
-                                    <span class="iconify text-[#6cc24a]" data-icon="lucide:server" data-width="24"></span>
-                                </div>
-                                <div class="hidden sm:block">
-                                    <div class="text-xs font-medium text-white">Node.js</div>
-                                    <div class="text-[10px] text-white/40">Backend</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Database Card (Top Right - Further back) -->
-                        <div class="absolute top-10 -right-6 p-2.5 glass-card rounded-xl animate-[float-slow_6s_ease-in-out_infinite_2s] z-0 blur-[1px]">
-                            <span class="iconify text-purple-400" data-icon="lucide:database" data-width="20"></span>
-                        </div>
-
-                        <!-- Code Decoration (Bottom Left) -->
-                        <div class="absolute -bottom-4 -left-4 sm:-left-10 p-4 glass-card-high rounded-2xl animate-[float-slow_8s_ease-in-out_infinite] z-20 max-w-[140px]">
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>
-                                <div class="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
-                                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                            </div>
-                            <div class="space-y-1.5">
-                                <div class="w-16 h-1 bg-white/20 rounded-full"></div>
-                                <div class="w-24 h-1 bg-emerald-500/40 rounded-full"></div>
-                                <div class="w-20 h-1 bg-white/10 rounded-full"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-20 w-full relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <!-- Left Content: Typography -->
+          <div class="order-2 lg:order-1 relative">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/5 border border-emerald-500/20 backdrop-blur-md mb-8 animate-[fadeScale_1s_ease-out]"
+            >
+              <span class="relative flex h-2 w-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"
+                ></span>
+              </span>
+              <span
+                class="text-xs font-medium text-emerald-400 tracking-wide uppercase"
+                >Available for work</span
+              >
             </div>
-        </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-[float-slow_2s_ease-in-out_infinite] opacity-50 hover:opacity-100 transition-opacity cursor-pointer" onclick="document.getElementById('about').scrollIntoView()">
-            <span class="text-[10px] uppercase tracking-widest text-white/60">Scroll Down</span>
-            <div class="w-5 h-8 border border-white/20 rounded-full flex justify-center pt-2">
-                <div class="w-1 h-1 bg-white/60 rounded-full animate-bounce"></div>
+            <h1
+              class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-10 leading-[1.05] animate-[slideUp_1s_ease-out_0.2s_both]"
+              style="font-family: 'Space Grotesk', sans-serif"
+            >
+              Building the <br />
+              <span class="text-white relative">
+                Digital
+                <svg
+                  class="absolute w-full h-3 -bottom-1 left-0 text-emerald-500 opacity-60"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 10 100 5"
+                    stroke="currentColor"
+                    stroke-width="8"
+                    fill="none"
+                  ></path>
+                </svg>
+              </span>
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-text"
+                >Future.</span
+              >
+            </h1>
+
+            <p
+              class="text-lg sm:text-xl text-white/60 mb-8 max-w-lg leading-relaxed animate-[slideUp_1s_ease-out_0.4s_both]"
+            >
+              I'm <span class="text-white font-medium">Muhammad Shawaiz</span>,
+              a MERN Stack Developer transforming complex concepts into
+              seamless, high-performance web applications.
+            </p>
+
+            <div
+              class="flex flex-col sm:flex-row gap-4 animate-[slideUp_1s_ease-out_0.6s_both]"
+            >
+              <a
+                href="#projects"
+                class="relative group px-8 py-4 bg-white text-black rounded-full font-semibold text-sm overflow-hidden transition-transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
+              >
+                <div
+                  class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent -skew-x-12 translate-x-[-200%] group-hover:animate-[shine_1s_infinite]"
+                ></div>
+                <div class="relative flex items-center justify-center gap-2">
+                  View Featured Work
+                  <span
+                    class="iconify transition-transform group-hover:translate-x-1"
+                    data-icon="lucide:arrow-right"
+                    data-width="18"
+                  ></span>
+                </div>
+              </a>
+              <a
+                href="MuhammadShawaizCV.pdf"
+                download="MuhammadShawaizCV"
+                class="px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/20 transition-all hover:scale-105 flex items-center justify-center gap-2 backdrop-blur-sm"
+              >
+                <span
+                  class="iconify"
+                  data-icon="lucide:download"
+                  data-width="18"
+                ></span>
+                Download Resume
+              </a>
             </div>
+
+            <div
+              class="mt-12 flex items-center gap-8 text-white/30 animate-[slideUp_1s_ease-out_0.8s_both]"
+            >
+              <div
+                class="flex items-center gap-2 hover:text-emerald-400 transition-colors duration-300"
+              >
+                <span
+                  class="iconify"
+                  data-icon="lucide:check-circle"
+                  data-width="18"
+                ></span>
+                <span class="text-xs uppercase tracking-widest font-medium"
+                  >Verified Pro</span
+                >
+              </div>
+              <div class="w-px h-8 bg-white/10"></div>
+              <div
+                class="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300"
+              >
+                <span
+                  class="iconify"
+                  data-icon="lucide:zap"
+                  data-width="18"
+                ></span>
+                <span class="text-xs uppercase tracking-widest font-medium"
+                  >Fast Delivery</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Content: Profile & Animated Ecosystem -->
+          <div
+            class="order-1 lg:order-2 relative flex justify-center items-center h-[500px] lg:h-[600px] animate-[fadeScale_1.2s_ease-out]"
+          >
+            <!-- Background Orbit Rings (Behind Image) -->
+            <div
+              class="absolute inset-0 flex items-center justify-center pointer-events-none"
+            >
+              <div
+                class="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] border border-white/5 rounded-full animate-[spin-slow_20s_linear_infinite]"
+              ></div>
+              <div
+                class="absolute w-[450px] h-[450px] border border-emerald-500/10 rounded-full animate-[spin-reverse-slow_25s_linear_infinite]"
+              ></div>
+            </div>
+
+            <!-- Profile Image Card Container -->
+            <div
+              class="relative z-10 w-64 h-80 sm:w-96 sm:h-[450px] group perspective-1000"
+            >
+              <!-- Card Glow -->
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-cyan-500/30 rounded-[32px] blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"
+              ></div>
+
+              <!-- Main Image Card -->
+              <div
+                class="relative w-full h-full rounded-[32px] p-2 bg-gradient-to-b from-white/10 via-white/5 to-transparent border border-white/10 backdrop-blur-sm shadow-2xl transition-transform duration-500 animate-[float-slow_6s_ease-in-out_infinite]"
+              >
+                <div
+                  class="relative w-full h-full rounded-[24px] overflow-hidden bg-black/50"
+                >
+                  <!-- Placeholder Image -->
+                  <img
+                    src="Images/profilePic.png"
+                    alt="Muhammad Shawaiz"
+                    class="w-full h-full object-cover object-top"
+                  />
+
+                  <!-- Overlay Gradient -->
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                  ></div>
+
+                  <!-- Floating Badge inside Image -->
+                  <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] glass-card p-3 rounded-2xl flex items-center gap-3"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-black font-bold text-xs"
+                    >
+                      MS
+                    </div>
+                    <div class="flex-1">
+                      <div class="text-xs font-semibold text-white">
+                        Muhammad Shawaiz
+                      </div>
+                      <div class="text-[10px] text-emerald-300">
+                        MERN Stack Expert
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Animated Tech Cards (Orbiting/Floating Effect) -->
+
+              <!-- React Card (Top Left) -->
+              <div
+                class="absolute -top-6 -left-8 sm:-left-12 p-3 glass-card-high rounded-2xl animate-[float-medium_5s_ease-in-out_infinite_1s] z-20"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="p-2 rounded-lg bg-[#20232a]">
+                    <span
+                      class="iconify text-[#61DAFB]"
+                      data-icon="lucide:atom"
+                      data-width="24"
+                    ></span>
+                  </div>
+                  <div class="hidden sm:block">
+                    <div class="text-xs font-medium text-white">React</div>
+                    <div class="text-[10px] text-white/40">Frontend</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Node Card (Bottom Right) -->
+              <div
+                class="absolute top-2/3 -right-8 sm:-right-16 p-3 glass-card-high rounded-2xl animate-[float-medium_7s_ease-in-out_infinite_0.5s] z-20"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="p-2 rounded-lg bg-[#303030]">
+                    <span
+                      class="iconify text-[#6cc24a]"
+                      data-icon="lucide:server"
+                      data-width="24"
+                    ></span>
+                  </div>
+                  <div class="hidden sm:block">
+                    <div class="text-xs font-medium text-white">Node.js</div>
+                    <div class="text-[10px] text-white/40">Backend</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Database Card (Top Right - Further back) -->
+              <div
+                class="absolute top-10 -right-6 p-2.5 glass-card rounded-xl animate-[float-slow_6s_ease-in-out_infinite_2s] z-0 blur-[1px]"
+              >
+                <span
+                  class="iconify text-purple-400"
+                  data-icon="lucide:database"
+                  data-width="20"
+                ></span>
+              </div>
+
+              <!-- Code Decoration (Bottom Left) -->
+              <div
+                class="absolute -bottom-4 -left-4 sm:-left-10 p-4 glass-card-high rounded-2xl animate-[float-slow_8s_ease-in-out_infinite] z-20 max-w-[140px]"
+              >
+                <div class="flex gap-1.5 mb-2">
+                  <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+                  <div class="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
+                  <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                </div>
+                <div class="space-y-1.5">
+                  <div class="w-16 h-1 bg-white/20 rounded-full"></div>
+                  <div class="w-24 h-1 bg-emerald-500/40 rounded-full"></div>
+                  <div class="w-20 h-1 bg-white/10 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-[float-slow_2s_ease-in-out_infinite] opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
+        onclick="document.getElementById('about').scrollIntoView()"
+      >
+        <span class="text-[10px] uppercase tracking-widest text-white/60"
+          >Scroll Down</span
+        >
+        <div
+          class="w-5 h-8 border border-white/20 rounded-full flex justify-center pt-2"
+        >
+          <div class="w-1 h-1 bg-white/60 rounded-full animate-bounce"></div>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-16">
-        <div class="max-w-8xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-                <div class="about-content mt-16">
-                    <span class="text-xs tracking-widest uppercase text-emerald-400 mb-3 sm:mb-4 block">About Me</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tighter mb-6 sm:mb-8" style="font-family: 'Space Grotesk', sans-serif;">
-                        Building the <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">future</span> of web
-                    </h2>
-                    <p class="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
-                        Accomplished web developer with a strong foundation in front-end design and a solid transition to full-stack development. I excel at building scalable, high-performance web applications with seamless user interfaces and robust backend integrations.
-                    </p>
-                    <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8">
-                        <div class="px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
-                            <span class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">3.75</span>
-                            <p class="text-xs text-white/50 mt-1">CGPA / 4.0</p>
-                        </div>
-                        <div class="px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
-                            <span class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">4+</span>
-                            <p class="text-xs text-white/50 mt-1">Projects</p>
-                        </div>
-                        <div class="px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
-                            <span class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">2+</span>
-                            <p class="text-xs text-white/50 mt-1">Experiences</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative mt-8 lg:mt-0">
-                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 backdrop-blur-sm bg-gradient-to-br from-white/5 to-transparent p-1">
-                        <div class=" rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-900/50 to-cyan-900/50 flex items-center justify-center">
-                            <canvas id="about-3d" class="w-full h-full" width="50" height="50"></canvas>
-                        </div>
-                    </div>
-                </div>
+    <section
+      id="about"
+      class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-16"
+    >
+      <div class="max-w-8xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+          <div class="about-content mt-16">
+            <span
+              class="text-xs tracking-widest uppercase text-emerald-400 mb-3 sm:mb-4 block"
+              >About Me</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tighter mb-6 sm:mb-8"
+              style="font-family: 'Space Grotesk', sans-serif"
+            >
+              Building the
+              <span
+                class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                >future</span
+              >
+              of web
+            </h2>
+            <p
+              class="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6"
+            >
+              Accomplished web developer with a strong foundation in front-end
+              design and a solid transition to full-stack development. I excel
+              at building scalable, high-performance web applications with
+              seamless user interfaces and robust backend integrations.
+            </p>
+            <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8">
+              <div
+                class="px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"
+              >
+                <span
+                  class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                  >3.75</span
+                >
+                <p class="text-xs text-white/50 mt-1">CGPA / 4.0</p>
+              </div>
+              <div
+                class="px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"
+              >
+                <span
+                  class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                  >4+</span
+                >
+                <p class="text-xs text-white/50 mt-1">Projects</p>
+              </div>
+              <div
+                class="px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"
+              >
+                <span
+                  class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                  >2+</span
+                >
+                <p class="text-xs text-white/50 mt-1">Experiences</p>
+              </div>
             </div>
+          </div>
+          <div class="relative mt-8 lg:mt-0">
+            <div
+              class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 backdrop-blur-sm bg-gradient-to-br from-white/5 to-transparent p-1"
+            >
+              <div
+                class="rounded-xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-900/50 to-cyan-900/50 flex items-center justify-center"
+              >
+                <canvas
+                  id="about-3d"
+                  class="w-[300px] h-[550px]"
+                  width="100"
+                  height="100"
+                ></canvas>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Skills Section (Bento Grid) -->
-    <section id="skills" class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-black/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-                <div>
-                    <span class="text-xs tracking-widest uppercase text-cyan-400 mb-3 block">Tech Stack</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">
-                        My Digital <span class="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">Arsenal</span>
-                    </h2>
-                </div>
-                <p class="text-white/50 max-w-sm text-sm sm:text-base">
-                    A comprehensive ecosystem of technologies I use to build scalable, high-performance web applications.
-                </p>
-            </div>
-
-            <!-- Bento Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                
-                <!-- Main Block: React/Next Ecosystem -->
-                <div class="skill-card md:col-span-2 md:row-span-2 p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-32 bg-cyan-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity opacity-50 group-hover:opacity-100"></div>
-                    
-                    <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div class="mb-8">
-                            <div class="inline-flex p-3 rounded-xl bg-cyan-500/20 text-cyan-400 mb-6">
-                                <span class="iconify" data-icon="lucide:atom" data-width="32" style="stroke-width: 1.5;"></span>
-                            </div>
-                            <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif;">Modern Frontend</h3>
-                            <p class="text-white/50 text-sm">Component-driven architecture with state-of-the-art rendering strategies.</p>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors">
-                                <span class="iconify text-cyan-400" data-icon="lucide:zap" data-width="20"></span>
-                                <span class="font-medium">React.js</span>
-                            </div>
-                            <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors">
-                                <span class="iconify text-white" data-icon="lucide:triangle" data-width="20"></span>
-                                <span class="font-medium">Next.js</span>
-                            </div>
-                            <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors">
-                                <span class="iconify text-blue-400" data-icon="lucide:file-code" data-width="20"></span>
-                                <span class="font-medium">TypeScript</span>
-                            </div>
-                            <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors">
-                                <span class="iconify text-teal-400" data-icon="lucide:paint-brush" data-width="20"></span>
-                                <span class="font-medium">Tailwind</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Backend Block -->
-                <div class="skill-card md:col-span-1 md:row-span-2 p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute bottom-0 left-0 p-24 bg-emerald-500/10 rounded-full blur-3xl -ml-12 -mb-12 transition-opacity opacity-50 group-hover:opacity-100"></div>
-                    
-                    <div class="relative z-10 h-full flex flex-col">
-                        <div class="inline-flex p-3 rounded-xl bg-emerald-500/20 text-emerald-400 mb-6 w-fit">
-                            <span class="iconify" data-icon="lucide:server" data-width="28" style="stroke-width: 1.5;"></span>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif;">Backend Core</h3>
-                        <p class="text-white/50 text-sm mb-6">Robust server-side logic and API development.</p>
-                        
-                        <div class="flex-1 flex flex-col gap-3">
-                            <div class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="font-medium text-sm">Node.js</span>
-                                    <span class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity" data-icon="lucide:check" data-width="14"></span>
-                                </div>
-                                <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                                    <div class="w-[90%] h-full bg-emerald-500 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="font-medium text-sm">Express.js</span>
-                                    <span class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity" data-icon="lucide:check" data-width="14"></span>
-                                </div>
-                                <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                                    <div class="w-[85%] h-full bg-emerald-500 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="font-medium text-sm">Python</span>
-                                    <span class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity" data-icon="lucide:check" data-width="14"></span>
-                                </div>
-                                <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                                    <div class="w-[75%] h-full bg-emerald-500 rounded-full"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Database Block -->
-                <div class="skill-card lg:col-span-1 p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="p-2.5 rounded-lg bg-blue-500/20 text-blue-400">
-                            <span class="iconify" data-icon="lucide:database" data-width="24" style="stroke-width: 1.5;"></span>
-                        </div>
-                        <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif;">Data</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 text-xs bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full">MongoDB</span>
-                        <span class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full">MySQL</span>
-                        <span class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full">Supabase</span>
-                    </div>
-                </div>
-
-                <!-- Tools Block -->
-                <div class="skill-card lg:col-span-1 p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-all duration-500 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="p-2.5 rounded-lg bg-purple-500/20 text-purple-400">
-                            <span class="iconify" data-icon="lucide:wrench" data-width="24" style="stroke-width: 1.5;"></span>
-                        </div>
-                        <h3 class="text-lg font-semibold" style="font-family: 'Space Grotesk', sans-serif;">Tools</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 text-xs bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full">Git/GitHub</span>
-                        <span class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full">VS Code</span>
-                        <span class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full">Postman</span>
-                    </div>
-                </div>
-
-            </div>
+    <section
+      id="skills"
+      class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-black/50"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6"
+        >
+          <div>
+            <span
+              class="text-xs tracking-widest uppercase text-cyan-400 mb-3 block"
+              >Tech Stack</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter"
+              style="font-family: 'Space Grotesk', sans-serif"
+            >
+              My Digital
+              <span
+                class="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent"
+                >Arsenal</span
+              >
+            </h2>
+          </div>
+          <p class="text-white/50 max-w-sm text-sm sm:text-base">
+            A comprehensive ecosystem of technologies I use to build scalable,
+            high-performance web applications.
+          </p>
         </div>
+
+        <!-- Bento Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+        >
+          <!-- Main Block: React/Next Ecosystem -->
+          <div
+            class="skill-card md:col-span-2 md:row-span-2 p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 p-32 bg-cyan-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity opacity-50 group-hover:opacity-100"
+            ></div>
+
+            <div class="relative z-10 h-full flex flex-col justify-between">
+              <div class="mb-8">
+                <div
+                  class="inline-flex p-3 rounded-xl bg-cyan-500/20 text-cyan-400 mb-6"
+                >
+                  <span
+                    class="iconify"
+                    data-icon="lucide:atom"
+                    data-width="32"
+                    style="stroke-width: 1.5"
+                  ></span>
+                </div>
+                <h3
+                  class="text-2xl sm:text-3xl font-semibold tracking-tight mb-2"
+                  style="font-family: 'Space Grotesk', sans-serif"
+                >
+                  Modern Frontend
+                </h3>
+                <p class="text-white/50 text-sm">
+                  Component-driven architecture with state-of-the-art rendering
+                  strategies.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div
+                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors"
+                >
+                  <span
+                    class="iconify text-cyan-400"
+                    data-icon="lucide:zap"
+                    data-width="20"
+                  ></span>
+                  <span class="font-medium">React.js</span>
+                </div>
+                <div
+                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors"
+                >
+                  <span
+                    class="iconify text-white"
+                    data-icon="lucide:triangle"
+                    data-width="20"
+                  ></span>
+                  <span class="font-medium">Next.js</span>
+                </div>
+                <div
+                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors"
+                >
+                  <span
+                    class="iconify text-blue-400"
+                    data-icon="lucide:file-code"
+                    data-width="20"
+                  ></span>
+                  <span class="font-medium">TypeScript</span>
+                </div>
+                <div
+                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors"
+                >
+                  <span
+                    class="iconify text-teal-400"
+                    data-icon="lucide:paint-brush"
+                    data-width="20"
+                  ></span>
+                  <span class="font-medium">Tailwind CSS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend Block -->
+          <div
+            class="skill-card md:col-span-1 md:row-span-2 p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-all duration-500 group relative overflow-hidden"
+          >
+            <div
+              class="absolute bottom-0 left-0 p-24 bg-emerald-500/10 rounded-full blur-3xl -ml-12 -mb-12 transition-opacity opacity-50 group-hover:opacity-100"
+            ></div>
+
+            <div class="relative z-10 h-full flex flex-col">
+              <div
+                class="inline-flex p-3 rounded-xl bg-emerald-500/20 text-emerald-400 mb-6 w-fit"
+              >
+                <span
+                  class="iconify"
+                  data-icon="lucide:server"
+                  data-width="28"
+                  style="stroke-width: 1.5"
+                ></span>
+              </div>
+              <h3
+                class="text-xl sm:text-2xl font-semibold tracking-tight mb-2"
+                style="font-family: 'Space Grotesk', sans-serif"
+              >
+                Backend Core
+              </h3>
+              <p class="text-white/50 text-sm mb-6">
+                Robust server-side logic and API development.
+              </p>
+
+              <div class="flex-1 flex flex-col gap-3">
+                <div
+                  class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item"
+                >
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="font-medium text-sm">Node.js</span>
+                    <span
+                      class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                      data-icon="lucide:check"
+                      data-width="14"
+                    ></span>
+                  </div>
+                  <div
+                    class="w-full h-1 bg-white/10 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="w-[90%] h-full bg-emerald-500 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item"
+                >
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="font-medium text-sm">Express.js</span>
+                    <span
+                      class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                      data-icon="lucide:check"
+                      data-width="14"
+                    ></span>
+                  </div>
+                  <div
+                    class="w-full h-1 bg-white/10 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="w-[85%] h-full bg-emerald-500 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item"
+                >
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="font-medium text-sm">Python</span>
+                    <span
+                      class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                      data-icon="lucide:check"
+                      data-width="14"
+                    ></span>
+                  </div>
+                  <div
+                    class="w-full h-1 bg-white/10 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="w-[75%] h-full bg-emerald-500 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database Block -->
+          <div
+            class="skill-card lg:col-span-1 p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500 group"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <div class="p-2.5 rounded-lg bg-blue-500/20 text-blue-400">
+                <span
+                  class="iconify"
+                  data-icon="lucide:database"
+                  data-width="24"
+                  style="stroke-width: 1.5"
+                ></span>
+              </div>
+              <h3
+                class="text-lg font-semibold"
+                style="font-family: 'Space Grotesk', sans-serif"
+              >
+                Data
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1.5 text-xs bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full"
+                >MongoDB</span
+              >
+              <span
+                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full"
+                >MySQL</span
+              >
+              <span
+                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full"
+                >Supabase</span
+              >
+            </div>
+          </div>
+
+          <!-- Tools Block -->
+          <div
+            class="skill-card lg:col-span-1 p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-all duration-500 group"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <div class="p-2.5 rounded-lg bg-purple-500/20 text-purple-400">
+                <span
+                  class="iconify"
+                  data-icon="lucide:wrench"
+                  data-width="24"
+                  style="stroke-width: 1.5"
+                ></span>
+              </div>
+              <h3
+                class="text-lg font-semibold"
+                style="font-family: 'Space Grotesk', sans-serif"
+              >
+                Tools
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1.5 text-xs bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full"
+                >Git/GitHub</span
+              >
+              <span
+                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full"
+                >VS Code</span
+              >
+              <span
+                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full"
+                >Postman</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-24 gap-6">
-                <div>
-                    <span class="text-xs tracking-widest uppercase text-emerald-400 mb-3 block">Featured Work</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">
-                        Selected <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Projects</span>
-                    </h2>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-white/50">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Available for new projects
-                </div>
-            </div>
-
-            <div class="space-y-20 sm:space-y-32">
-                
-                <!-- Project 1: Culinary AI -->
-                <div class="group project-card">
-                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                        <!-- Content -->
-                        <div class="lg:col-span-5 order-2 lg:order-1">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="px-3 py-1 text-xs font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-full">AI Integrated</span>
-                                <span class="px-3 py-1 text-xs font-medium text-white/40 bg-white/5 border border-white/10 rounded-full">2024</span>
-                            </div>
-                            <h3 class="text-3xl sm:text-4xl font-semibold mb-4 text-white" style="font-family: 'Space Grotesk', sans-serif;">Culinary AI</h3>
-                            <p class="text-white/60 text-lg mb-8 leading-relaxed">
-                                A revolutionary restaurant management system integrating GPT-4 for automated customer service calls and real-time order tracking.
-                            </p>
-                            
-                            <div class="mb-8 space-y-3">
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-emerald-500" data-icon="lucide:check-circle-2" data-width="18"></span>
-                                    Autonomous Voice Agent
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-emerald-500" data-icon="lucide:check-circle-2" data-width="18"></span>
-                                    Supabase Real-time Database
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-emerald-500" data-icon="lucide:check-circle-2" data-width="18"></span>
-                                    Live Analytics Dashboard
-                                </div>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-xs text-emerald-200 bg-emerald-900/40 px-3 py-1.5 rounded-md">React</span>
-                                <span class="text-xs text-emerald-200 bg-emerald-900/40 px-3 py-1.5 rounded-md">Node.js</span>
-                                <span class="text-xs text-emerald-200 bg-emerald-900/40 px-3 py-1.5 rounded-md">OpenAI API</span>
-                            </div>
-
-                            <div class="flex items-center gap-4">
-                                <a href="#" class="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-emerald-50 transition-colors flex items-center gap-2">
-                                    View Live
-                                    <span class="iconify" data-icon="lucide:arrow-up-right" data-width="16"></span>
-                                </a>
-                                <a href="#" class="px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/5 transition-colors">
-                                    Source Code
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Visual -->
-                        <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div class="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] aspect-[4/3] group-hover:border-emerald-500/30 transition-colors duration-500">
-                                <!-- Abstract UI representation -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-black to-black"></div>
-                                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 24px 24px;"></div>
-                                
-                                <div class="absolute inset-10 flex flex-col gap-4">
-                                    <!-- Header Bar -->
-                                    <div class="h-8 w-full border-b border-white/10 flex items-center justify-between px-4">
-                                        <div class="flex gap-1.5">
-                                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                                            <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-                                        </div>
-                                    </div>
-                                    <!-- Body -->
-                                    <div class="flex-1 flex gap-4">
-                                        <div class="w-1/4 border-r border-white/10 p-2 space-y-2">
-                                            <div class="h-2 w-12 bg-white/10 rounded-full"></div>
-                                            <div class="h-2 w-16 bg-white/5 rounded-full"></div>
-                                            <div class="h-2 w-14 bg-white/5 rounded-full"></div>
-                                        </div>
-                                        <div class="flex-1 p-4 grid grid-cols-2 gap-4">
-                                            <div class="col-span-2 h-32 rounded-xl bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 flex items-center justify-center">
-                                                <div class="text-center">
-                                                    <div class="w-12 h-12 mx-auto bg-emerald-500/20 rounded-full flex items-center justify-center mb-2">
-                                                        <span class="iconify text-emerald-400" data-icon="lucide:bot" data-width="24"></span>
-                                                    </div>
-                                                    <div class="h-2 w-20 bg-emerald-500/20 rounded-full mx-auto"></div>
-                                                </div>
-                                            </div>
-                                            <div class="h-24 rounded-xl bg-white/5"></div>
-                                            <div class="h-24 rounded-xl bg-white/5"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Ms-EventSphere -->
-                <div class="group project-card">
-                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                        <!-- Visual (Left on Desktop) -->
-                        <div class="lg:col-span-7">
-                            <div class="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] aspect-[4/3] group-hover:border-purple-500/30 transition-colors duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-black"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="relative w-64 h-40 bg-black border border-white/10 rounded-lg shadow-2xl transform rotate-y-12 rotate-x-12 group-hover:scale-105 transition-transform duration-700">
-                                        <div class="absolute top-2 left-2 right-2 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-                                        <div class="p-4 pt-6 space-y-3">
-                                            <div class="flex justify-between">
-                                                <div class="h-2 w-8 bg-white/20 rounded-full"></div>
-                                                <div class="h-2 w-4 bg-white/10 rounded-full"></div>
-                                            </div>
-                                            <div class="h-16 bg-white/5 rounded-md w-full"></div>
-                                            <div class="flex gap-2">
-                                                <div class="h-8 w-8 rounded-full bg-purple-500/20"></div>
-                                                <div class="space-y-1">
-                                                    <div class="h-2 w-20 bg-white/10 rounded-full"></div>
-                                                    <div class="h-1.5 w-12 bg-white/5 rounded-full"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Floating element -->
-                                    <div class="absolute -right-4 top-1/3 w-16 h-16 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 rounded-xl flex items-center justify-center animate-bounce" style="animation-duration: 3s;">
-                                        <span class="iconify text-purple-400" data-icon="lucide:calendar-heart" data-width="24"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="lg:col-span-5">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="px-3 py-1 text-xs font-medium text-purple-400 bg-purple-400/10 border border-purple-400/20 rounded-full">Full Stack</span>
-                                <span class="px-3 py-1 text-xs font-medium text-white/40 bg-white/5 border border-white/10 rounded-full">2024</span>
-                            </div>
-                            <h3 class="text-3xl sm:text-4xl font-semibold mb-4 text-white" style="font-family: 'Space Grotesk', sans-serif;">Ms-EventSphere</h3>
-                            <p class="text-white/60 text-lg mb-8 leading-relaxed">
-                                A comprehensive event management platform featuring multi-role user authentication, ticket booking, and admin approval workflows.
-                            </p>
-                            
-                            <div class="mb-8 space-y-3">
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-purple-500" data-icon="lucide:users" data-width="18"></span>
-                                    Multi-role Dashboard
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-purple-500" data-icon="lucide:shield-check" data-width="18"></span>
-                                    Secure Authentication
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-purple-500" data-icon="lucide:smartphone" data-width="18"></span>
-                                    Responsive Design
-                                </div>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-xs text-purple-200 bg-purple-900/40 px-3 py-1.5 rounded-md">Next.js</span>
-                                <span class="text-xs text-purple-200 bg-purple-900/40 px-3 py-1.5 rounded-md">MongoDB</span>
-                                <span class="text-xs text-purple-200 bg-purple-900/40 px-3 py-1.5 rounded-md">Tailwind</span>
-                            </div>
-
-                            <div class="flex items-center gap-4">
-                                <a href="#" class="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-purple-50 transition-colors flex items-center gap-2">
-                                    View Live
-                                    <span class="iconify" data-icon="lucide:arrow-up-right" data-width="16"></span>
-                                </a>
-                                <a href="#" class="px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/5 transition-colors">
-                                    Source Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Pharmacy System -->
-                <div class="group project-card">
-                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                        <!-- Content -->
-                        <div class="lg:col-span-5 order-2 lg:order-1">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="px-3 py-1 text-xs font-medium text-orange-400 bg-orange-400/10 border border-orange-400/20 rounded-full">Desktop App</span>
-                                <span class="px-3 py-1 text-xs font-medium text-white/40 bg-white/5 border border-white/10 rounded-full">2023</span>
-                            </div>
-                            <h3 class="text-3xl sm:text-4xl font-semibold mb-4 text-white" style="font-family: 'Space Grotesk', sans-serif;">PharmaCare</h3>
-                            <p class="text-white/60 text-lg mb-8 leading-relaxed">
-                                A robust desktop application for pharmacy management, handling inventory, sales tracking, and automated receipt generation.
-                            </p>
-                            
-                            <div class="mb-8 space-y-3">
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-orange-500" data-icon="lucide:database" data-width="18"></span>
-                                    SQL Inventory Tracking
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-orange-500" data-icon="lucide:receipt" data-width="18"></span>
-                                    Automated Billing
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-white/70">
-                                    <span class="iconify text-orange-500" data-icon="lucide:bar-chart-3" data-width="18"></span>
-                                    Sales Reporting
-                                </div>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-xs text-orange-200 bg-orange-900/40 px-3 py-1.5 rounded-md">C#</span>
-                                <span class="text-xs text-orange-200 bg-orange-900/40 px-3 py-1.5 rounded-md">.NET</span>
-                                <span class="text-xs text-orange-200 bg-orange-900/40 px-3 py-1.5 rounded-md">SQL Server</span>
-                            </div>
-
-                            <div class="flex items-center gap-4">
-                                <a href="#" class="px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/5 transition-colors flex items-center gap-2">
-                                    <span class="iconify" data-icon="lucide:github" data-width="16"></span>
-                                    View Source
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Visual -->
-                        <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div class="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] aspect-[4/3] group-hover:border-orange-500/30 transition-colors duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-black to-black"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <!-- Window UI -->
-                                    <div class="w-3/4 h-3/4 bg-[#1a1a1a] rounded-lg border border-white/10 shadow-2xl flex flex-col overflow-hidden">
-                                        <div class="h-8 bg-[#2a2a2a] border-b border-white/5 flex items-center px-4 justify-between">
-                                            <span class="text-[10px] text-white/40">PharmaCare v1.0</span>
-                                            <div class="flex gap-1.5">
-                                                <div class="w-2 h-2 rounded-sm border border-white/20"></div>
-                                                <div class="w-2 h-2 rounded-sm border border-white/20"></div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 p-6 grid grid-cols-3 gap-4">
-                                            <div class="col-span-1 bg-white/5 rounded h-full"></div>
-                                            <div class="col-span-2 grid grid-rows-3 gap-4">
-                                                <div class="bg-orange-500/10 border border-orange-500/20 rounded p-4 flex items-center gap-3">
-                                                    <div class="w-8 h-8 rounded bg-orange-500/20"></div>
-                                                    <div class="h-2 w-24 bg-orange-500/20 rounded-full"></div>
-                                                </div>
-                                                <div class="bg-white/5 rounded row-span-2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="text-center mt-20 sm:mt-32">
-                <a href="https://github.com/Shawaiz555" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-all hover:scale-105 group">
-                    View Complete Portfolio
-                    <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="16"></span>
-                </a>
-            </div>
+    <section
+      id="projects"
+      class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-24 gap-6"
+        >
+          <div>
+            <span
+              class="text-xs tracking-widest uppercase text-emerald-400 mb-3 block"
+              >Featured Work</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter"
+              style="font-family: 'Space Grotesk', sans-serif"
+            >
+              Selected
+              <span
+                class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                >Projects</span
+              >
+            </h2>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-white/50">
+            <span
+              class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
+            ></span>
+            Available for new projects
+          </div>
         </div>
+
+        <div class="space-y-20 sm:space-y-32">
+          <!-- Project 1: Culinary AI -->
+          <div class="group project-card">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <!-- Content -->
+              <div class="lg:col-span-5 order-2 lg:order-1">
+                <div class="flex items-center gap-3 mb-6">
+                  <span
+                    class="px-3 py-1 text-xs font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-full"
+                    >AI Integrated</span
+                  >
+                  <span
+                    class="px-3 py-1 text-xs font-medium text-white/40 bg-white/5 border border-white/10 rounded-full"
+                    >2024</span
+                  >
+                </div>
+                <h3
+                  class="text-3xl sm:text-4xl font-semibold mb-4 text-white"
+                  style="font-family: 'Space Grotesk', sans-serif"
+                >
+                  Culinary AI
+                </h3>
+                <p class="text-white/60 text-lg mb-8 leading-relaxed">
+                  A revolutionary restaurant management system integrating GPT-4
+                  for automated customer service calls and real-time order
+                  tracking.
+                </p>
+
+                <div class="mb-8 space-y-3">
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-emerald-500"
+                      data-icon="lucide:check-circle-2"
+                      data-width="18"
+                    ></span>
+                    Autonomous Voice Agent
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-emerald-500"
+                      data-icon="lucide:check-circle-2"
+                      data-width="18"
+                    ></span>
+                    Supabase Real-time Database
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-emerald-500"
+                      data-icon="lucide:check-circle-2"
+                      data-width="18"
+                    ></span>
+                    Live Analytics Dashboard
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="text-xs text-emerald-200 bg-emerald-900/40 px-3 py-1.5 rounded-md"
+                    >React</span
+                  >
+                  <span
+                    class="text-xs text-emerald-200 bg-emerald-900/40 px-3 py-1.5 rounded-md"
+                    >Node.js</span
+                  >
+                  <span
+                    class="text-xs text-emerald-200 bg-emerald-900/40 px-3 py-1.5 rounded-md"
+                    >OpenAI API</span
+                  >
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:scale-105 hover:bg-emerald-50 transition-colors flex items-center gap-2"
+                  >
+                    View Live
+                    <span
+                      class="iconify"
+                      data-icon="lucide:arrow-up-right"
+                      data-width="16"
+                    ></span>
+                  </a>
+                  <a
+                    href="#"
+                    class="px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-full hover:scale-105 hover:bg-white/5 transition-colors flex items-center gap-2"
+                  >
+                    <span
+                      class="iconify"
+                      data-icon="lucide:github"
+                      data-width="16"
+                    ></span>
+                    Source Code
+                  </a>
+                </div>
+              </div>
+
+              <!-- Visual -->
+              <div class="lg:col-span-7 order-1 lg:order-2">
+                <div
+                  class="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] aspect-[4/3] group-hover:border-emerald-500/30 transition-colors duration-500"
+                >
+                  <!-- Abstract UI representation -->
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-black to-black"
+                  ></div>
+                  <div
+                    class="absolute inset-0 opacity-20"
+                    style="
+                      background-image: radial-gradient(
+                        #10b981 1px,
+                        transparent 1px
+                      );
+                      background-size: 24px 24px;
+                    "
+                  ></div>
+
+                  <div class="absolute inset-10 flex flex-col gap-4">
+                    <!-- Header Bar -->
+                    <div
+                      class="h-8 w-full border-b border-white/10 flex items-center justify-between px-4"
+                    >
+                      <div class="flex gap-1.5">
+                        <div
+                          class="w-2.5 h-2.5 rounded-full bg-red-500/50"
+                        ></div>
+                        <div
+                          class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"
+                        ></div>
+                        <div
+                          class="w-2.5 h-2.5 rounded-full bg-green-500/50"
+                        ></div>
+                      </div>
+                    </div>
+                    <!-- Body -->
+                    <div class="flex-1 flex gap-4">
+                      <div class="w-1/4 border-r border-white/10 p-2 space-y-2">
+                        <div class="h-2 w-12 bg-white/10 rounded-full"></div>
+                        <div class="h-2 w-16 bg-white/5 rounded-full"></div>
+                        <div class="h-2 w-14 bg-white/5 rounded-full"></div>
+                      </div>
+                      <div class="flex-1 p-4 grid grid-cols-2 gap-4">
+                        <div
+                          class="col-span-2 h-32 rounded-xl bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 flex items-center justify-center"
+                        >
+                          <div class="text-center">
+                            <div
+                              class="w-12 h-12 mx-auto bg-emerald-500/20 rounded-full flex items-center justify-center mb-2"
+                            >
+                              <span
+                                class="iconify text-emerald-400"
+                                data-icon="lucide:bot"
+                                data-width="24"
+                              ></span>
+                            </div>
+                            <div
+                              class="h-2 w-20 bg-emerald-500/20 rounded-full mx-auto"
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="h-24 rounded-xl bg-white/5"></div>
+                        <div class="h-24 rounded-xl bg-white/5"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Ms-EventSphere -->
+          <div class="group project-card">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <!-- Visual (Left on Desktop) -->
+              <div class="lg:col-span-7">
+                <div
+                  class="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] aspect-[4/3] group-hover:border-purple-500/30 transition-colors duration-500"
+                >
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-black"
+                  ></div>
+                  <div
+                    class="absolute inset-0 flex items-center justify-center"
+                  >
+                    <div
+                      class="relative w-64 h-40 bg-black border border-white/10 rounded-lg shadow-2xl transform rotate-y-12 rotate-x-12 group-hover:scale-105 transition-transform duration-700"
+                    >
+                      <div
+                        class="absolute top-2 left-2 right-2 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                      ></div>
+                      <div class="p-4 pt-6 space-y-3">
+                        <div class="flex justify-between">
+                          <div class="h-2 w-8 bg-white/20 rounded-full"></div>
+                          <div class="h-2 w-4 bg-white/10 rounded-full"></div>
+                        </div>
+                        <div class="h-16 bg-white/5 rounded-md w-full"></div>
+                        <div class="flex gap-2">
+                          <div
+                            class="h-8 w-8 rounded-full bg-purple-500/20"
+                          ></div>
+                          <div class="space-y-1">
+                            <div
+                              class="h-2 w-20 bg-white/10 rounded-full"
+                            ></div>
+                            <div
+                              class="h-1.5 w-12 bg-white/5 rounded-full"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Floating element -->
+                    <div
+                      class="absolute -right-4 top-1/3 w-16 h-16 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 rounded-xl flex items-center justify-center animate-bounce"
+                      style="animation-duration: 3s"
+                    >
+                      <span
+                        class="iconify text-purple-400"
+                        data-icon="lucide:calendar-heart"
+                        data-width="24"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="lg:col-span-5">
+                <div class="flex items-center gap-3 mb-6">
+                  <span
+                    class="px-3 py-1 text-xs font-medium text-purple-400 bg-purple-400/10 border border-purple-400/20 rounded-full"
+                    >Full Stack</span
+                  >
+                  <span
+                    class="px-3 py-1 text-xs font-medium text-white/40 bg-white/5 border border-white/10 rounded-full"
+                    >2024</span
+                  >
+                </div>
+                <h3
+                  class="text-3xl sm:text-4xl font-semibold mb-4 text-white"
+                  style="font-family: 'Space Grotesk', sans-serif"
+                >
+                  Ms-EventSphere
+                </h3>
+                <p class="text-white/60 text-lg mb-8 leading-relaxed">
+                  A comprehensive event management platform featuring multi-role
+                  user authentication, ticket booking, and admin approval
+                  workflows.
+                </p>
+
+                <div class="mb-8 space-y-3">
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-purple-500"
+                      data-icon="lucide:users"
+                      data-width="18"
+                    ></span>
+                    Multi-role Dashboard
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-purple-500"
+                      data-icon="lucide:shield-check"
+                      data-width="18"
+                    ></span>
+                    Secure Authentication
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-purple-500"
+                      data-icon="lucide:smartphone"
+                      data-width="18"
+                    ></span>
+                    Responsive Design
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="text-xs text-purple-200 bg-purple-900/40 px-3 py-1.5 rounded-md"
+                    >Next.js</span
+                  >
+                  <span
+                    class="text-xs text-purple-200 bg-purple-900/40 px-3 py-1.5 rounded-md"
+                    >MongoDB</span
+                  >
+                  <span
+                    class="text-xs text-purple-200 bg-purple-900/40 px-3 py-1.5 rounded-md"
+                    >Tailwind</span
+                  >
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:scale-105 hover:bg-purple-50 transition-colors flex items-center gap-2"
+                  >
+                    View Live
+                    <span
+                      class="iconify"
+                      data-icon="lucide:arrow-up-right"
+                      data-width="16"
+                    ></span>
+                  </a>
+                  <a
+                    href="https://github.com/Shawaiz555/ms-eventsphere"
+                    target="_blank"
+                    class="px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-full hover:scale-105 hover:bg-white/5 transition-colors flex items-center gap-2"
+                  >
+                    <span
+                      class="iconify"
+                      data-icon="lucide:github"
+                      data-width="16"
+                    ></span>
+                    Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Pharmacy System -->
+          <div class="group project-card">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <!-- Content -->
+              <div class="lg:col-span-5 order-2 lg:order-1">
+                <div class="flex items-center gap-3 mb-6">
+                  <span
+                    class="px-3 py-1 text-xs font-medium text-orange-400 bg-orange-400/10 border border-orange-400/20 rounded-full"
+                    >Desktop App</span
+                  >
+                  <span
+                    class="px-3 py-1 text-xs font-medium text-white/40 bg-white/5 border border-white/10 rounded-full"
+                    >2023</span
+                  >
+                </div>
+                <h3
+                  class="text-3xl sm:text-4xl font-semibold mb-4 text-white"
+                  style="font-family: 'Space Grotesk', sans-serif"
+                >
+                  PharmaCare
+                </h3>
+                <p class="text-white/60 text-lg mb-8 leading-relaxed">
+                  A robust desktop application for pharmacy management, handling
+                  inventory, sales tracking, and automated receipt generation.
+                </p>
+
+                <div class="mb-8 space-y-3">
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-orange-500"
+                      data-icon="lucide:database"
+                      data-width="18"
+                    ></span>
+                    SQL Inventory Tracking
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-orange-500"
+                      data-icon="lucide:receipt"
+                      data-width="18"
+                    ></span>
+                    Automated Billing
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-white/70">
+                    <span
+                      class="iconify text-orange-500"
+                      data-icon="lucide:bar-chart-3"
+                      data-width="18"
+                    ></span>
+                    Sales Reporting
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="text-xs text-orange-200 bg-orange-900/40 px-3 py-1.5 rounded-md"
+                    >C#</span
+                  >
+                  <span
+                    class="text-xs text-orange-200 bg-orange-900/40 px-3 py-1.5 rounded-md"
+                    >.NET</span
+                  >
+                  <span
+                    class="text-xs text-orange-200 bg-orange-900/40 px-3 py-1.5 rounded-md"
+                    >SQL Server</span
+                  >
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="https://github.com/Shawaiz555/Pharmacy_Project"
+                    target="_blank"
+                    class="px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-full hover:scale-105 hover:bg-white/5 transition-colors flex items-center gap-2"
+                  >
+                    <span
+                      class="iconify"
+                      data-icon="lucide:github"
+                      data-width="16"
+                    ></span>
+                    View Source
+                  </a>
+                </div>
+              </div>
+
+              <!-- Visual -->
+              <div class="lg:col-span-7 order-1 lg:order-2">
+                <div
+                  class="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] aspect-[4/3] group-hover:border-orange-500/30 transition-colors duration-500"
+                >
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-black to-black"
+                  ></div>
+                  <div
+                    class="absolute inset-0 flex items-center justify-center"
+                  >
+                    <!-- Window UI -->
+                    <div
+                      class="w-3/4 h-3/4 bg-[#1a1a1a] rounded-lg border border-white/10 shadow-2xl flex flex-col overflow-hidden"
+                    >
+                      <div
+                        class="h-8 bg-[#2a2a2a] border-b border-white/5 flex items-center px-4 justify-between"
+                      >
+                        <span class="text-[10px] text-white/40"
+                          >PharmaCare v1.0</span
+                        >
+                        <div class="flex gap-1.5">
+                          <div
+                            class="w-2 h-2 rounded-sm border border-white/20"
+                          ></div>
+                          <div
+                            class="w-2 h-2 rounded-sm border border-white/20"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="flex-1 p-6 grid grid-cols-3 gap-4">
+                        <div class="col-span-1 bg-white/5 rounded h-full"></div>
+                        <div class="col-span-2 grid grid-rows-3 gap-4">
+                          <div
+                            class="bg-orange-500/10 border border-orange-500/20 rounded p-4 flex items-center gap-3"
+                          >
+                            <div class="w-8 h-8 rounded bg-orange-500/20"></div>
+                            <div
+                              class="h-2 w-24 bg-orange-500/20 rounded-full"
+                            ></div>
+                          </div>
+                          <div class="bg-white/5 rounded row-span-2"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-20 sm:mt-32">
+          <a
+            href="https://github.com/Shawaiz555"
+            target="_blank"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-all hover:scale-105 group"
+          >
+            View Complete Portfolio
+            <span
+              class="iconify group-hover:translate-x-1 transition-transform"
+              data-icon="lucide:arrow-right"
+              data-width="16"
+            ></span>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12 sm:mb-16 md:mb-20">
-                <span class="text-xs tracking-widest uppercase text-teal-400 mb-3 sm:mb-4 block">Career Journey</span>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">
-                    Professional <span class="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">Experience</span>
-                </h2>
-            </div>
-
-            <div class="relative">
-                <div class="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500 via-cyan-500 to-transparent"></div>
-
-                <div class="experience-card relative mb-8 sm:mb-12 md:mb-16">
-                    <div class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8">
-                        <div class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0">
-                            <div class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-emerald-500/20 rounded-full text-emerald-300 text-xs sm:text-sm mb-3 sm:mb-4">
-                                02/2025 – Present
-                            </div>
-                            <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif;">Full-Stack Developer</h3>
-                            <p class="text-base sm:text-lg text-cyan-400 mb-3 sm:mb-4">Freelance • Gujrat, Pakistan</p>
-                        </div>
-                        <div class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2"></div>
-                        <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
-                            <div class="p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm">
-                                <ul class="space-y-3 sm:space-y-4">
-                                    <li class="flex items-start gap-2 sm:gap-3">
-                                        <span class="iconify text-emerald-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5;"></span>
-                                        <p class="text-xs sm:text-sm text-white/70">Developed dynamic web applications using the MERN stack</p>
-                                    </li>
-                                    <li class="flex items-start gap-2 sm:gap-3">
-                                        <span class="iconify text-emerald-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5;"></span>
-                                        <p class="text-xs sm:text-sm text-white/70">Designed responsive UIs using React and Next.js</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="experience-card relative">
-                    <div class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8">
-                        <div class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0">
-                            <div class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-cyan-500/20 rounded-full text-cyan-300 text-xs sm:text-sm mb-3 sm:mb-4">
-                                August 2025 – October 2025
-                            </div>
-                            <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif;">Intern (Agentic AI &amp; React)</h3>
-                            <p class="text-base sm:text-lg text-teal-400 mb-3 sm:mb-4">Cyber Silo</p>
-                        </div>
-                        <div class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-cyan-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2"></div>
-                        <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
-                            <div class="p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm">
-                                <ul class="space-y-3 sm:space-y-4">
-                                    <li class="flex items-start gap-2 sm:gap-3">
-                                        <span class="iconify text-cyan-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5;"></span>
-                                        <p class="text-xs sm:text-sm text-white/70">Contributed to Agentic AI systems and React projects</p>
-                                    </li>
-                                    <li class="flex items-start gap-2 sm:gap-3">
-                                        <span class="iconify text-cyan-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5;"></span>
-                                        <p class="text-xs sm:text-sm text-white/70">Developed AI-driven applications</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section
+      id="experience"
+      class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16 md:mb-20">
+          <span
+            class="text-xs tracking-widest uppercase text-teal-400 mb-3 sm:mb-4 block"
+            >Career Journey</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter"
+            style="font-family: 'Space Grotesk', sans-serif"
+          >
+            Professional
+            <span
+              class="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"
+              >Experience</span
+            >
+          </h2>
         </div>
+
+        <div class="relative">
+          <div
+            class="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500 via-cyan-500 to-transparent"
+          ></div>
+
+          <div class="experience-card relative mb-8 sm:mb-12 md:mb-16">
+            <div
+              class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8"
+            >
+              <div
+                class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0"
+              >
+                <div
+                  class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-emerald-500/20 rounded-full text-emerald-300 text-xs sm:text-sm mb-3 sm:mb-4"
+                >
+                  02/2025 – Present
+                </div>
+                <h3
+                  class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2"
+                  style="font-family: 'Space Grotesk', sans-serif"
+                >
+                  Full-Stack Developer
+                </h3>
+                <p class="text-base sm:text-lg text-cyan-400 mb-3 sm:mb-4">
+                  Freelance • Gujrat, Pakistan
+                </p>
+              </div>
+              <div
+                class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2"
+              ></div>
+              <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
+                <div
+                  class="p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm"
+                >
+                  <ul class="space-y-3 sm:space-y-4">
+                    <li class="flex items-start gap-2 sm:gap-3">
+                      <span
+                        class="iconify text-emerald-400 mt-0.5 flex-shrink-0"
+                        data-icon="lucide:chevron-right"
+                        data-width="14"
+                        style="stroke-width: 1.5"
+                      ></span>
+                      <p class="text-xs sm:text-sm text-white/70">
+                        Developed dynamic web applications using the MERN stack
+                      </p>
+                    </li>
+                    <li class="flex items-start gap-2 sm:gap-3">
+                      <span
+                        class="iconify text-emerald-400 mt-0.5 flex-shrink-0"
+                        data-icon="lucide:chevron-right"
+                        data-width="14"
+                        style="stroke-width: 1.5"
+                      ></span>
+                      <p class="text-xs sm:text-sm text-white/70">
+                        Designed responsive UIs using React and Next.js
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-card relative">
+            <div
+              class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8"
+            >
+              <div
+                class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0"
+              >
+                <div
+                  class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-cyan-500/20 rounded-full text-cyan-300 text-xs sm:text-sm mb-3 sm:mb-4"
+                >
+                  August 2025 – October 2025
+                </div>
+                <h3
+                  class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2"
+                  style="font-family: 'Space Grotesk', sans-serif"
+                >
+                  Intern (Agentic AI &amp; React)
+                </h3>
+                <p class="text-base sm:text-lg text-teal-400 mb-3 sm:mb-4">
+                  Cyber Silo
+                </p>
+              </div>
+              <div
+                class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-cyan-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2"
+              ></div>
+              <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
+                <div
+                  class="p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm"
+                >
+                  <ul class="space-y-3 sm:space-y-4">
+                    <li class="flex items-start gap-2 sm:gap-3">
+                      <span
+                        class="iconify text-cyan-400 mt-0.5 flex-shrink-0"
+                        data-icon="lucide:chevron-right"
+                        data-width="14"
+                        style="stroke-width: 1.5"
+                      ></span>
+                      <p class="text-xs sm:text-sm text-white/70">
+                        Contributed to Agentic AI systems and React projects
+                      </p>
+                    </li>
+                    <li class="flex items-start gap-2 sm:gap-3">
+                      <span
+                        class="iconify text-cyan-400 mt-0.5 flex-shrink-0"
+                        data-icon="lucide:chevron-right"
+                        data-width="14"
+                        style="stroke-width: 1.5"
+                      ></span>
+                      <p class="text-xs sm:text-sm text-white/70">
+                        Developed AI-driven applications
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12 sm:mb-16 md:mb-20">
-                <span class="text-xs tracking-widest uppercase text-purple-400 mb-3 sm:mb-4 block">Academic Background</span>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">
-                    Education &amp; <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Learning</span>
-                </h2>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
-                <!-- Education Card -->
-                <div class="education-card p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/50 transition-all duration-500">
-                    <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
-                            <span class="iconify text-white" data-icon="lucide:graduation-cap" data-width="24" style="stroke-width: 1.5;"></span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 sm:gap-3 mb-2">
-                                <span class="px-2 sm:px-3 py-1 text-xs bg-purple-500/20 text-purple-300 rounded-full">2022 – Present</span>
-                            </div>
-                            <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif;">Bachelor of Science in Computer Science</h3>
-                            <p class="text-sm sm:text-base lg:text-lg text-purple-400 mb-3 sm:mb-4">PMAS Arid Agricultural University • Gujrat</p>
-                            <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                                <div class="px-3 sm:px-4 py-2 bg-white/5 rounded-lg sm:rounded-xl border border-white/10">
-                                    <span class="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">3.75</span>
-                                    <span class="text-xs sm:text-sm text-white/50 ml-1">/ 4.0</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Languages -->
-                <div class="education-card p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-500">
-                    <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                            <span class="iconify text-white" data-icon="lucide:languages" data-width="20" style="stroke-width: 1.5;"></span>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-semibold tracking-tight" style="font-family: 'Space Grotesk', sans-serif;">Languages</h3>
-                    </div>
-                    <div class="space-y-3 sm:space-y-4">
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm sm:text-base text-white/70">English</span>
-                            <div class="flex items-center gap-2">
-                                <div class="w-20 sm:w-32 h-1.5 sm:h-2 bg-white/10 rounded-full overflow-hidden">
-                                    <div class="w-3/4 h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
-                                </div>
-                                <span class="text-xs text-white/50">Intermediate</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm sm:text-base text-white/70">Urdu</span>
-                            <div class="flex items-center gap-2">
-                                <div class="w-20 sm:w-32 h-1.5 sm:h-2 bg-white/10 rounded-full overflow-hidden">
-                                    <div class="w-full h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
-                                </div>
-                                <span class="text-xs text-white/50">Native</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section
+      id="education"
+      class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16 md:mb-20">
+          <span
+            class="text-xs tracking-widest uppercase text-purple-400 mb-3 sm:mb-4 block"
+            >Academic Background</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter"
+            style="font-family: 'Space Grotesk', sans-serif"
+          >
+            Education &amp;
+            <span
+              class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              >Learning</span
+            >
+          </h2>
         </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
+          <!-- Education Card -->
+          <div
+            class="education-card p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/50 transition-all duration-500"
+          >
+            <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+              <div
+                class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0"
+              >
+                <span
+                  class="iconify text-white"
+                  data-icon="lucide:graduation-cap"
+                  data-width="24"
+                  style="stroke-width: 1.5"
+                ></span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 sm:gap-3 mb-2">
+                  <span
+                    class="px-2 sm:px-3 py-1 text-xs bg-purple-500/20 text-purple-300 rounded-full"
+                    >2022 – Present</span
+                  >
+                </div>
+                <h3
+                  class="text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight mb-2"
+                  style="font-family: 'Space Grotesk', sans-serif"
+                >
+                  Bachelor of Science in Computer Science
+                </h3>
+                <p
+                  class="text-sm sm:text-base lg:text-lg text-purple-400 mb-3 sm:mb-4"
+                >
+                  PMAS Arid Agricultural University • Gujrat
+                </p>
+                <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div
+                    class="px-3 sm:px-4 py-2 bg-white/5 rounded-lg sm:rounded-xl border border-white/10"
+                  >
+                    <span
+                      class="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                      >3.75</span
+                    >
+                    <span class="text-xs sm:text-sm text-white/50 ml-1"
+                      >/ 4.0</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div
+            class="education-card p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-500"
+          >
+            <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <div
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center"
+              >
+                <span
+                  class="iconify text-white"
+                  data-icon="lucide:languages"
+                  data-width="20"
+                  style="stroke-width: 1.5"
+                ></span>
+              </div>
+              <h3
+                class="text-lg sm:text-xl font-semibold tracking-tight"
+                style="font-family: 'Space Grotesk', sans-serif"
+              >
+                Languages
+              </h3>
+            </div>
+            <div class="space-y-3 sm:space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-sm sm:text-base text-white/70">English</span>
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-20 sm:w-32 h-1.5 sm:h-2 bg-white/10 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="w-3/4 h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"
+                    ></div>
+                  </div>
+                  <span class="text-xs text-white/50">Intermediate</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm sm:text-base text-white/70">Urdu</span>
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-20 sm:w-32 h-1.5 sm:h-2 bg-white/10 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="w-full h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                    ></div>
+                  </div>
+                  <span class="text-xs text-white/50">Native</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="text-xs tracking-widest uppercase text-emerald-400 mb-3 sm:mb-4 block">Get In Touch</span>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tighter mb-6 sm:mb-8" style="font-family: 'Space Grotesk', sans-serif;">
-                Let's build something <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">amazing</span>
-            </h2>
-            <p class="text-white/50 text-sm sm:text-base md:text-lg mb-8 sm:mb-12 max-w-2xl mx-auto">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-            </p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-                <a href="tel:+923433326500" class="group p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/50 transition-all hover:scale-105">
-                    <span class="iconify text-emerald-400 mx-auto mb-3 sm:mb-4" data-icon="lucide:phone" data-width="28" style="stroke-width: 1.5;"></span>
-                    <p class="text-xs sm:text-sm text-white/50 mb-1">Phone</p>
-                    <p class="text-white font-medium text-sm sm:text-base">+92 343 3326500</p>
-                </a>
-                <a href="mailto:shawaizbutt555@gmail.com" class="group p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/50 transition-all hover:scale-105">
-                    <span class="iconify text-cyan-400 mx-auto mb-3 sm:mb-4" data-icon="lucide:mail" data-width="28" style="stroke-width: 1.5;"></span>
-                    <p class="text-xs sm:text-sm text-white/50 mb-1">Email</p>
-                    <p class="text-white font-medium text-xs sm:text-sm break-all">shawaizbutt555@gmail.com</p>
-                </a>
-                <a href="https://github.com/Shawaiz555" target="_blank" class="group p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/50 transition-all hover:scale-105">
-                    <span class="iconify text-purple-400 mx-auto mb-3 sm:mb-4" data-icon="lucide:github" data-width="28" style="stroke-width: 1.5;"></span>
-                    <p class="text-xs sm:text-sm text-white/50 mb-1">GitHub</p>
-                    <p class="text-white font-medium text-sm sm:text-base">Shawaiz555</p>
-                </a>
-            </div>
+    <section
+      id="contact"
+      class="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <span
+          class="text-xs tracking-widest uppercase text-emerald-400 mb-3 sm:mb-4 block"
+          >Get In Touch</span
+        >
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tighter mb-6 sm:mb-8"
+          style="font-family: 'Space Grotesk', sans-serif"
+        >
+          Let's build something
+          <span
+            class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent"
+            >amazing</span
+          >
+        </h2>
+        <p
+          class="text-white/50 text-sm sm:text-base md:text-lg mb-8 sm:mb-12 max-w-2xl mx-auto"
+        >
+          I'm always open to discussing new projects, creative ideas, or
+          opportunities to be part of your vision.
+        </p>
 
-            <a href="mailto:shawaizbutt555@gmail.com" class="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-full text-sm sm:text-lg font-medium hover:shadow-2xl hover:shadow-emerald-500/25 transition-all hover:scale-105">
-                <span class="iconify" data-icon="lucide:send" data-width="20" style="stroke-width: 1.5;"></span>
-                Start a Conversation
-            </a>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12"
+        >
+          <a
+            href="#"
+            class="group p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/50 transition-all hover:scale-105"
+          >
+            <span
+              class="iconify text-emerald-400 mx-auto mb-3 sm:mb-4"
+              data-icon="lucide:phone"
+              data-width="28"
+              style="stroke-width: 1.5"
+            ></span>
+            <p class="text-xs sm:text-sm text-white/50 mb-1">Phone</p>
+            <p class="text-white font-medium text-sm sm:text-base">
+              +92 343 3326500
+            </p>
+          </a>
+          <a
+            href="#"
+            class="group p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/50 transition-all hover:scale-105"
+          >
+            <span
+              class="iconify text-cyan-400 mx-auto mb-3 sm:mb-4"
+              data-icon="lucide:mail"
+              data-width="28"
+              style="stroke-width: 1.5"
+            ></span>
+            <p class="text-xs sm:text-sm text-white/50 mb-1">Email</p>
+            <p class="text-white font-medium text-xs sm:text-sm break-all">
+              shawaizbutt555@gmail.com
+            </p>
+          </a>
+          <a
+            href="https://github.com/Shawaiz555"
+            target="_blank"
+            class="group p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/50 transition-all hover:scale-105"
+          >
+            <span
+              class="iconify text-purple-400 mx-auto mb-3 sm:mb-4"
+              data-icon="lucide:github"
+              data-width="28"
+              style="stroke-width: 1.5"
+            ></span>
+            <p class="text-xs sm:text-sm text-white/50 mb-1">GitHub</p>
+            <p class="text-white font-medium text-sm sm:text-base">
+              Shawaiz555
+            </p>
+          </a>
         </div>
+
+        <a
+          href="#contact"
+          class="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-2 sm:py-3 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-full text-sm sm:text-lg font-medium hover:shadow-2xl hover:shadow-emerald-500/25 transition-all hover:scale-105"
+        >
+          <span
+            class="iconify"
+            data-icon="lucide:send"
+            data-width="20"
+            style="stroke-width: 1.5"
+          ></span>
+          Start a Conversation
+        </a>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer class="relative z-10 py-8 sm:py-12 px-4 sm:px-6 border-t border-white/10">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-                <span class="text-lg sm:text-xl font-semibold tracking-tighter bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent" style="font-family: 'Space Grotesk', sans-serif;">MS</span>
-                <p class="text-xs sm:text-sm text-white/40">© 2024 Muhammad Shawaiz. All rights reserved.</p>
-            </div>
-            <p class="text-xs sm:text-sm text-white/40">Crafted with passion &amp; code ☕</p>
+    <footer
+      class="relative z-10 py-8 sm:py-12 px-4 sm:px-6 border-t border-white/10"
+    >
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6"
+      >
+        <div
+          class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left"
+        >
+          <span
+            class="text-lg sm:text-xl font-semibold tracking-tighter bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+            style="font-family: 'Space Grotesk', sans-serif"
+            >MS</span
+          >
+          <p class="text-xs sm:text-sm text-white/40">
+            © 2024 Muhammad Shawaiz. All rights reserved.
+          </p>
         </div>
+        <p class="text-xs sm:text-sm text-white/40">
+          Crafted with passion &amp; code ☕
+        </p>
+      </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('.iconify');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.setAttribute('data-icon', 'lucide:menu');
-            } else {
-                icon.setAttribute('data-icon', 'lucide:x');
-            }
-        });
-        
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBtn.querySelector('.iconify').setAttribute('data-icon', 'lucide:menu');
-            });
-        });
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const cursorFollower = document.getElementById('cursor-follower');
-
-        if (window.innerWidth > 1024) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-                
-                setTimeout(() => {
-                    cursorFollower.style.left = e.clientX + 'px';
-                    cursorFollower.style.top = e.clientY + 'px';
-                }, 100);
-            });
-            
-            // Cursor Hover Effects
-            document.querySelectorAll('a, button').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursorFollower.classList.add('scale-150', 'bg-white/10');
-                    cursor.classList.add('hidden');
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursorFollower.classList.remove('scale-150', 'bg-white/10');
-                    cursor.classList.remove('hidden');
-                });
-            });
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const icon = mobileMenuBtn.querySelector(".iconify");
+        if (mobileMenu.classList.contains("hidden")) {
+          icon.setAttribute("data-icon", "lucide:menu");
+        } else {
+          icon.setAttribute("data-icon", "lucide:x");
         }
+      });
 
-        // Three.js Background
-        const canvas = document.getElementById('bg-canvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          mobileMenuBtn
+            .querySelector(".iconify")
+            .setAttribute("data-icon", "lucide:menu");
+        });
+      });
+
+      // Custom Cursor
+      const cursor = document.getElementById("cursor");
+      const cursorFollower = document.getElementById("cursor-follower");
+
+      if (window.innerWidth > 1024) {
+        document.addEventListener("mousemove", (e) => {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+
+          setTimeout(() => {
+            cursorFollower.style.left = e.clientX + "px";
+            cursorFollower.style.top = e.clientY + "px";
+          }, 100);
+        });
+
+        // Cursor Hover Effects
+        document.querySelectorAll("a, button").forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cursorFollower.classList.add("scale-150", "bg-white/10");
+            cursor.classList.add("hidden");
+          });
+          el.addEventListener("mouseleave", () => {
+            cursorFollower.classList.remove("scale-150", "bg-white/10");
+            cursor.classList.remove("hidden");
+          });
+        });
+      }
+
+      // Three.js Background
+      const canvas = document.getElementById("bg-canvas");
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: true,
+        antialias: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const particlesGeometry = new THREE.BufferGeometry();
+      const isMobile = window.innerWidth < 768;
+      const particlesCount = isMobile ? 500 : 1200;
+      const posArray = new Float32Array(particlesCount * 3);
+
+      for (let i = 0; i < particlesCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 15;
+      }
+
+      particlesGeometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(posArray, 3)
+      );
+
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: isMobile ? 0.008 : 0.004,
+        color: "#10b981",
+        transparent: true,
+        opacity: 0.5,
+        blending: THREE.AdditiveBlending,
+      });
+
+      const particlesMesh = new THREE.Points(
+        particlesGeometry,
+        particlesMaterial
+      );
+      scene.add(particlesMesh);
+
+      camera.position.z = 5;
+
+      let mouseX = 0;
+      let mouseY = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particlesMesh.rotation.y += 0.0002;
+        particlesMesh.rotation.x += 0.0001;
+        if (window.innerWidth > 768) {
+          camera.position.x += (mouseX * 0.2 - camera.position.x) * 0.05;
+          camera.position.y += (mouseY * 0.2 - camera.position.y) * 0.05;
+        }
+        camera.lookAt(scene.position);
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      });
 
-        const particlesGeometry = new THREE.BufferGeometry();
-        const isMobile = window.innerWidth < 768;
-        const particlesCount = isMobile ? 500 : 1200;
-        const posArray = new Float32Array(particlesCount * 3);
+      // About 3D Sphere
+      const aboutCanvas = document.getElementById("about-3d");
+      if (aboutCanvas) {
+        const aboutScene = new THREE.Scene();
+        const aboutCamera = new THREE.PerspectiveCamera(70, 0.5, 1, 2000);
+        const aboutRenderer = new THREE.WebGLRenderer({
+          canvas: aboutCanvas,
+          alpha: true,
+          antialias: true,
+        });
 
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 15;
+        const updateAboutSize = () => {
+          const size = Math.min(
+            aboutCanvas.offsetWidth,
+            aboutCanvas.offsetHeight
+          );
+          aboutRenderer.setSize(
+            aboutCanvas.offsetWidth,
+            aboutCanvas.offsetHeight
+          );
+        };
+        updateAboutSize();
+        window.addEventListener("resize", updateAboutSize);
+
+        const geometry = new THREE.IcosahedronGeometry(2, 0);
+        const material = new THREE.MeshBasicMaterial({
+          color: "#10b981",
+          wireframe: true,
+          transparent: true,
+          opacity: 0.3,
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        aboutScene.add(sphere);
+
+        aboutCamera.position.z = 5;
+
+        function animateAbout() {
+          requestAnimationFrame(animateAbout);
+          sphere.rotation.y += 0.005;
+          sphere.rotation.x += 0.002;
+          aboutRenderer.render(aboutScene, aboutCamera);
         }
+        animateAbout();
+      }
 
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      // GSAP
+      gsap.registerPlugin(ScrollTrigger);
 
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: isMobile ? 0.008 : 0.004,
-            color: '#10b981',
-            transparent: true,
-            opacity: 0.5,
-            blending: THREE.AdditiveBlending
-        });
-
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-
-        camera.position.z = 5;
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-        });
-
-        function animate() {
-            requestAnimationFrame(animate);
-            particlesMesh.rotation.y += 0.0002;
-            particlesMesh.rotation.x += 0.0001;
-            if (window.innerWidth > 768) {
-                camera.position.x += (mouseX * 0.2 - camera.position.x) * 0.05;
-                camera.position.y += (mouseY * 0.2 - camera.position.y) * 0.05;
-            }
-            camera.lookAt(scene.position);
-            renderer.render(scene, camera);
+      // Animate Sections
+      gsap.utils.toArray("section").forEach((section, i) => {
+        if (section.id !== "hero") {
+          gsap.from(section.children, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+          });
         }
-        animate();
+      });
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // About 3D Sphere
-        const aboutCanvas = document.getElementById('about-3d');
-        if (aboutCanvas) {
-            const aboutScene = new THREE.Scene();
-            const aboutCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-            const aboutRenderer = new THREE.WebGLRenderer({ canvas: aboutCanvas, alpha: true, antialias: true });
-            
-            const updateAboutSize = () => {
-                const size = Math.min(aboutCanvas.offsetWidth, aboutCanvas.offsetHeight);
-                aboutRenderer.setSize(aboutCanvas.offsetWidth, aboutCanvas.offsetHeight);
-            };
-            updateAboutSize();
-            window.addEventListener('resize', updateAboutSize);
-
-            const geometry = new THREE.IcosahedronGeometry(2, 0);
-            const material = new THREE.MeshBasicMaterial({ 
-                color: '#10b981', 
-                wireframe: true,
-                transparent: true,
-                opacity: 0.3
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
             });
-            const sphere = new THREE.Mesh(geometry, material);
-            aboutScene.add(sphere);
-
-            aboutCamera.position.z = 5;
-
-            function animateAbout() {
-                requestAnimationFrame(animateAbout);
-                sphere.rotation.y += 0.005;
-                sphere.rotation.x += 0.002;
-                aboutRenderer.render(aboutScene, aboutCamera);
-            }
-            animateAbout();
-        }
-
-        // GSAP
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Animate Sections
-        gsap.utils.toArray('section').forEach((section, i) => {
-            if (section.id !== 'hero') {
-                gsap.from(section.children, {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 50,
-                    opacity: 0,
-                    duration: 0.8,
-                    stagger: 0.1
-                });
-            }
+          }
         });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+      });
     </script>
-
-</body></html>
+  </body>
+</html>
