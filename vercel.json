@@ -8,12 +8,28 @@
     {
       "src": "index.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "Images/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "MuhammadShawaizResume.pdf",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "server/server.js"
+    },
+    {
+      "src": "/Images/(.*)",
+      "dest": "Images/$1"
+    },
+    {
+      "src": "/MuhammadShawaizResume.pdf",
+      "dest": "MuhammadShawaizResume.pdf"
     },
     {
       "src": "/(.*)",

@@ -1849,8 +1849,14 @@
     <script>
       // 6. Contact Form Handling with API Integration
       const contactForm = document.getElementById("contact-form");
-      const API_URL =
-        "https://muhammadshawaiz-portfolio.vercel.app/api/contact"; // Update this for production
+
+      // Auto-detect environment: use relative URL in production, localhost in development
+      const isLocalhost =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1";
+      const API_URL = isLocalhost
+        ? "http://localhost:3001/api/contact"
+        : "https://muhammadshawaiz-portfolio.vercel.app/api/contact";
 
       if (contactForm) {
         const submitBtn = contactForm.querySelector('button[type="submit"]');
