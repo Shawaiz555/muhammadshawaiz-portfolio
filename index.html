@@ -1584,7 +1584,7 @@
 
             <div class="grid gap-4 sm:gap-6">
               <a
-                href="#"
+                href="#contact"
                 class="card-spotlight group p-4 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/50 transition-all hover:-translate-y-1 flex items-center gap-4 sm:gap-6 text-left"
               >
                 <div
@@ -1606,7 +1606,7 @@
               </a>
 
               <a
-                href="#"
+                href="#contact"
                 class="card-spotlight group p-4 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/50 transition-all hover:-translate-y-1 flex items-center gap-4 sm:gap-6 text-left"
               >
                 <div
@@ -1828,50 +1828,126 @@
       </div>
     </div>
 
+    <!-- Error Toast Notification -->
+    <div
+      id="error-toast"
+      class="fixed bottom-8 right-8 z-50 px-6 py-4 rounded-xl bg-red-500/10 border border-red-500/20 backdrop-blur-xl text-red-400 translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3 shadow-2xl"
+    >
+      <div
+        class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center"
+      >
+        <span class="iconify" data-icon="lucide:x" data-width="18"></span>
+      </div>
+      <div>
+        <h4 class="font-semibold text-sm">Error</h4>
+        <p id="error-message" class="text-xs text-white/60">
+          Failed to send message.
+        </p>
+      </div>
+    </div>
+
     <script>
-      // 6. Contact Form Handling
+      // 6. Contact Form Handling with API Integration
       const contactForm = document.getElementById("contact-form");
+      const API_URL = "http://localhost:3001/api/contact"; // Update this for production
 
       if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnContent = submitBtn.innerHTML;
+
+        contactForm.addEventListener("submit", async (e) => {
           e.preventDefault();
 
           // Get Field Values
           const formData = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            subject: document.getElementById("subject").value,
-            message: document.getElementById("message").value,
-            timestamp: new Date().toISOString(),
+            name: document.getElementById("name").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            subject: document.getElementById("subject").value.trim(),
+            message: document.getElementById("message").value.trim(),
           };
 
           // Basic Validation
-          if (!formData.name || !formData.email || !formData.message) {
-            alert("Please fill in all required fields.");
+          if (
+            !formData.name ||
+            !formData.email ||
+            !formData.subject ||
+            !formData.message
+          ) {
+            showErrorToast("Please fill in all required fields.");
             return;
           }
 
-          // Save to LocalStorage
-          const messages = JSON.parse(
-            localStorage.getItem("Portfolio_Messages_Data") || "[]"
-          );
-          messages.push(formData);
-          localStorage.setItem(
-            "Portfolio_Messages_Data",
-            JSON.stringify(messages)
-          );
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(formData.email)) {
+            showErrorToast("Please enter a valid email address.");
+            return;
+          }
 
-          // Clear Form
-          contactForm.reset();
+          // Show loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `
+            <span class="relative z-10 flex items-center gap-2">
+              <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Sending...
+            </span>
+          `;
 
-          // Show Toast
-          const toast = document.getElementById("toast");
-          toast.classList.remove("translate-y-24", "opacity-0");
+          try {
+            const response = await fetch(API_URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
 
-          setTimeout(() => {
-            toast.classList.add("translate-y-24", "opacity-0");
-          }, 3000);
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+              // Success - Clear Form and show toast
+              contactForm.reset();
+              showSuccessToast();
+            } else {
+              // Server returned an error
+              showErrorToast(
+                result.message || "Failed to send message. Please try again."
+              );
+            }
+          } catch (error) {
+            // Network error or server not running
+            console.error("Contact form error:", error);
+            showErrorToast(
+              "Unable to connect to server. Please try again later."
+            );
+          } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnContent;
+          }
         });
+      }
+
+      // Toast notification functions
+      function showSuccessToast() {
+        const toast = document.getElementById("toast");
+        toast.classList.remove("translate-y-24", "opacity-0");
+        setTimeout(() => {
+          toast.classList.add("translate-y-24", "opacity-0");
+        }, 4000);
+      }
+
+      function showErrorToast(message) {
+        const errorToast = document.getElementById("error-toast");
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = message;
+        errorToast.classList.remove("translate-y-24", "opacity-0");
+        setTimeout(() => {
+          errorToast.classList.add("translate-y-24", "opacity-0");
+        }, 5000);
       }
     </script>
 
