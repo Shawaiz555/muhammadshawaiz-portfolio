@@ -869,77 +869,289 @@
     <!-- About Section -->
     <section
       id="about"
-      class="relative z-10 py-24 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-16"
+      class="relative z-10 py-28 sm:py-36 md:py-48 px-4 sm:px-6 lg:px-16 overflow-hidden"
     >
-      <div class="max-w-8xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-          <div class="about-content mt-16 scroll-reveal">
+      <!-- Background Decorations -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div
+          class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px]"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px]"
+        ></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto relative">
+        <!-- Section Header -->
+        <div class="text-center mb-16 sm:mb-20 scroll-reveal">
+          <span
+            class="inline-block text-xs tracking-[0.3em] uppercase text-emerald-400 mb-4 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full"
+          >
+            About Me
+          </span>
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter"
+            style="font-family: 'Space Grotesk', sans-serif"
+          >
+            Crafting Digital
             <span
-              class="text-xs tracking-widest uppercase text-emerald-400 mb-3 sm:mb-4 block"
-              >About Me</span
+              class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent"
             >
-            <h2
-              class="text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tighter mb-6 sm:mb-8"
-              style="font-family: 'Space Grotesk', sans-serif"
+              Experiences
+            </span>
+          </h2>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+          <!-- Profile Card - Left Column -->
+          <div class="lg:col-span-4 scroll-reveal">
+            <div
+              class="card-spotlight h-full p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-transparent backdrop-blur-sm group hover:border-emerald-500/30 transition-all duration-500"
             >
-              Building the
-              <span
-                class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-                >future</span
-              >
-              of web
-            </h2>
-            <p
-              class="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6"
-            >
-              Accomplished web developer with a strong foundation in front-end
-              design and a solid transition to full-stack development. I excel
-              at building scalable, high-performance web applications with
-              seamless user interfaces and robust backend integrations.
-            </p>
-            <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8">
-              <div
-                class="card-spotlight px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm group hover:-translate-y-1 transition-transform duration-300"
-              >
-                <span
-                  class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent group-hover:scale-110 inline-block transition-transform"
-                  >3.78</span
-                >
-                <p class="text-xs text-white/50 mt-1">CGPA / 4.0</p>
+              <!-- Profile Visual -->
+              <div class="relative mb-8">
+                <div class="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto">
+                  <!-- Animated Rings -->
+                  <div
+                    class="absolute inset-0 rounded-full border-2 border-emerald-500/20 animate-[spin_20s_linear_infinite]"
+                  ></div>
+                  <div
+                    class="absolute inset-2 rounded-full border border-emerald-500/30 animate-[spin_15s_linear_infinite_reverse]"
+                  ></div>
+                  <div
+                    class="absolute inset-4 rounded-full border border-dashed border-cyan-500/20 animate-[spin_25s_linear_infinite]"
+                  ></div>
+
+                  <!-- 3D Canvas Container -->
+                  <div
+                    class="absolute inset-0 rounded-full overflow-hidden bg-gradient-to-br from-emerald-900/50 to-cyan-900/50 flex items-center justify-center"
+                  >
+                    <canvas
+                      id="about-3d"
+                      class="w-full h-full"
+                      width="160"
+                      height="160"
+                    ></canvas>
+                  </div>
+
+                  <!-- Status Indicator -->
+                  <div
+                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full flex items-center gap-2 backdrop-blur-sm"
+                  >
+                    <span
+                      class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
+                    ></span>
+                    <span
+                      class="text-xs text-emerald-300 font-medium whitespace-nowrap"
+                      >Available for work</span
+                    >
+                  </div>
+                </div>
               </div>
-              <div
-                class="card-spotlight px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm group hover:-translate-y-1 transition-transform duration-300"
-              >
-                <span
-                  class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent group-hover:scale-110 inline-block transition-transform"
-                  >8+</span
+
+              <!-- Name & Title -->
+              <div class="text-center">
+                <h3
+                  class="text-2xl sm:text-3xl font-bold text-white mb-2"
+                  style="font-family: 'Space Grotesk', sans-serif"
                 >
-                <p class="text-xs text-white/50 mt-1">Projects</p>
+                  Muhammad Shawaiz
+                </h3>
+                <p class="text-emerald-400 font-medium mb-4">
+                  MERN Stack Developer
+                </p>
+                <p class="text-white/50 text-sm">Gujrat, Pakistan 🇵🇰</p>
               </div>
-              <div
-                class="card-spotlight px-4 sm:px-6 py-3 sm:py-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm group hover:-translate-y-1 transition-transform duration-300"
-              >
-                <span
-                  class="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent group-hover:scale-110 inline-block transition-transform"
-                  >2+</span
+
+              <!-- Social Links -->
+              <div class="flex justify-center gap-3 mt-6">
+                <a
+                  href="https://github.com/Shawaiz555"
+                  target="_blank"
+                  class="p-3 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300"
                 >
-                <p class="text-xs text-white/50 mt-1">Experiences</p>
+                  <span
+                    class="iconify"
+                    data-icon="lucide:github"
+                    data-width="20"
+                  ></span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/muhammad-shawaiz-b52483280/"
+                  target="_blank"
+                  class="p-3 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300"
+                >
+                  <span
+                    class="iconify"
+                    data-icon="lucide:linkedin"
+                    data-width="20"
+                  ></span>
+                </a>
               </div>
             </div>
           </div>
-          <div class="relative mt-8 lg:mt-0 scroll-reveal delay-200">
+
+          <!-- Right Column - Bio & Stats -->
+          <div class="lg:col-span-8 space-y-6 lg:space-y-8">
+            <!-- Bio Card -->
             <div
-              class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 backdrop-blur-sm bg-gradient-to-br from-white/5 to-transparent p-1"
+              class="card-spotlight p-6 sm:p-8 lg:p-10 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm scroll-reveal"
             >
-              <div
-                class="rounded-xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-900/50 to-cyan-900/50 flex items-center justify-center"
+              <div class="flex items-center gap-3 mb-6">
+                <div
+                  class="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-400"
+                >
+                  <span
+                    class="iconify"
+                    data-icon="lucide:user"
+                    data-width="22"
+                  ></span>
+                </div>
+                <h4 class="text-lg font-semibold text-white">Who I Am</h4>
+              </div>
+              <p
+                class="text-white/60 text-base sm:text-lg leading-relaxed mb-6"
               >
-                <canvas
-                  id="about-3d"
-                  class="w-[300px] h-[550px]"
-                  width="100"
-                  height="100"
-                ></canvas>
+                Accomplished web developer with a strong foundation in front-end
+                design and a solid transition to full-stack development. I excel
+                at building
+                <span class="text-emerald-400 font-medium"
+                  >scalable, high-performance web applications</span
+                >
+                with seamless user interfaces and robust backend integrations.
+              </p>
+              <p class="text-white/50 text-sm sm:text-base leading-relaxed">
+                Currently pursuing my Bachelor's in Computer Science while
+                actively contributing to real-world projects. I'm passionate
+                about clean code, modern design patterns, and creating digital
+                experiences that make a difference.
+              </p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-3 gap-4 sm:gap-6 scroll-reveal">
+              <!-- Stat 1 -->
+              <div
+                class="card-spotlight group p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-all duration-500 text-center"
+              >
+                <div
+                  class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
+                >
+                  3.78
+                </div>
+                <p class="text-white/50 text-xs sm:text-sm">CGPA / 4.0</p>
+              </div>
+
+              <!-- Stat 2 -->
+              <div
+                class="card-spotlight group p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500 text-center"
+              >
+                <div
+                  class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
+                >
+                  8+
+                </div>
+                <p class="text-white/50 text-xs sm:text-sm">Projects Built</p>
+              </div>
+
+              <!-- Stat 3 -->
+              <div
+                class="card-spotlight group p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-all duration-500 text-center"
+              >
+                <div
+                  class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
+                >
+                  2+
+                </div>
+                <p class="text-white/50 text-xs sm:text-sm">Years Experience</p>
+              </div>
+            </div>
+
+            <!-- Traits/Highlights -->
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 scroll-reveal">
+              <!-- Trait 1 -->
+              <div
+                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-all duration-500"
+              >
+                <div
+                  class="p-3 rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <span
+                    class="iconify"
+                    data-icon="lucide:zap"
+                    data-width="24"
+                  ></span>
+                </div>
+                <div>
+                  <h5 class="text-white font-semibold mb-1">Fast Learner</h5>
+                  <p class="text-white/50 text-sm">
+                    Quick to adapt and master new technologies and frameworks
+                  </p>
+                </div>
+              </div>
+
+              <!-- Trait 2 -->
+              <div
+                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500"
+              >
+                <div
+                  class="p-3 rounded-xl bg-cyan-500/15 text-cyan-400 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <span
+                    class="iconify"
+                    data-icon="lucide:code-2"
+                    data-width="24"
+                  ></span>
+                </div>
+                <div>
+                  <h5 class="text-white font-semibold mb-1">Clean Coder</h5>
+                  <p class="text-white/50 text-sm">
+                    Writing maintainable, scalable, and well-documented code
+                  </p>
+                </div>
+              </div>
+
+              <!-- Trait 3 -->
+              <div
+                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-all duration-500"
+              >
+                <div
+                  class="p-3 rounded-xl bg-purple-500/15 text-purple-400 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <span
+                    class="iconify"
+                    data-icon="lucide:palette"
+                    data-width="24"
+                  ></span>
+                </div>
+                <div>
+                  <h5 class="text-white font-semibold mb-1">UI/UX Focused</h5>
+                  <p class="text-white/50 text-sm">
+                    Creating intuitive and visually appealing user interfaces
+                  </p>
+                </div>
+              </div>
+
+              <!-- Trait 4 -->
+              <div
+                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-pink-500/30 transition-all duration-500"
+              >
+                <div
+                  class="p-3 rounded-xl bg-pink-500/15 text-pink-400 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <span
+                    class="iconify"
+                    data-icon="lucide:rocket"
+                    data-width="24"
+                  ></span>
+                </div>
+                <div>
+                  <h5 class="text-white font-semibold mb-1">Problem Solver</h5>
+                  <p class="text-white/50 text-sm">
+                    Tackling complex challenges with creative solutions
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -1164,7 +1376,7 @@
                 class="text-lg font-semibold"
                 style="font-family: 'Space Grotesk', sans-serif"
               >
-                Data
+                Database
               </h3>
             </div>
             <div class="flex flex-wrap gap-2">
@@ -1268,142 +1480,7 @@
             ></div>
           </div>
 
-          <!-- Project 1: Culinary AI -->
-          <div
-            class="project-card sticky top-24 sm:top-28 w-full mb-24 sm:mb-40 group"
-          >
-            <!-- Glow Effect -->
-            <div
-              class="project-glow"
-              style="
-                background: linear-gradient(
-                  135deg,
-                  transparent 40%,
-                  rgba(16, 185, 129, 0.4) 50%,
-                  transparent 60%
-                );
-              "
-            ></div>
-
-            <div
-              class="project-card-inner relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f0f0f] to-[#080808] border border-white/10 p-8 sm:p-12 shadow-2xl"
-            >
-              <!-- Shine Effect -->
-              <div class="project-shine"></div>
-
-              <!-- Ambient Background -->
-              <div
-                class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-emerald-900/5 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100"
-              ></div>
-
-              <!-- Decorative Grid Pattern -->
-              <div
-                class="absolute inset-0 opacity-[0.03]"
-                style="
-                  background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-                "
-              ></div>
-
-              <div
-                class="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
-              >
-                <div class="order-2 lg:order-1 space-y-6">
-                  <div class="flex items-center gap-4">
-                    <span
-                      class="px-4 py-1.5 text-xs font-semibold tracking-wider text-emerald-300 uppercase bg-emerald-500/15 border border-emerald-500/30 rounded-full backdrop-blur-sm shadow-lg shadow-emerald-500/10"
-                    >
-                      AI Integrated
-                    </span>
-                    <span
-                      class="project-number text-emerald-400/60 text-lg font-mono font-bold"
-                      >01</span
-                    >
-                  </div>
-                  <h3
-                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight"
-                    style="font-family: 'Space Grotesk', sans-serif"
-                  >
-                    Culinary
-                    <span
-                      class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"
-                      >AI</span
-                    >
-                  </h3>
-                  <p
-                    class="text-white/60 text-base sm:text-lg leading-relaxed max-w-lg"
-                  >
-                    Revolutionary restaurant management integrating GPT-4 for
-                    automated voice ordering and real-time analytics dashboard.
-                  </p>
-                  <div class="flex flex-wrap gap-3 pt-2">
-                    <span
-                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
-                      >React</span
-                    >
-                    <span
-                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
-                      >Node.js</span
-                    >
-                    <span
-                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
-                      >OpenAI API</span
-                    >
-                  </div>
-                </div>
-
-                <div class="order-1 lg:order-2">
-                  <div
-                    class="project-preview relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-emerald-950/30 shadow-2xl shadow-emerald-900/20"
-                  >
-                    <div
-                      class="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-transparent to-transparent"
-                    ></div>
-                    <!-- Mockup Content -->
-                    <div
-                      class="absolute inset-0 p-8 flex flex-col items-center justify-center text-center space-y-5"
-                    >
-                      <div
-                        class="project-icon-float w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-emerald-500/10 flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-500/20"
-                      >
-                        <span
-                          class="iconify text-emerald-400"
-                          data-icon="lucide:bot"
-                          data-width="40"
-                        ></span>
-                      </div>
-                      <h4
-                        class="text-white font-semibold text-xl tracking-tight"
-                      >
-                        AI Voice Assistant
-                      </h4>
-                      <div class="w-full max-w-[200px] space-y-2">
-                        <div class="flex gap-2">
-                          <div
-                            class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden"
-                          >
-                            <div
-                              class="w-4/5 h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
-                            ></div>
-                          </div>
-                        </div>
-                        <div class="flex gap-2">
-                          <div
-                            class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden"
-                          >
-                            <div
-                              class="w-3/5 h-full bg-gradient-to-r from-emerald-500/70 to-teal-500/70 rounded-full"
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: Ms-EventSphere -->
+          <!-- Project 1: Ms-EventSphere -->
           <div
             class="project-card sticky top-28 sm:top-36 w-full mb-24 sm:mb-40 group"
           >
@@ -1451,7 +1528,7 @@
                     </span>
                     <span
                       class="project-number text-cyan-400/60 text-lg font-mono font-bold"
-                      >02</span
+                      >01</span
                     >
                   </div>
                   <h3
@@ -1544,6 +1621,141 @@
                           <div
                             class="w-4 h-1 bg-cyan-500/40 rounded-full"
                           ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Culinary AI -->
+          <div
+            class="project-card sticky top-24 sm:top-28 w-full mb-24 sm:mb-40 group"
+          >
+            <!-- Glow Effect -->
+            <div
+              class="project-glow"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  transparent 40%,
+                  rgba(16, 185, 129, 0.4) 50%,
+                  transparent 60%
+                );
+              "
+            ></div>
+
+            <div
+              class="project-card-inner relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f0f0f] to-[#080808] border border-white/10 p-8 sm:p-12 shadow-2xl"
+            >
+              <!-- Shine Effect -->
+              <div class="project-shine"></div>
+
+              <!-- Ambient Background -->
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-emerald-900/5 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100"
+              ></div>
+
+              <!-- Decorative Grid Pattern -->
+              <div
+                class="absolute inset-0 opacity-[0.03]"
+                style="
+                  background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+                "
+              ></div>
+
+              <div
+                class="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+              >
+                <div class="order-2 lg:order-1 space-y-6">
+                  <div class="flex items-center gap-4">
+                    <span
+                      class="px-4 py-1.5 text-xs font-semibold tracking-wider text-emerald-300 uppercase bg-emerald-500/15 border border-emerald-500/30 rounded-full backdrop-blur-sm shadow-lg shadow-emerald-500/10"
+                    >
+                      AI Integrated
+                    </span>
+                    <span
+                      class="project-number text-emerald-400/60 text-lg font-mono font-bold"
+                      >02</span
+                    >
+                  </div>
+                  <h3
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight"
+                    style="font-family: 'Space Grotesk', sans-serif"
+                  >
+                    Culinary
+                    <span
+                      class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"
+                      >AI</span
+                    >
+                  </h3>
+                  <p
+                    class="text-white/60 text-base sm:text-lg leading-relaxed max-w-lg"
+                  >
+                    Revolutionary restaurant management integrating GPT-4 for
+                    automated voice ordering and real-time analytics dashboard.
+                  </p>
+                  <div class="flex flex-wrap gap-3 pt-2">
+                    <span
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
+                      >React</span
+                    >
+                    <span
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
+                      >Node.js</span
+                    >
+                    <span
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
+                      >OpenAI API</span
+                    >
+                  </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                  <div
+                    class="project-preview relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-emerald-950/30 shadow-2xl shadow-emerald-900/20"
+                  >
+                    <div
+                      class="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-transparent to-transparent"
+                    ></div>
+                    <!-- Mockup Content -->
+                    <div
+                      class="absolute inset-0 p-8 flex flex-col items-center justify-center text-center space-y-5"
+                    >
+                      <div
+                        class="project-icon-float w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-emerald-500/10 flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-500/20"
+                      >
+                        <span
+                          class="iconify text-emerald-400"
+                          data-icon="lucide:bot"
+                          data-width="40"
+                        ></span>
+                      </div>
+                      <h4
+                        class="text-white font-semibold text-xl tracking-tight"
+                      >
+                        AI Voice Assistant
+                      </h4>
+                      <div class="w-full max-w-[200px] space-y-2">
+                        <div class="flex gap-2">
+                          <div
+                            class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden"
+                          >
+                            <div
+                              class="w-4/5 h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="flex gap-2">
+                          <div
+                            class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden"
+                          >
+                            <div
+                              class="w-3/5 h-full bg-gradient-to-r from-emerald-500/70 to-teal-500/70 rounded-full"
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -2503,20 +2715,23 @@
           "-=0.8"
         );
 
-      // Scroll Reveal for Sections
-      gsap.utils.toArray(".scroll-reveal").forEach((section) => {
-        gsap.from(section.children, {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-        });
+      // Scroll Reveal for Sections - Robust Batch Animation
+      // Set initial state
+      gsap.set(".scroll-reveal", { y: 20, opacity: 0 });
+
+      // Animate as they come into view
+      ScrollTrigger.batch(".scroll-reveal", {
+        onEnter: (batch) =>
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            overwrite: true,
+          }),
+        start: "top 95%",
+        once: true, // Only animate once for better performance
       });
 
       // Card Stacking Animation - Optimized for Performance
@@ -2621,36 +2836,72 @@
       const aboutCanvas = document.getElementById("about-3d");
       if (aboutCanvas) {
         const aboutScene = new THREE.Scene();
-        const aboutCamera = new THREE.PerspectiveCamera(70, 0.5, 1, 2000);
+        const aboutCamera = new THREE.PerspectiveCamera(70, 1, 0.1, 1000);
         const aboutRenderer = new THREE.WebGLRenderer({
           canvas: aboutCanvas,
           alpha: true,
           antialias: true,
         });
-        const updateAboutSize = () =>
-          aboutRenderer.setSize(
-            aboutCanvas.offsetWidth,
-            aboutCanvas.offsetHeight
-          );
+
+        // Update size based on container
+        const updateAboutSize = () => {
+          const container = aboutCanvas.parentElement;
+          const width = container.clientWidth;
+          const height = container.clientHeight;
+          aboutRenderer.setSize(width, height);
+          aboutCamera.aspect = width / height;
+          aboutCamera.updateProjectionMatrix();
+        };
+
+        // Initial sizing
         updateAboutSize();
         window.addEventListener("resize", updateAboutSize);
 
-        const sphere = new THREE.Mesh(
-          new THREE.IcosahedronGeometry(2, 0),
-          new THREE.MeshBasicMaterial({
-            color: "#10b981",
-            wireframe: true,
-            transparent: true,
-            opacity: 0.3,
-          })
-        );
+        // Create Sphere
+        const geometry = new THREE.IcosahedronGeometry(2.2, 1);
+        const material = new THREE.MeshBasicMaterial({
+          color: "#10b981",
+          wireframe: true,
+          transparent: true,
+          opacity: 0.4,
+        });
+        const sphere = new THREE.Mesh(geometry, material);
         aboutScene.add(sphere);
-        aboutCamera.position.z = 5;
+        aboutCamera.position.z = 4;
 
+        // Mouse interaction
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+
+        const container = aboutCanvas.parentElement;
+        container.addEventListener("mousemove", (e) => {
+          const rect = container.getBoundingClientRect();
+          mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          mouseY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        });
+
+        container.addEventListener("mouseleave", () => {
+          mouseX = 0;
+          mouseY = 0;
+        });
+
+        // Animation Loop
         (function animateAbout() {
           requestAnimationFrame(animateAbout);
-          sphere.rotation.y += 0.005;
-          sphere.rotation.x += 0.002;
+
+          targetRotationY = mouseX * 0.5;
+          targetRotationX = mouseY * 0.5;
+
+          sphere.rotation.y +=
+            0.005 + (targetRotationY - sphere.rotation.y) * 0.05;
+          sphere.rotation.x +=
+            0.002 + (targetRotationX - sphere.rotation.x) * 0.05;
+
+          // Gentle floating
+          sphere.position.y = Math.sin(Date.now() * 0.001) * 0.1;
+
           aboutRenderer.render(aboutScene, aboutCamera);
         })();
       }
