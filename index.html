@@ -79,15 +79,281 @@
       /* Glass Cards */
       .glass-card {
         background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
       }
       .glass-card-high {
         background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(16px);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.15);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Project Card Enhanced Styles */
+      .project-card-stack {
+        position: sticky;
+        top: 20%;
+        margin-bottom: 4rem;
+        transform-origin: center top;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Premium Project Card Container */
+      .project-card {
+        will-change: transform, opacity;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .project-card-inner {
+        position: relative;
+        transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        transform-style: preserve-3d;
+      }
+
+      .project-card:hover .project-card-inner {
+        transform: translateY(-8px) rotateX(2deg);
+      }
+
+      /* Animated Glow Border */
+      .project-glow {
+        position: absolute;
+        inset: -2px;
+        border-radius: 1.75rem;
+        background: linear-gradient(
+          135deg,
+          transparent 40%,
+          rgba(16, 185, 129, 0.3) 50%,
+          transparent 60%
+        );
+        background-size: 300% 300%;
+        animation: glow-sweep 4s ease-in-out infinite;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: -1;
+      }
+
+      .project-card:hover .project-glow {
+        opacity: 1;
+      }
+
+      @keyframes glow-sweep {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Floating Icon Animation */
+      @keyframes float-icon {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-10px) rotate(5deg);
+        }
+        50% {
+          transform: translateY(-5px) rotate(-3deg);
+        }
+        75% {
+          transform: translateY(-12px) rotate(3deg);
+        }
+      }
+
+      .project-icon-float {
+        animation: float-icon 6s ease-in-out infinite;
+      }
+
+      /* Tech Pills with Shimmer */
+      .tech-pill {
+        position: relative;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+
+      .tech-pill::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+      }
+
+      .tech-pill:hover::before {
+        transform: translateX(100%);
+      }
+
+      .tech-pill:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Project Image Overlay */
+      .project-image-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0.4) 40%,
+          transparent 70%
+        );
+      }
+
+      /* Project Preview Container */
+      .project-preview {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .project-preview::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 2;
+      }
+
+      .project-card:hover .project-preview {
+        transform: scale(1.03) translateZ(20px);
+      }
+
+      /* Diagonal Shine Effect */
+      .project-shine {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.1) 40%,
+          rgba(255, 255, 255, 0.15) 50%,
+          rgba(255, 255, 255, 0.1) 60%,
+          transparent 70%
+        );
+        transform: translateX(-100%);
+        transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .project-card:hover .project-shine {
+        transform: translateX(100%);
+      }
+
+      /* Floating Orbs */
+      @keyframes orb-float-1 {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -20px) scale(1.1);
+        }
+        66% {
+          transform: translate(-20px, 10px) scale(0.9);
+        }
+      }
+
+      @keyframes orb-float-2 {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(-25px, 15px) scale(0.95);
+        }
+        66% {
+          transform: translate(20px, -25px) scale(1.05);
+        }
+      }
+
+      .project-orb-1 {
+        animation: orb-float-1 12s ease-in-out infinite;
+      }
+
+      .project-orb-2 {
+        animation: orb-float-2 15s ease-in-out infinite;
+      }
+
+      /* Button Glow Effect */
+      .btn-glow {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .btn-glow::before {
+        content: "";
+        position: absolute;
+        inset: -50%;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          rgba(16, 185, 129, 0.4),
+          transparent 30%
+        );
+        animation: rotate-glow 3s linear infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .btn-glow:hover::before {
+        opacity: 1;
+      }
+
+      .btn-glow::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        background: inherit;
+        border-radius: inherit;
+        z-index: 1;
+      }
+
+      @keyframes rotate-glow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Section Number Counter Animation */
+      .project-number {
+        font-variant-numeric: tabular-nums;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .project-card:hover .project-number {
+        transform: scale(1.2);
+        text-shadow: 0 0 30px currentColor;
       }
 
       /* Spotlight Effect Logic */
@@ -992,79 +1258,144 @@
         </div>
 
         <div class="relative mx-auto max-w-8xl">
+          <!-- Floating Background Orbs -->
+          <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+              class="project-orb-1 absolute -top-20 -left-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="project-orb-2 absolute -bottom-40 -right-20 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl"
+            ></div>
+          </div>
+
           <!-- Project 1: Culinary AI -->
           <div
-            class="project-card sticky top-24 sm:top-28 w-full mb-20 sm:mb-32 group"
+            class="project-card sticky top-24 sm:top-28 w-full mb-24 sm:mb-40 group"
           >
+            <!-- Glow Effect -->
             <div
-              class="relative overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/10 p-8 sm:p-12 shadow-2xl transition-all duration-500 hover:shadow-emerald-900/20 hover:border-emerald-500/30"
+              class="project-glow"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  transparent 40%,
+                  rgba(16, 185, 129, 0.4) 50%,
+                  transparent 60%
+                );
+              "
+            ></div>
+
+            <div
+              class="project-card-inner relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f0f0f] to-[#080808] border border-white/10 p-8 sm:p-12 shadow-2xl"
             >
+              <!-- Shine Effect -->
+              <div class="project-shine"></div>
+
+              <!-- Ambient Background -->
               <div
-                class="absolute inset-0 bg-gradient-to-br from-emerald-900/10 via-transparent to-transparent opacity-50"
+                class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-emerald-900/5 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100"
               ></div>
+
+              <!-- Decorative Grid Pattern -->
               <div
-                class="relative z-10 grid lg:grid-cols-2 gap-10 items-center"
+                class="absolute inset-0 opacity-[0.03]"
+                style="
+                  background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+                "
+              ></div>
+
+              <div
+                class="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
               >
                 <div class="order-2 lg:order-1 space-y-6">
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-4">
                     <span
-                      class="px-3 py-1 text-xs font-semibold tracking-wide text-emerald-400 uppercase bg-emerald-400/10 border border-emerald-400/20 rounded-full"
+                      class="px-4 py-1.5 text-xs font-semibold tracking-wider text-emerald-300 uppercase bg-emerald-500/15 border border-emerald-500/30 rounded-full backdrop-blur-sm shadow-lg shadow-emerald-500/10"
                     >
                       AI Integrated
                     </span>
-                    <span class="text-white/40 text-sm font-mono">01</span>
+                    <span
+                      class="project-number text-emerald-400/60 text-lg font-mono font-bold"
+                      >01</span
+                    >
                   </div>
                   <h3
-                    class="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight"
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight"
                     style="font-family: 'Space Grotesk', sans-serif"
                   >
-                    Culinary AI
-                  </h3>
-                  <p class="text-white/70 text-sm sm:text-lg leading-relaxed">
-                    Revolutionary restaurant management integrating GPT-4 for
-                    automated voice ordering and real-time analytics.
-                  </p>
-                  <div class="flex flex-wrap gap-2 pt-2">
+                    Culinary
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"
+                      >AI</span
+                    >
+                  </h3>
+                  <p
+                    class="text-white/60 text-base sm:text-lg leading-relaxed max-w-lg"
+                  >
+                    Revolutionary restaurant management integrating GPT-4 for
+                    automated voice ordering and real-time analytics dashboard.
+                  </p>
+                  <div class="flex flex-wrap gap-3 pt-2">
+                    <span
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >React</span
                     >
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >Node.js</span
                     >
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >OpenAI API</span
                     >
                   </div>
                 </div>
 
-                <div class="order-1 lg:order-2 perspective-1000">
+                <div class="order-1 lg:order-2">
                   <div
-                    class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-black/50 group-hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
+                    class="project-preview relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-emerald-950/30 shadow-2xl shadow-emerald-900/20"
                   >
                     <div
-                      class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent"
+                      class="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-transparent to-transparent"
                     ></div>
                     <!-- Mockup Content -->
                     <div
-                      class="absolute inset-0 p-6 flex flex-col items-center justify-center text-center space-y-4"
+                      class="absolute inset-0 p-8 flex flex-col items-center justify-center text-center space-y-5"
                     >
                       <div
-                        class="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mb-2 animate-pulse"
+                        class="project-icon-float w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-emerald-500/10 flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-500/20"
                       >
                         <span
                           class="iconify text-emerald-400"
                           data-icon="lucide:bot"
-                          data-width="32"
+                          data-width="40"
                         ></span>
                       </div>
-                      <h4 class="text-white font-medium text-lg">
+                      <h4
+                        class="text-white font-semibold text-xl tracking-tight"
+                      >
                         AI Voice Assistant
                       </h4>
-                      <div class="w-3/4 h-2 bg-white/10 rounded-full"></div>
-                      <div class="w-1/2 h-2 bg-white/10 rounded-full"></div>
+                      <div class="w-full max-w-[200px] space-y-2">
+                        <div class="flex gap-2">
+                          <div
+                            class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden"
+                          >
+                            <div
+                              class="w-4/5 h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="flex gap-2">
+                          <div
+                            class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden"
+                          >
+                            <div
+                              class="w-3/5 h-full bg-gradient-to-r from-emerald-500/70 to-teal-500/70 rounded-full"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1074,47 +1405,81 @@
 
           <!-- Project 2: Ms-EventSphere -->
           <div
-            class="project-card sticky top-28 sm:top-36 w-full mb-20 sm:mb-32 group"
+            class="project-card sticky top-28 sm:top-36 w-full mb-24 sm:mb-40 group"
           >
+            <!-- Glow Effect -->
             <div
-              class="relative overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/10 p-8 sm:p-12 shadow-2xl transition-all duration-500 hover:shadow-cyan-900/20 hover:border-cyan-500/30"
+              class="project-glow"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  transparent 40%,
+                  rgba(6, 182, 212, 0.4) 50%,
+                  transparent 60%
+                );
+              "
+            ></div>
+
+            <div
+              class="project-card-inner relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f0f0f] to-[#080808] border border-white/10 p-8 sm:p-12 shadow-2xl"
             >
+              <!-- Shine Effect -->
+              <div class="project-shine"></div>
+
+              <!-- Ambient Background -->
               <div
-                class="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-transparent to-transparent opacity-50"
+                class="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-cyan-900/5 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100"
               ></div>
+
+              <!-- Decorative Grid Pattern -->
               <div
-                class="relative z-10 grid lg:grid-cols-2 gap-10 items-center"
+                class="absolute inset-0 opacity-[0.03]"
+                style="
+                  background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+                "
+              ></div>
+
+              <div
+                class="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
               >
                 <div class="order-2 lg:order-1 space-y-6">
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-4">
                     <span
-                      class="px-3 py-1 text-xs font-semibold tracking-wide text-cyan-400 uppercase bg-cyan-400/10 border border-cyan-400/20 rounded-full"
+                      class="px-4 py-1.5 text-xs font-semibold tracking-wider text-cyan-300 uppercase bg-cyan-500/15 border border-cyan-500/30 rounded-full backdrop-blur-sm shadow-lg shadow-cyan-500/10"
                     >
                       Full Stack
                     </span>
-                    <span class="text-white/40 text-sm font-mono">02</span>
+                    <span
+                      class="project-number text-cyan-400/60 text-lg font-mono font-bold"
+                      >02</span
+                    >
                   </div>
                   <h3
-                    class="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight"
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight"
                     style="font-family: 'Space Grotesk', sans-serif"
                   >
-                    Ms-EventSphere
+                    Ms-<span
+                      class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
+                      >EventSphere</span
+                    >
                   </h3>
-                  <p class="text-white/70 text-sm sm:text-lg leading-relaxed">
+                  <p
+                    class="text-white/60 text-base sm:text-lg leading-relaxed max-w-lg"
+                  >
                     Comprehensive event management platform with role-based
                     auth, ticketing, and admin workflows.
                   </p>
-                  <div class="flex flex-wrap gap-2 pt-2">
+                  <div class="flex flex-wrap gap-3 pt-2">
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >Next.js</span
                     >
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >MongoDB</span
                     >
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >Tailwind</span
                     >
                   </div>
@@ -1122,21 +1487,26 @@
                     <a
                       href="https://ms-eventsphere-o175xb820-muhammad-shawaizs-projects-658e206e.vercel.app/"
                       target="_blank"
-                      class="group/btn flex items-center gap-2 px-6 py-3 bg-cyan-500 text-black text-sm font-bold rounded-full hover:bg-cyan-400 transition-all hover:scale-105"
+                      class="group/btn relative flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-cyan-400 text-black text-sm font-bold rounded-full shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 hover:scale-105 overflow-hidden"
                     >
-                      View Live
-                      <span
-                        class="iconify transition-transform group-hover/btn:translate-x-1"
-                        data-icon="lucide:arrow-right"
-                      ></span>
+                      <span class="relative z-10 flex items-center gap-2">
+                        View Live
+                        <span
+                          class="iconify transition-transform group-hover/btn:translate-x-1"
+                          data-icon="lucide:arrow-right"
+                        ></span>
+                      </span>
+                      <div
+                        class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"
+                      ></div>
                     </a>
                     <a
                       href="https://github.com/Shawaiz555/ms-eventsphere"
                       target="_blank"
-                      class="p-3 rounded-full border border-white/10 text-white hover:bg-white/5 hover:border-white/20 transition-all"
+                      class="group/gh p-3.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 shadow-lg"
                     >
                       <span
-                        class="iconify"
+                        class="iconify transition-transform group-hover/gh:scale-110"
                         data-icon="lucide:github"
                         data-width="20"
                       ></span>
@@ -1144,22 +1514,37 @@
                   </div>
                 </div>
 
-                <div class="order-1 lg:order-2 perspective-1000">
+                <div class="order-1 lg:order-2">
                   <div
-                    class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-black/50 group-hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
+                    class="project-preview relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-cyan-950/30 shadow-2xl shadow-cyan-900/20"
                   >
                     <div
-                      class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent"
+                      class="absolute inset-0 bg-gradient-to-br from-cyan-500/15 via-transparent to-transparent"
                     ></div>
                     <div
-                      class="absolute inset-0 flex items-center justify-center"
+                      class="absolute inset-0 flex flex-col items-center justify-center space-y-4"
                     >
                       <div
-                        class="w-32 h-20 border border-cyan-500/30 bg-cyan-500/10 rounded flex items-center justify-center"
+                        class="project-icon-float w-40 h-24 border-2 border-cyan-500/40 bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 rounded-xl flex flex-col items-center justify-center shadow-lg shadow-cyan-500/20 backdrop-blur-sm"
+                        style="animation-delay: 1s"
                       >
-                        <span class="text-cyan-400 font-mono text-xs"
+                        <span
+                          class="iconify text-cyan-400 mb-2"
+                          data-icon="lucide:ticket"
+                          data-width="28"
+                        ></span>
+                        <span
+                          class="text-cyan-300 font-semibold text-sm tracking-wide"
                           >Event Ticket</span
                         >
+                        <div class="flex gap-1 mt-2">
+                          <div
+                            class="w-8 h-1 bg-cyan-500/40 rounded-full"
+                          ></div>
+                          <div
+                            class="w-4 h-1 bg-cyan-500/40 rounded-full"
+                          ></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1170,47 +1555,81 @@
 
           <!-- Project 3: PharmaCare -->
           <div
-            class="project-card sticky top-32 sm:top-44 w-full mb-20 sm:mb-32 group"
+            class="project-card sticky top-32 sm:top-44 w-full mb-24 sm:mb-40 group"
           >
+            <!-- Glow Effect -->
             <div
-              class="relative overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/10 p-8 sm:p-12 shadow-2xl transition-all duration-500 hover:shadow-purple-900/20 hover:border-purple-500/30"
+              class="project-glow"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  transparent 40%,
+                  rgba(168, 85, 247, 0.4) 50%,
+                  transparent 60%
+                );
+              "
+            ></div>
+
+            <div
+              class="project-card-inner relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f0f0f] to-[#080808] border border-white/10 p-8 sm:p-12 shadow-2xl"
             >
+              <!-- Shine Effect -->
+              <div class="project-shine"></div>
+
+              <!-- Ambient Background -->
               <div
-                class="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-transparent opacity-50"
+                class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-purple-900/5 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100"
               ></div>
+
+              <!-- Decorative Grid Pattern -->
               <div
-                class="relative z-10 grid lg:grid-cols-2 gap-10 items-center"
+                class="absolute inset-0 opacity-[0.03]"
+                style="
+                  background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+                "
+              ></div>
+
+              <div
+                class="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
               >
                 <div class="order-2 lg:order-1 space-y-6">
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-4">
                     <span
-                      class="px-3 py-1 text-xs font-semibold tracking-wide text-purple-400 uppercase bg-purple-400/10 border border-purple-400/20 rounded-full"
+                      class="px-4 py-1.5 text-xs font-semibold tracking-wider text-purple-300 uppercase bg-purple-500/15 border border-purple-500/30 rounded-full backdrop-blur-sm shadow-lg shadow-purple-500/10"
                     >
                       Desktop App
                     </span>
-                    <span class="text-white/40 text-sm font-mono">03</span>
+                    <span
+                      class="project-number text-purple-400/60 text-lg font-mono font-bold"
+                      >03</span
+                    >
                   </div>
                   <h3
-                    class="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight"
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight"
                     style="font-family: 'Space Grotesk', sans-serif"
                   >
-                    PharmaCare
+                    Pharma<span
+                      class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                      >Care</span
+                    >
                   </h3>
-                  <p class="text-white/70 text-sm sm:text-lg leading-relaxed">
+                  <p
+                    class="text-white/60 text-base sm:text-lg leading-relaxed max-w-lg"
+                  >
                     Robust desktop application for pharmacy management, sales
                     tracking, and automated billing.
                   </p>
-                  <div class="flex flex-wrap gap-2 pt-2">
+                  <div class="flex flex-wrap gap-3 pt-2">
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >C#</span
                     >
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >.NET</span
                     >
                     <span
-                      class="px-3 py-1.5 text-xs text-white/60 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
+                      class="tech-pill px-4 py-2 text-xs text-white/70 rounded-lg font-medium"
                       >SQL</span
                     >
                   </div>
@@ -1218,10 +1637,10 @@
                     <a
                       href="https://github.com/Shawaiz555/Pharmacy_Project"
                       target="_blank"
-                      class="p-3 rounded-full border border-white/10 text-white hover:bg-white/5 hover:border-white/20 transition-all"
+                      class="group/gh p-3.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-purple-500/30 transition-all duration-300 shadow-lg"
                     >
                       <span
-                        class="iconify"
+                        class="iconify transition-transform group-hover/gh:scale-110"
                         data-icon="lucide:github"
                         data-width="20"
                       ></span>
@@ -1229,21 +1648,39 @@
                   </div>
                 </div>
 
-                <div class="order-1 lg:order-2 perspective-1000">
+                <div class="order-1 lg:order-2">
                   <div
-                    class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-black/50 group-hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
+                    class="project-preview relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-purple-950/30 shadow-2xl shadow-purple-900/20"
                   >
                     <div
-                      class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent"
+                      class="absolute inset-0 bg-gradient-to-br from-purple-500/15 via-transparent to-transparent"
                     ></div>
                     <div
-                      class="absolute inset-0 flex items-center justify-center"
+                      class="absolute inset-0 flex flex-col items-center justify-center space-y-4"
                     >
-                      <span
-                        class="iconify text-purple-500/50"
-                        data-icon="lucide:database"
-                        data-width="64"
-                      ></span>
+                      <div
+                        class="project-icon-float w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500/30 to-purple-500/10 flex items-center justify-center shadow-lg shadow-purple-500/20 border border-purple-500/20"
+                        style="animation-delay: 2s"
+                      >
+                        <span
+                          class="iconify text-purple-400"
+                          data-icon="lucide:database"
+                          data-width="48"
+                        ></span>
+                      </div>
+                      <div class="flex gap-3 mt-4">
+                        <div
+                          class="w-3 h-3 rounded-full bg-purple-500/40 animate-pulse"
+                        ></div>
+                        <div
+                          class="w-3 h-3 rounded-full bg-purple-400/40 animate-pulse"
+                          style="animation-delay: 0.3s"
+                        ></div>
+                        <div
+                          class="w-3 h-3 rounded-full bg-purple-300/40 animate-pulse"
+                          style="animation-delay: 0.6s"
+                        ></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1252,17 +1689,17 @@
           </div>
         </div>
 
-        <div class="text-center mt-20 sm:mt-32">
+        <div class="text-center mt-24 sm:mt-40">
           <a
             href="https://github.com/Shawaiz555"
             target="_blank"
-            class="magnetic-btn inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-all hover:scale-105 group"
+            class="btn-glow magnetic-btn group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-white/5 to-white/10 border border-white/20 rounded-full text-base font-semibold hover:border-emerald-500/40 transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-emerald-500/10"
           >
-            View Complete Portfolio
+            <span class="relative z-10">View Complete Portfolio</span>
             <span
-              class="iconify group-hover:translate-x-1 transition-transform"
+              class="iconify relative z-10 transition-transform group-hover:translate-x-2"
               data-icon="lucide:arrow-right"
-              data-width="16"
+              data-width="18"
             ></span>
           </a>
         </div>
@@ -2082,20 +2519,22 @@
         });
       });
 
-      // Card Stacking Animation
+      // Card Stacking Animation - Optimized for Performance
       const projectCards = gsap.utils.toArray(".project-card");
+
       projectCards.forEach((card, i) => {
+        // Stacking effect - simplified for smooth performance
         const nextCard = projectCards[i + 1];
         if (nextCard) {
           gsap.to(card, {
-            scale: 0.97,
-            opacity: 0.7, // Increased opacity for better visibility
-            ease: "power2.out", // Smoother easing
+            scale: 0.96,
+            opacity: 0.6,
+            ease: "none",
             scrollTrigger: {
               trigger: nextCard,
               start: "top bottom",
-              end: "top 20%",
-              scrub: 1, // Adds lag for buttery smoothness
+              end: "top 25%",
+              scrub: 0.5, // Lower value = more responsive
             },
           });
         }
