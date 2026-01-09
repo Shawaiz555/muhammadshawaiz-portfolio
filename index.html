@@ -1482,7 +1482,7 @@
 
           <!-- Project 1: Ms-EventSphere -->
           <div
-            class="project-card relative lg:sticky lg:top-36 w-full mb-24 sm:mb-40 group scroll-reveal"
+            class="project-card relative lg:sticky lg:top-36 w-full mb-24 sm:mb-40 group"
           >
             <!-- Glow Effect -->
             <div
@@ -1632,7 +1632,7 @@
 
           <!-- Project 2: Culinary AI -->
           <div
-            class="project-card relative lg:sticky lg:top-28 w-full mb-24 sm:mb-40 group scroll-reveal"
+            class="project-card relative lg:sticky lg:top-28 w-full mb-24 sm:mb-40 group"
           >
             <!-- Glow Effect -->
             <div
@@ -1767,7 +1767,7 @@
 
           <!-- Project 3: PharmaCare -->
           <div
-            class="project-card relative lg:sticky lg:top-44 w-full mb-24 sm:mb-40 group scroll-reveal"
+            class="project-card relative lg:sticky lg:top-44 w-full mb-24 sm:mb-40 group"
           >
             <!-- Glow Effect -->
             <div
@@ -2734,25 +2734,94 @@
         once: true, // Only animate once for better performance
       });
 
-      // Card Stacking Animation - Optimized for Performance
+      // Card Stacking & Mobile Animations - Optimized
       const projectCards = gsap.utils.toArray(".project-card");
 
-      projectCards.forEach((card, i) => {
-        // Stacking effect - simplified for smooth performance
-        const nextCard = projectCards[i + 1];
-        if (nextCard) {
-          gsap.to(card, {
-            scale: 0.96,
-            opacity: 0.6,
-            ease: "none",
-            scrollTrigger: {
-              trigger: nextCard,
-              start: "top bottom",
-              end: "top 25%",
-              scrub: 0.5, // Lower value = more responsive
-            },
+      ScrollTrigger.matchMedia({
+        // Desktop: Stacking Effect
+        "(min-width: 1024px)": function () {
+          projectCards.forEach((card, i) => {
+            const nextCard = projectCards[i + 1];
+            if (nextCard) {
+              gsap.to(card, {
+                scale: 0.96,
+                opacity: 0.6,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: nextCard,
+                  start: "top bottom",
+                  end: "top 25%",
+                  scrub: 0.5,
+                },
+              });
+            }
           });
-        }
+        },
+
+        // Mobile/Tablet: Focus Effect (Simulate Hover)
+        "(max-width: 1023px)": function () {
+          projectCards.forEach((card) => {
+            const inner = card.querySelector(".project-card-inner");
+            const glow = card.querySelector(".project-glow");
+            const shine = card.querySelector(".project-shine");
+
+            // 1. Fade Up & Scale In (Entrance)
+            gsap.fromTo(
+              card,
+              { opacity: 0, scale: 0.9, y: 50 },
+              {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 0.6,
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 85%",
+                  end: "top 60%",
+                  scrub: 0.5,
+                },
+              }
+            );
+
+            // 2. Active State (Simulate Hover) when Centered
+            const activeTl = gsap.timeline({
+              scrollTrigger: {
+                trigger: card,
+                start: "top 60%", // Starts when card is near center
+                end: "bottom 40%", // Ends when card leaves center
+                toggleActions: "play reverse play reverse",
+              },
+            });
+
+            activeTl
+              .to(
+                inner,
+                {
+                  y: -5,
+                  rotateX: 2,
+                  borderColor: "rgba(16, 185, 129, 0.3)", // Emerald hint
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+                  duration: 0.4,
+                  ease: "power2.out",
+                },
+                0
+              )
+              .to(
+                glow,
+                {
+                  opacity: 1,
+                  duration: 0.4,
+                },
+                0
+              )
+              .fromTo(
+                shine,
+                { x: "-100%" },
+                { x: "100%", duration: 1.5, ease: "power2.inOut" },
+                0 // Play shine immediately on focus
+              );
+          });
+        },
       });
 
       // Parallax Effect for Floating Cards
