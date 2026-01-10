@@ -606,7 +606,7 @@
       ></div>
 
       <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-20 w-full relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="grid lg:grid-cols-2 gap-4 sm:gap-12 items-center">
           <!-- Left Content: Typography -->
           <div class="order-2 lg:order-1 relative">
             <div
@@ -3312,13 +3312,33 @@
 
           camera.position.z = 22;
 
-          // Mouse Interaction
+          // Interaction (Mouse & Touch)
           let mouseX = 0;
           let mouseY = 0;
-          if (canvasId === "skills-3d") { // Only desktop tracks full window
+
+          if (canvasId === "skills-3d") {
+             // Desktop: Window-based parallax
              document.addEventListener("mousemove", (e) => {
                  mouseX = ( e.clientX / window.innerWidth ) * 2 - 1;
                  mouseY = - ( e.clientY / window.innerHeight ) * 2 + 1;
+             });
+          } else {
+             // Mobile: Touch-based interaction
+             canvas.addEventListener("touchmove", (e) => {
+                 // Prevent default only if horizontal scroll to avoid blocking vertical page scroll too much?
+                 // Or just let it be loose. "moveable" usually implies dragging.
+                 // let's try not preventing default first to see if it's smoother for scrolling, 
+                 // but might need it if they want to 'spin' it.
+                 // Actually, for a nice effect, let's track touch relative to canvas.
+                 const rect = canvas.getBoundingClientRect();
+                 const touch = e.touches[0];
+                 mouseX = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+                 mouseY = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+             }, { passive: true });
+             
+             canvas.addEventListener("touchend", () => {
+                 mouseX = 0;
+                 mouseY = 0;
              });
           }
 
@@ -3340,12 +3360,10 @@
             particlesMesh.rotation.y -= 0.0005;
 
             // Interactive rotation
-            if (canvasId === "skills-3d") {
-                 const targetRotY = mouseX * 0.5;
-                 const targetRotX = mouseY * 0.5;
-                 group.rotation.y += (targetRotY - group.rotation.y) * 0.05; // Smoother tracking
-                 group.rotation.x += (targetRotX - group.rotation.x) * 0.05;
-            }
+            const targetRotY = mouseX * 0.8; // Increased sensitivity
+            const targetRotX = mouseY * 0.8;
+            group.rotation.y += (targetRotY - group.rotation.y) * 0.05;
+            group.rotation.x += (targetRotX - group.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
           };
