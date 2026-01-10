@@ -881,7 +881,7 @@
         ></div>
       </div>
 
-      <div class="max-w-7xl mx-auto relative">
+      <div class="max-w-8xl mx-auto relative">
         <!-- Section Header -->
         <div class="text-center mb-16 sm:mb-20 scroll-reveal">
           <span
@@ -1164,272 +1164,264 @@
       id="skills"
       class="relative z-10 py-24 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-16 bg-black/50 overflow-hidden"
     >
-      <div class="max-w-8xl mx-auto">
+      <!-- Background Elements -->
+      <div class="absolute inset-0 pointer-events-none">
         <div
-          class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6 scroll-reveal"
-        >
-          <div>
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[120px]"
+        ></div>
+      </div>
+
+      <div class="max-w-8xl mx-auto relative z-10">
+        <!-- Section Header (Centered) -->
+        <div class="text-center mb-12 sm:mb-20 scroll-reveal">
+          <span
+            class="inline-block text-xs tracking-[0.3em] uppercase text-emerald-400 mb-4 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full"
+          >
+            Tech Ecosystem
+          </span>
+          <h2
+            class="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-6"
+            style="font-family: 'Space Grotesk', sans-serif"
+          >
+            My Technical
             <span
-              class="text-xs tracking-widest uppercase text-cyan-400 mb-3 block"
-              >Tech Stack</span
+              class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent animate-gradient-text"
             >
-            <h2
-              class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter"
-              style="font-family: 'Space Grotesk', sans-serif"
-            >
-              My
-              <span
-                class="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent"
-                >Technical Skills</span
-              >
-            </h2>
-          </div>
-          <p class="text-white/50 max-w-sm text-sm sm:text-base">
-            A comprehensive ecosystem of technologies I use to build scalable,
-            high-performance web applications.
+              Skills
+            </span>
+          </h2>
+          <p class="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed">
+            A comprehensive arsenal of modern technologies I leverage to build
+            scalable, high-performance, and beautiful web applications.
           </p>
         </div>
 
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
-        >
-          <!-- Main Block: React -->
+        <!-- Mobile View - Standard Grid (Visible only on small screens) -->
+        <div class="block lg:hidden mb-16">
+          <!-- 3D Canvas Mobile -->
           <div
-            class="card-spotlight md:col-span-2 md:row-span-2 p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-colors duration-500 group relative overflow-hidden scroll-reveal-card"
+            class="relative w-full h-[300px] mb-8 flex items-center justify-center"
           >
-            <div
-              class="absolute top-0 right-0 p-32 bg-cyan-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity opacity-50 group-hover:opacity-100"
-            ></div>
-            <div class="relative z-10 h-full flex flex-col justify-between">
-              <div class="mb-8">
-                <div
-                  class="inline-flex p-3 rounded-xl bg-cyan-500/20 text-cyan-400 mb-6 shadow-lg shadow-cyan-500/10"
-                >
-                  <span
-                    class="iconify"
-                    data-icon="lucide:atom"
-                    data-width="32"
-                    style="stroke-width: 1.5"
-                  ></span>
-                </div>
-                <h3
-                  class="text-2xl sm:text-3xl font-semibold tracking-tight mb-2"
-                  style="font-family: 'Space Grotesk', sans-serif"
-                >
-                  Modern Frontend
-                </h3>
-                <p class="text-white/50 text-sm">
-                  Component-driven architecture with state-of-the-art rendering
-                  strategies.
-                </p>
-              </div>
-              <div class="grid grid-cols-2 gap-4">
-                <div
-                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors group/item"
-                >
-                  <span
-                    class="iconify text-cyan-400 group-hover/item:scale-110 transition-transform"
-                    data-icon="lucide:zap"
-                    data-width="20"
-                  ></span>
-                  <span class="font-medium">React.js</span>
-                </div>
-                <div
-                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors group/item"
-                >
-                  <span
-                    class="iconify text-white group-hover/item:scale-110 transition-transform"
-                    data-icon="lucide:triangle"
-                    data-width="20"
-                  ></span>
-                  <span class="font-medium">Next.js</span>
-                </div>
-                <div
-                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors group/item"
-                >
-                  <span
-                    class="iconify text-blue-400 group-hover/item:scale-110 transition-transform"
-                    data-icon="lucide:file-code"
-                    data-width="20"
-                  ></span>
-                  <span class="font-medium">TypeScript</span>
-                </div>
-                <div
-                  class="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center gap-3 hover:bg-white/5 transition-colors group/item"
-                >
-                  <span
-                    class="iconify text-teal-400 group-hover/item:scale-110 transition-transform"
-                    data-icon="lucide:paint-brush"
-                    data-width="20"
-                  ></span>
-                  <span class="font-medium">Tailwind CSS</span>
-                </div>
-              </div>
-            </div>
+            <canvas
+              id="skills-3d-mobile"
+              class="w-full h-full max-w-sm"
+            ></canvas>
           </div>
 
-          <!-- Backend Block -->
-          <div
-            class="card-spotlight md:col-span-1 md:row-span-2 p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-colors duration-500 group relative overflow-hidden scroll-reveal-card delay-100"
-          >
+          <!-- Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
+            <!-- Frontend Mobile -->
             <div
-              class="absolute bottom-0 left-0 p-24 bg-emerald-500/10 rounded-full blur-3xl -ml-12 -mb-12 transition-opacity opacity-50 group-hover:opacity-100"
-            ></div>
-            <div class="relative z-10 h-full flex flex-col">
-              <div
-                class="inline-flex p-3 rounded-xl bg-emerald-500/20 text-emerald-400 mb-6 w-fit shadow-lg shadow-emerald-500/10"
-              >
+              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+            >
+              <div class="flex items-center gap-3 mb-4">
                 <span
-                  class="iconify"
+                  class="iconify text-cyan-400 text-2xl"
+                  data-icon="lucide:layout-template"
+                ></span>
+                <h3 class="text-xl font-bold font-space">Frontend</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >React</span
+                >
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Next.js</span
+                >
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >TypeScript</span
+                >
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Tailwind</span
+                >
+              </div>
+            </div>
+            <!-- Backend Mobile -->
+            <div
+              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="iconify text-emerald-400 text-2xl"
                   data-icon="lucide:server"
-                  data-width="28"
-                  style="stroke-width: 1.5"
                 ></span>
+                <h3 class="text-xl font-bold font-space">Backend</h3>
               </div>
-              <h3
-                class="text-xl sm:text-2xl font-semibold tracking-tight mb-2"
-                style="font-family: 'Space Grotesk', sans-serif"
-              >
-                Backend Core
-              </h3>
-              <p class="text-white/50 text-sm mb-6">
-                Robust server-side logic and API development.
-              </p>
-              <div class="flex-1 flex flex-col gap-3">
-                <div
-                  class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item"
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Node.js</span
                 >
-                  <div class="flex justify-between items-center mb-1">
-                    <span class="font-medium text-sm">Node.js</span>
-                    <span
-                      class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                      data-icon="lucide:check"
-                      data-width="14"
-                    ></span>
-                  </div>
-                  <div
-                    class="w-full h-1 bg-white/10 rounded-full overflow-hidden"
-                  >
-                    <div
-                      class="w-[90%] h-full bg-emerald-500 rounded-full"
-                    ></div>
-                  </div>
-                </div>
-                <div
-                  class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item"
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Express</span
                 >
-                  <div class="flex justify-between items-center mb-1">
-                    <span class="font-medium text-sm">Express.js</span>
-                    <span
-                      class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                      data-icon="lucide:check"
-                      data-width="14"
-                    ></span>
-                  </div>
-                  <div
-                    class="w-full h-1 bg-white/10 rounded-full overflow-hidden"
-                  >
-                    <div
-                      class="w-[85%] h-full bg-emerald-500 rounded-full"
-                    ></div>
-                  </div>
-                </div>
-                <div
-                  class="p-3 rounded-lg border border-white/5 hover:border-emerald-500/30 bg-black/20 transition-all group/item"
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Python</span
                 >
-                  <div class="flex justify-between items-center mb-1">
-                    <span class="font-medium text-sm">Python</span>
-                    <span
-                      class="iconify text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                      data-icon="lucide:check"
-                      data-width="14"
-                    ></span>
-                  </div>
-                  <div
-                    class="w-full h-1 bg-white/10 rounded-full overflow-hidden"
-                  >
-                    <div
-                      class="w-[75%] h-full bg-emerald-500 rounded-full"
-                    ></div>
-                  </div>
-                </div>
               </div>
             </div>
-          </div>
-
-          <!-- Database Block -->
-          <div
-            class="card-spotlight lg:col-span-1 p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-blue-500/30 transition-colors duration-500 group scroll-reveal-card delay-200"
-          >
-            <div class="flex items-center gap-4 mb-4">
-              <div
-                class="p-2.5 rounded-lg bg-blue-500/20 text-blue-400 shadow-lg shadow-blue-500/10"
-              >
+            <!-- Database Mobile -->
+            <div
+              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+            >
+              <div class="flex items-center gap-3 mb-4">
                 <span
-                  class="iconify"
+                  class="iconify text-blue-400 text-2xl"
                   data-icon="lucide:database"
-                  data-width="24"
-                  style="stroke-width: 1.5"
                 ></span>
+                <h3 class="text-xl font-bold font-space">Database</h3>
               </div>
-              <h3
-                class="text-lg font-semibold"
-                style="font-family: 'Space Grotesk', sans-serif"
-              >
-                Database
-              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >MongoDB</span
+                >
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >PostgreSQL</span
+                >
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Supabase</span
+                >
+              </div>
             </div>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-xs bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full hover:bg-blue-500/20 transition-colors cursor-default"
-                >MongoDB</span
-              >
-              <span
-                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full hover:bg-white/10 transition-colors cursor-default"
-                >MySQL</span
-              >
-              <span
-                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full hover:bg-white/10 transition-colors cursor-default"
-                >Supabase</span
-              >
+            <!-- Tools Mobile -->
+            <div
+              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="iconify text-purple-400 text-2xl"
+                  data-icon="lucide:wrench"
+                ></span>
+                <h3 class="text-xl font-bold font-space">Tools</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Git</span
+                >
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Figma</span
+                >
+                <span class="px-2 py-1 bg-white/5 rounded text-sm text-white/70"
+                  >Three.js</span
+                >
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Tools Block -->
+       <!-- Desktop View - Planetary Orbit System (Visible on lg+) -->
+        <div
+          id="orbit-system"
+          class="hidden lg:flex relative w-full h-[700px] items-center justify-center"
+        >
+          <!-- Central Sphere Container -->
+          <div class="absolute inset-0 flex items-center justify-center z-10">
+            <canvas
+              id="skills-3d"
+              class="w-full h-full max-w-4xl opacity-100 pointer-events-auto"
+            ></canvas>
+          </div>
+          <!-- Decorative Rings -->
           <div
-            class="card-spotlight lg:col-span-1 p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-colors duration-500 group scroll-reveal-card delay-300"
-          >
-            <div class="flex items-center gap-4 mb-4">
-              <div
-                class="p-2.5 rounded-lg bg-purple-500/20 text-purple-400 shadow-lg shadow-purple-500/10"
-              >
-                <span
-                  class="iconify"
-                  data-icon="lucide:wrench"
-                  data-width="24"
-                  style="stroke-width: 1.5"
-                ></span>
-              </div>
-              <h3
-                class="text-lg font-semibold"
-                style="font-family: 'Space Grotesk', sans-serif"
-              >
-                Tools
-              </h3>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-xs bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full hover:bg-purple-500/20 transition-colors cursor-default"
-                >Git/GitHub</span
-              >
-              <span
-                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full hover:bg-white/10 transition-colors cursor-default"
-                >VS Code</span
-              >
-              <span
-                class="px-3 py-1.5 text-xs bg-white/5 text-white/60 border border-white/10 rounded-full hover:bg-white/10 transition-colors cursor-default"
-                >Postman</span
-              >
+            class="absolute w-[600px] h-[600px] rounded-full border border-white/5 animate-[spin-slow_30s_linear_infinite] pointer-events-none z-0"
+          ></div>
+
+             <!-- Planet: Frontend (Orbit A: Bottom-Left to Top-Right) -->
+             <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="280" data-speed="0.005" data-angle="0" data-orbit-type="A">
+                 <div class="relative group cursor-pointer">
+                      <!-- Card Container -->
+                      <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-cyan-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] overflow-hidden">
+                          
+                           <!-- Icon -->
+                           <div class="absolute transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-x-[100px] group-hover:-translate-y-[50px] group-hover:scale-75">
+                                <span class="iconify text-cyan-400 text-3xl" data-icon="lucide:layout-template"></span>
+                           </div>
+
+                           <!-- Expanded Content -->
+                           <div class="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 w-full p-6 pl-8">
+                               <div class="flex items-center gap-3 mb-2 translate-x-8">
+                                   <h3 class="text-xl font-bold font-space text-white">Frontend</h3>
+                               </div>
+                               <p class="text-xs text-white/50 mb-4 leading-relaxed">Crafting responsive, interactive, and pixel-perfect user experiences.</p>
+                               <div class="flex flex-wrap gap-2">
+                                   <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs rounded-lg">React</span>
+                                   <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs rounded-lg">Next.js</span>
+                                   <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs rounded-lg">TypeScript</span>
+                                   <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs rounded-lg">Tailwind</span>
+                                   <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs rounded-lg">Framer</span>
+                               </div>
+                           </div>
+                      </div>
+                 </div>
+             </div>
+
+              <!-- Planet: Backend (Orbit B: Top-Left to Bottom-Right) -->
+             <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="320" data-speed="0.006" data-angle="2" data-orbit-type="B">
+                 <div class="relative group cursor-pointer">
+                      <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-emerald-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-emerald-500/50 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] overflow-hidden">
+                           <div class="absolute transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-x-[100px] group-hover:-translate-y-[50px] group-hover:scale-75">
+                                <span class="iconify text-emerald-400 text-3xl" data-icon="lucide:server"></span>
+                           </div>
+                           <div class="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 w-full p-6 pl-8">
+                               <div class="flex items-center gap-3 mb-2 translate-x-8">
+                                   <h3 class="text-xl font-bold font-space text-white">Backend</h3>
+                               </div>
+                               <p class="text-xs text-white/50 mb-4 leading-relaxed">Architecting scalable servers and efficient API systems.</p>
+                               <div class="flex flex-wrap gap-2">
+                                   <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs rounded-lg">Node.js</span>
+                                   <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs rounded-lg">Express</span>
+                                   <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs rounded-lg">Python</span>
+                                   <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs rounded-lg">FastAPI</span>
+                               </div>
+                           </div>
+                      </div>
+                 </div>
+             </div>
+
+              <!-- Planet: Database (Orbit A: Opposite side) -->
+             <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="260" data-speed="0.0055" data-angle="4" data-orbit-type="A">
+                 <div class="relative group cursor-pointer">
+                      <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-blue-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-blue-500/50 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] overflow-hidden">
+                           <div class="absolute transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-x-[100px] group-hover:-translate-y-[50px] group-hover:scale-75">
+                                <span class="iconify text-blue-400 text-3xl" data-icon="lucide:database"></span>
+                           </div>
+                           <div class="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 w-full p-6 pl-8">
+                               <div class="flex items-center gap-3 mb-2 translate-x-8">
+                                   <h3 class="text-xl font-bold font-space text-white">Database</h3>
+                               </div>
+                               <p class="text-xs text-white/50 mb-4 leading-relaxed">Ensuring data integrity, performance, and reliability.</p>
+                               <div class="flex flex-wrap gap-2">
+                                   <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs rounded-lg">MongoDB</span>
+                                   <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs rounded-lg">Postgres</span>
+                                   <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs rounded-lg">Prisma</span>
+                                   <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs rounded-lg">Supabase</span>
+                               </div>
+                           </div>
+                      </div>
+                 </div>
+             </div>
+
+              <!-- Planet: Tools (Orbit B: Opposite side) -->
+             <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="340" data-speed="0.0065" data-angle="5.5" data-orbit-type="B">
+                 <div class="relative group cursor-pointer">
+                      <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-purple-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-purple-500/50 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] overflow-hidden">
+                           <div class="absolute transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-x-[100px] group-hover:-translate-y-[50px] group-hover:scale-75">
+                                <span class="iconify text-purple-400 text-3xl" data-icon="lucide:wrench"></span>
+                           </div>
+                           <div class="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 w-full p-6 pl-8">
+                               <div class="flex items-center gap-3 mb-2 translate-x-8">
+                                   <h3 class="text-xl font-bold font-space text-white">DevOps & Tools</h3>
+                               </div>
+                               <p class="text-xs text-white/50 mb-4 leading-relaxed">Streamlining workflows and optimizing deployment.</p>
+                               <div class="flex flex-wrap gap-2">
+                                   <span class="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs rounded-lg">Git</span>
+                                   <span class="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs rounded-lg">Docker</span>
+                                   <span class="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs rounded-lg">AWS</span>
+                                   <span class="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs rounded-lg">Figma</span>
+                               </div>
+                           </div>
+                      </div>
+                 </div>
+             </div>
             </div>
           </div>
         </div>
@@ -2973,6 +2965,448 @@
 
           aboutRenderer.render(aboutScene, aboutCamera);
         })();
+      }
+    </script>
+    <script>
+      // 7. Skills 3D Sphere Animation - OLD REMOVED
+      const skillsCanvasOld = null;
+      if (false) {
+        const skillsScene = new THREE.Scene();
+        const skillsCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        const skillsRenderer = new THREE.WebGLRenderer({
+          canvas: skillsCanvas,
+          alpha: true,
+          antialias: true,
+        });
+
+        // Resize observer
+        const updateSkillsSize = () => {
+          const container = skillsCanvas.parentElement;
+          skillsRenderer.setSize(container.clientWidth, container.clientHeight);
+          skillsCamera.aspect = container.clientWidth / container.clientHeight;
+          skillsCamera.updateProjectionMatrix();
+        };
+        updateSkillsSize();
+        window.addEventListener("resize", updateSkillsSize);
+
+        // Skills Data
+        const skills = [
+          "React",
+          "Next.js",
+          "Node.js",
+          "MongoDB",
+          "Express",
+          "MySql",
+          "Python",
+          "Tailwind",
+          "Three.js",
+          "GSAP",
+          "Redux",
+          "TypeScript",
+          "Git",
+          "Figma",
+          "AWS",
+        ];
+
+        // Group to hold all sprites
+        const sphereGroup = new THREE.Group();
+        skillsScene.add(sphereGroup);
+
+        // Helper to create text sprite
+        function createTextSprite(text) {
+          const fontface = "Space Grotesk";
+          const fontsize = 40;
+          const borderThickness = 4;
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.width = 512;
+          canvas.height = 256;
+
+          // Text styling
+          context.font = "bold " + fontsize + "px " + fontface;
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+
+          // Gradient Text
+          const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+          gradient.addColorStop(0, "#34d399"); // emerald-400
+          gradient.addColorStop(0.5, "#22d3ee"); // cyan-400
+          gradient.addColorStop(1, "#34d399"); // emerald-400
+
+          context.fillStyle = gradient;
+          context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+          // Glow effect
+          context.shadowColor = "rgba(45, 212, 191, 0.5)";
+          context.shadowBlur = 10;
+          context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+          const texture = new THREE.CanvasTexture(canvas);
+          const material = new THREE.SpriteMaterial({ map: texture });
+          const sprite = new THREE.Sprite(material);
+          sprite.scale.set(4, 2, 1); // Aspect ratio
+          return sprite;
+        }
+
+        // Fibonnaci Sphere Distribution
+        const radius = 5;
+        const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+
+        skills.forEach((skill, i) => {
+          const y = 1 - (i / (skills.length - 1)) * 2; // y goes from 1 to -1
+          const radiusAtY = Math.sqrt(1 - y * y); // radius at y
+          const theta = phi * i; // Golden angle increment
+
+          const x = Math.cos(theta) * radiusAtY;
+          const z = Math.sin(theta) * radiusAtY;
+
+          const sprite = createTextSprite(skill);
+          sprite.position.set(x * radius, y * radius, z * radius);
+          sphereGroup.add(sprite);
+        });
+
+        skillsCamera.position.z = 11;
+
+        // Interaction
+        let mouseX = 0;
+        let mouseY = 0;
+
+        // Use window mouse move for broader interaction
+        document.addEventListener("mousemove", (e) => {
+          const rect = skillsCanvas.getBoundingClientRect();
+          // Only affect if mouse is relatively close or just general ambient move
+          // Let's settle for simple normalized window coordinates for smoother feel
+          mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+          mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Anim Loop
+        function animateSkills() {
+          requestAnimationFrame(animateSkills);
+
+          // Continuous rotation
+          sphereGroup.rotation.y += 0.003;
+          sphereGroup.rotation.x += 0.001;
+
+          // Mouse influence (gentle)
+          sphereGroup.rotation.y += mouseX * 0.02;
+          sphereGroup.rotation.x -= mouseY * 0.02;
+
+          skillsRenderer.render(skillsScene, skillsCamera);
+        }
+        animateSkills();
+      }
+    </script>
+    <script>
+      // 7. Skills System (3D Sphere + Planetary Orbit)
+
+      // Reusable Sphere Initialization Function (Enhanced Visuals)
+      const initInfoSphere = (canvasId, radius = 9) => {
+          const canvas = document.getElementById(canvasId);
+          if (!canvas) return;
+
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
+          const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: true,
+            antialias: true,
+          });
+
+          // Resize
+          const updateSize = () => {
+            const container = canvas.parentElement;
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+          };
+          updateSize();
+          window.addEventListener("resize", updateSize);
+
+          // Data
+          const skills = [
+            "React", "Next.js", "Node.js", "MongoDB", "Express",
+            "MySql", "Python", "Tailwind", "Three.js", "GSAP",
+            "Redux", "TypeScript", "Git", "Figma", "AWS",
+            "Vercel", "PostgreSQL", "Stripe", "Docker"
+          ];
+
+          const group = new THREE.Group();
+          scene.add(group);
+
+
+          // 1. Text Sprites (High Resolution)
+          const sprites = [];
+          function createTextSprite(text, color = "#34d399") {
+            const fontface = "Space Grotesk";
+            const fontsize = 100; // Double font size for sharpness
+            const canvasFn = document.createElement("canvas");
+            const context = canvasFn.getContext("2d");
+            // Double canvas resolution
+            canvasFn.width = 1024;
+            canvasFn.height = 512;
+            
+            context.font = "bold " + fontsize + "px " + fontface;
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            
+            // Glow effect
+            context.shadowColor = color;
+            context.shadowBlur = 20;
+            
+            // Text Color (White text, colored glow)
+            context.fillStyle = "white";
+            context.fillText(text, canvasFn.width / 2, canvasFn.height / 2);
+            
+            const texture = new THREE.CanvasTexture(canvasFn);
+            // Anisotropy helps with oblique viewing angles
+            texture.anisotropy = renderer.capabilities.getMaxAnisotropy(); 
+            
+            const material = new THREE.SpriteMaterial({ 
+                map: texture,
+                transparent: true,
+                opacity: 1,
+                // blending: THREE.AdditiveBlending // makes it glowy but maybe washes out
+            });
+            const sprite = new THREE.Sprite(material);
+            // Scale down to match previous size but with higher res texture
+            sprite.scale.set(6, 3, 1); 
+            return sprite;
+          }
+
+          const phi = Math.PI * (3 - Math.sqrt(5)); 
+          skills.forEach((skill, i) => {
+            const y = 1 - (i / (skills.length - 1)) * 2;
+            const radiusAtY = Math.sqrt(1 - y * y);
+            const theta = phi * i;
+            const x = Math.cos(theta) * radiusAtY * radius;
+            const yPos = y * radius;
+            const z = Math.sin(theta) * radiusAtY * radius;
+            const color = i % 2 === 0 ? "#22d3ee" : "#34d399"; // Cyan & Emerald
+            const sprite = createTextSprite(skill, color);
+            sprite.position.set(x, yPos, z);
+            group.add(sprite);
+            sprites.push(sprite.position);
+          });
+
+          // 2. Connecting Lines (Brighter & Thinner)
+          const lineMaterial = new THREE.LineBasicMaterial({
+              color: 0x22d3ee,
+              transparent: true,
+              opacity: 0.25 // Slightly more visible
+          });
+          const lineGeometry = new THREE.BufferGeometry();
+          const linePositions = [];
+          
+          // Connect nearby sprites
+          for (let i = 0; i < sprites.length; i++) {
+              for (let j = i + 1; j < sprites.length; j++) {
+                  const dist = sprites[i].distanceTo(sprites[j]);
+                  if (dist < radius * 0.9) { // Threshold for connection
+                      linePositions.push(sprites[i].x, sprites[i].y, sprites[i].z);
+                      linePositions.push(sprites[j].x, sprites[j].y, sprites[j].z);
+                  }
+              }
+          }
+          lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+          const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+          group.add(lines);
+
+          // 3. Glowing Core + Outer Shell
+          // Inner Core
+          const coreGeometry = new THREE.IcosahedronGeometry(radius * 0.15, 1); 
+          const coreMaterial = new THREE.MeshBasicMaterial({
+              color: 0x34d399,
+              transparent: true,
+              opacity: 0.5,
+              wireframe: true
+          });
+          const core = new THREE.Mesh(coreGeometry, coreMaterial);
+          group.add(core);
+          
+          // Outer Faint Shell (Adds volume)
+          const shellGeo = new THREE.IcosahedronGeometry(radius, 2);
+          const shellMat = new THREE.MeshBasicMaterial({
+              color: 0x22d3ee,
+              transparent: true,
+              opacity: 0.03,
+              wireframe: true
+          });
+          const shell = new THREE.Mesh(shellGeo, shellMat);
+          group.add(shell);
+
+
+          // Core Glow Sprite
+          const glowTextureCanvas = document.createElement("canvas");
+          const gtContext = glowTextureCanvas.getContext("2d");
+          glowTextureCanvas.width = 128;
+          glowTextureCanvas.height = 128;
+          const grd = gtContext.createRadialGradient(64,64,0, 64,64,64);
+          grd.addColorStop(0, "rgba(34, 211, 238, 0.6)"); // Cyan glow
+          grd.addColorStop(1, "rgba(0,0,0,0)");
+          gtContext.fillStyle = grd;
+          gtContext.fillRect(0,0,128,128);
+          const glowTexture = new THREE.CanvasTexture(glowTextureCanvas);
+          const glowMaterial = new THREE.SpriteMaterial({ 
+             map: glowTexture, 
+             transparent: true,
+             blending: THREE.AdditiveBlending 
+          });
+          const glowSprite = new THREE.Sprite(glowMaterial);
+          glowSprite.scale.set(radius * 1.8, radius * 1.8, 1);
+          group.add(glowSprite);
+
+          // 4. Floating Particles (More & Smaller)
+          const particlesGeo = new THREE.BufferGeometry();
+          const particlesCount = 400; // Increased count
+          const posArray = new Float32Array(particlesCount * 3);
+          for(let i = 0; i < particlesCount * 3; i++) {
+              posArray[i] = (Math.random() - 0.5) * (radius * 3.5); 
+          }
+          particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+          const particlesMat = new THREE.PointsMaterial({
+              size: 0.04, // Sharper particles
+              color: 0xffffff,
+              transparent: true,
+              opacity: 0.6,
+              blending: THREE.AdditiveBlending
+          });
+          const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+          group.add(particlesMesh);
+
+          camera.position.z = 22;
+
+          // Mouse Interaction
+          let mouseX = 0;
+          let mouseY = 0;
+          if (canvasId === "skills-3d") { // Only desktop tracks full window
+             document.addEventListener("mousemove", (e) => {
+                 mouseX = ( e.clientX / window.innerWidth ) * 2 - 1;
+                 mouseY = - ( e.clientY / window.innerHeight ) * 2 + 1;
+             });
+          }
+
+          // Animation Loop
+          const animate = () => {
+            requestAnimationFrame(animate);
+            group.rotation.y += 0.0015; // Slightly slower base rotation
+            group.rotation.x += 0.0003;
+
+            // Core pulse
+            const time = Date.now() * 0.001;
+            core.scale.setScalar(1 + Math.sin(time * 2) * 0.1);
+            core.rotation.y -= 0.02;
+            
+            // Shell rotation (opposing)
+            shell.rotation.y -= 0.001;
+            
+            // Particles drift
+            particlesMesh.rotation.y -= 0.0005;
+
+            // Interactive rotation
+            if (canvasId === "skills-3d") {
+                 const targetRotY = mouseX * 0.5;
+                 const targetRotX = mouseY * 0.5;
+                 group.rotation.y += (targetRotY - group.rotation.y) * 0.05; // Smoother tracking
+                 group.rotation.x += (targetRotX - group.rotation.x) * 0.05;
+            }
+
+            renderer.render(scene, camera);
+          };
+          animate();
+       };
+
+      // Initialize Desktop Sphere
+      initInfoSphere("skills-3d", 9);
+      
+      // Initialize Mobile Sphere
+      initInfoSphere("skills-3d-mobile", 9.5);
+
+      // --- Planetary Orbit Logic ---
+      const planets = document.querySelectorAll(".planet-card");
+      if (planets.length > 0) {
+        const orbitSystem = document.getElementById("orbit-system");
+
+        // Global Hover State
+        let activeHoverCount = 0;
+
+        planets.forEach((planet) => {
+          planet.dataset.currentAngle = planet.dataset.angle || 0;
+
+          // Event Listeners for Global Pause
+          planet.addEventListener("mouseenter", () => {
+            activeHoverCount++;
+            planet.style.zIndex = 100; // Force hovered card to front
+          });
+
+          planet.addEventListener("mouseleave", () => {
+            activeHoverCount--;
+            // Safety check
+            if (activeHoverCount < 0) activeHoverCount = 0;
+            
+            // Restore proper z-index in next loop frame
+          });
+        });
+
+        function animateOrbits() {
+          requestAnimationFrame(animateOrbits);
+
+          // If ANY card is hovered, pause ALL orbits
+          // We still run the loop to maintain state, but don't update angles
+          const isPaused = activeHoverCount > 0;
+
+          planets.forEach((planet) => {
+            // If paused, we basically do nothing except maybe ensure the hovered one stays z-index 100
+             if (isPaused) {
+                 // Keep the hovered one on top purely via CSS/Event, 
+                 // but we skip the math so they freeze in place.
+                 return;
+             }
+
+            let angle = parseFloat(planet.dataset.currentAngle);
+            const speed = parseFloat(planet.dataset.speed) || 0.002;
+            const radius = parseFloat(planet.dataset.radius) || 300;
+            const orbitType = planet.dataset.orbitType || "A";
+
+            // Update Angle (Move)
+            angle += speed;
+            planet.dataset.currentAngle = angle;
+
+            // 1. Base Circular Motion in XZ Plane
+            const xBase = Math.cos(angle) * radius;
+            const zBase = Math.sin(angle) * radius;
+
+            let yBase = 0;
+
+            // 2. Apply Crossed-Axis Tilt ("Star" formation)
+            // Orbit A: Slope / (Bottom-Left to Top-Right)
+            // Orbit B: Slope \ (Top-Left to Bottom-Right)
+            // We alternate the 'slope' slightly for variation
+            const slope = orbitType === "A" ? 0.6 : -0.6; // Steeper angle for "Star" look
+            
+            // y = scaled x + little z for depth tilt
+            yBase = (xBase * slope) + (zBase * 0.2); 
+
+            // 3. Final Positions
+            const x = xBase;
+            const y = yBase; 
+            const z = zBase; 
+
+            // Scale based on depth
+            const scale = 1 + z / 1000;
+
+            // Opacity/Z-Index based on depth
+            // If z > 0 (front), zIndex higher
+            const zIndex = z > 0 ? 50 : 10;
+            const opacity = z > 0 ? 1 : 0.7;
+
+            // Apply styles
+            planet.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+            planet.style.zIndex = zIndex;
+            planet.style.opacity = opacity;
+          });
+        }
+        animateOrbits();
       }
     </script>
   </body>
