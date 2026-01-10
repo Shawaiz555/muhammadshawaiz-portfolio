@@ -77,26 +77,36 @@
       }
 
       /* Glass Cards */
+      /* Glass Cards - Updated to Dark Premium Style */
       .glass-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: linear-gradient(
+          135deg,
+          rgba(15, 15, 15, 0.9) 0%,
+          rgba(8, 8, 8, 0.95) 100%
+        );
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       .glass-card:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: linear-gradient(
+          135deg,
+          rgba(25, 25, 25, 0.95) 0%,
+          rgba(15, 15, 15, 1) 100%
+        );
+        border: 1px solid rgba(16, 185, 129, 0.3); /* Emerald tint on hover */
         transform: translateY(-5px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+          0 0 20px rgba(16, 185, 129, 0.1);
       }
       .glass-card-high {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
       }
 
       /* Project Card Enhanced Styles */
@@ -907,7 +917,7 @@
           <!-- Profile Card - Left Column -->
           <div class="lg:col-span-4 scroll-reveal">
             <div
-              class="card-spotlight h-full p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-transparent backdrop-blur-sm group hover:border-emerald-500/30 transition-all duration-500"
+              class="card-spotlight glass-card h-full p-6 sm:p-8 rounded-3xl group hover:border-emerald-500/30 transition-all duration-500"
             >
               <!-- Profile Visual -->
               <div class="relative mb-8">
@@ -996,7 +1006,7 @@
           <div class="lg:col-span-8 space-y-6 lg:space-y-8">
             <!-- Bio Card -->
             <div
-              class="card-spotlight p-6 sm:p-8 lg:p-10 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm scroll-reveal"
+              class="card-spotlight glass-card p-6 sm:p-8 lg:p-10 rounded-3xl scroll-reveal"
             >
               <div class="flex items-center gap-3 mb-6">
                 <div
@@ -1033,7 +1043,7 @@
             <div class="grid grid-cols-3 gap-4 sm:gap-6 scroll-reveal">
               <!-- Stat 1 -->
               <div
-                class="card-spotlight group p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-all duration-500 text-center"
+                class="card-spotlight glass-card group p-5 sm:p-6 rounded-2xl hover:border-emerald-500/30 transition-all duration-500 text-center"
               >
                 <div
                   class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
@@ -1045,7 +1055,7 @@
 
               <!-- Stat 2 -->
               <div
-                class="card-spotlight group p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500 text-center"
+                class="card-spotlight glass-card group p-5 sm:p-6 rounded-2xl hover:border-cyan-500/30 transition-all duration-500 text-center"
               >
                 <div
                   class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
@@ -1057,7 +1067,7 @@
 
               <!-- Stat 3 -->
               <div
-                class="card-spotlight group p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-all duration-500 text-center"
+                class="card-spotlight glass-card group p-5 sm:p-6 rounded-2xl hover:border-purple-500/30 transition-all duration-500 text-center"
               >
                 <div
                   class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
@@ -1072,7 +1082,7 @@
             <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 scroll-reveal">
               <!-- Trait 1 -->
               <div
-                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-all duration-500"
+                class="card-spotlight glass-card group flex items-start gap-4 p-5 sm:p-6 rounded-2xl hover:border-emerald-500/30 transition-all duration-500"
               >
                 <div
                   class="p-3 rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:scale-110 transition-transform duration-300"
@@ -1093,7 +1103,7 @@
 
               <!-- Trait 2 -->
               <div
-                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500"
+                class="card-spotlight glass-card group flex items-start gap-4 p-5 sm:p-6 rounded-2xl hover:border-cyan-500/30 transition-all duration-500"
               >
                 <div
                   class="p-3 rounded-xl bg-cyan-500/15 text-cyan-400 group-hover:scale-110 transition-transform duration-300"
@@ -1114,7 +1124,7 @@
 
               <!-- Trait 3 -->
               <div
-                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-all duration-500"
+                class="card-spotlight glass-card group flex items-start gap-4 p-5 sm:p-6 rounded-2xl hover:border-purple-500/30 transition-all duration-500"
               >
                 <div
                   class="p-3 rounded-xl bg-purple-500/15 text-purple-400 group-hover:scale-110 transition-transform duration-300"
@@ -1135,7 +1145,7 @@
 
               <!-- Trait 4 -->
               <div
-                class="card-spotlight group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm hover:border-pink-500/30 transition-all duration-500"
+                class="card-spotlight glass-card group flex items-start gap-4 p-5 sm:p-6 rounded-2xl hover:border-pink-500/30 transition-all duration-500"
               >
                 <div
                   class="p-3 rounded-xl bg-pink-500/15 text-pink-400 group-hover:scale-110 transition-transform duration-300"
@@ -1212,7 +1222,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
             <!-- Frontend Mobile -->
             <div
-              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+              class="p-6 rounded-3xl glass-card"
             >
               <div class="flex items-center gap-3 mb-4">
                 <span
@@ -1238,7 +1248,7 @@
             </div>
             <!-- Backend Mobile -->
             <div
-              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+              class="p-6 rounded-3xl glass-card"
             >
               <div class="flex items-center gap-3 mb-4">
                 <span
@@ -1261,7 +1271,7 @@
             </div>
             <!-- Database Mobile -->
             <div
-              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+              class="p-6 rounded-3xl glass-card"
             >
               <div class="flex items-center gap-3 mb-4">
                 <span
@@ -1284,7 +1294,7 @@
             </div>
             <!-- Tools Mobile -->
             <div
-              class="p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+              class="p-6 rounded-3xl glass-card"
             >
               <div class="flex items-center gap-3 mb-4">
                 <span
@@ -1327,7 +1337,7 @@
 
              <!-- Planet: Frontend (Orbit A: Bottom-Left to Top-Right) -->
              <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="280" data-speed="0.005" data-angle="0" data-orbit-type="A">
-                 <div class="relative group cursor-pointer">
+                 <div class="relative group cursor-pointer flex flex-col items-center gap-4">
                       <!-- Card Container -->
                       <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-cyan-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] overflow-hidden">
                           
@@ -1351,12 +1361,17 @@
                                </div>
                            </div>
                       </div>
+
+                      <!-- Label -->
+                      <div class="absolute top-full mt-2 whitespace-nowrap text-xs font-bold text-cyan-400 tracking-[0.2em] uppercase opacity-100 group-hover:opacity-0 transition-opacity duration-300 bg-black/60 px-3 py-1.5 rounded-full border border-cyan-500/20 backdrop-blur-md shadow-lg shadow-cyan-500/5">
+                        Frontend
+                      </div>
                  </div>
              </div>
 
               <!-- Planet: Backend (Orbit B: Top-Left to Bottom-Right) -->
              <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="320" data-speed="0.006" data-angle="2" data-orbit-type="B">
-                 <div class="relative group cursor-pointer">
+                 <div class="relative group cursor-pointer flex flex-col items-center gap-4">
                       <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-emerald-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-emerald-500/50 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] overflow-hidden">
                            <div class="absolute transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-x-[100px] group-hover:-translate-y-[50px] group-hover:scale-75">
                                 <span class="iconify text-emerald-400 text-3xl" data-icon="lucide:server"></span>
@@ -1374,12 +1389,17 @@
                                </div>
                            </div>
                       </div>
+
+                      <!-- Label -->
+                      <div class="absolute top-full mt-2 whitespace-nowrap text-xs font-bold text-emerald-400 tracking-[0.2em] uppercase opacity-100 group-hover:opacity-0 transition-opacity duration-300 bg-black/60 px-3 py-1.5 rounded-full border border-emerald-500/20 backdrop-blur-md shadow-lg shadow-emerald-500/5">
+                        Backend
+                      </div>
                  </div>
              </div>
 
               <!-- Planet: Database (Orbit A: Opposite side) -->
              <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="260" data-speed="0.0055" data-angle="4" data-orbit-type="A">
-                 <div class="relative group cursor-pointer">
+                 <div class="relative group cursor-pointer flex flex-col items-center gap-4">
                       <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-blue-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-blue-500/50 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] overflow-hidden">
                            <div class="absolute transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-x-[100px] group-hover:-translate-y-[50px] group-hover:scale-75">
                                 <span class="iconify text-blue-400 text-3xl" data-icon="lucide:database"></span>
@@ -1397,12 +1417,17 @@
                                </div>
                            </div>
                       </div>
+
+                      <!-- Label -->
+                      <div class="absolute top-full mt-2 whitespace-nowrap text-xs font-bold text-blue-400 tracking-[0.2em] uppercase opacity-100 group-hover:opacity-0 transition-opacity duration-300 bg-black/60 px-3 py-1.5 rounded-full border border-blue-500/20 backdrop-blur-md shadow-lg shadow-blue-500/5">
+                        Database
+                      </div>
                  </div>
              </div>
 
               <!-- Planet: Tools (Orbit B: Opposite side) -->
              <div class="planet-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" data-radius="340" data-speed="0.0065" data-angle="5.5" data-orbit-type="B">
-                 <div class="relative group cursor-pointer">
+                 <div class="relative group cursor-pointer flex flex-col items-center gap-4">
                       <div class="w-16 h-16 bg-black/40 backdrop-blur-md border border-purple-500/30 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:w-[280px] group-hover:h-[180px] group-hover:rounded-2xl group-hover:bg-black/80 group-hover:border-purple-500/50 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] overflow-hidden">
                            <div class="absolute transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-x-[100px] group-hover:-translate-y-[50px] group-hover:scale-75">
                                 <span class="iconify text-purple-400 text-3xl" data-icon="lucide:wrench"></span>
@@ -1419,6 +1444,11 @@
                                    <span class="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs rounded-lg">Figma</span>
                                </div>
                            </div>
+                      </div>
+
+                      <!-- Label -->
+                      <div class="absolute top-full mt-2 whitespace-nowrap text-xs font-bold text-purple-400 tracking-[0.2em] uppercase opacity-100 group-hover:opacity-0 transition-opacity duration-300 bg-black/60 px-3 py-1.5 rounded-full border border-purple-500/20 backdrop-blur-md shadow-lg shadow-purple-500/5">
+                        Tools
                       </div>
                  </div>
              </div>
@@ -2905,14 +2935,15 @@
         });
 
         // Update size based on container
-        const updateAboutSize = () => {
-          const container = aboutCanvas.parentElement;
-          const width = container.clientWidth;
-          const height = container.clientHeight;
-          aboutRenderer.setSize(width, height);
-          aboutCamera.aspect = width / height;
-          aboutCamera.updateProjectionMatrix();
-        };
+          const updateAboutSize = () => {
+             const container = aboutCanvas.parentElement;
+             const width = container.clientWidth;
+             const height = container.clientHeight;
+             aboutRenderer.setSize(width, height);
+             aboutRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+             aboutCamera.aspect = width / height;
+             aboutCamera.updateProjectionMatrix();
+          };
 
         // Initial sizing
         updateAboutSize();
@@ -3012,17 +3043,21 @@
         const sphereGroup = new THREE.Group();
         skillsScene.add(sphereGroup);
 
-        // Helper to create text sprite
-        function createTextSprite(text) {
-          const fontface = "Space Grotesk";
-          const fontsize = 40;
-          const borderThickness = 4;
-          const canvas = document.createElement("canvas");
-          const context = canvas.getContext("2d");
-          canvas.width = 512;
-          canvas.height = 256;
+          // Helper to create text sprite
+          function createTextSprite(text) {
+             const fontface = "Space Grotesk";
+             const fontsize = 40;
+             const borderThickness = 4;
+             const canvas = document.createElement("canvas");
+             const context = canvas.getContext("2d");
+             // High-DPI for sprites
+             const pixelRatio = Math.min(window.devicePixelRatio, 2);
+             canvas.width = 512 * pixelRatio;
+             canvas.height = 256 * pixelRatio;
+             // Scale context
+             context.scale(pixelRatio, pixelRatio);
 
-          // Text styling
+             // Text styling
           context.font = "bold " + fontsize + "px " + fontface;
           context.textAlign = "center";
           context.textBaseline = "middle";
@@ -3115,10 +3150,11 @@
 
           // Resize
           const updateSize = () => {
-            const container = canvas.parentElement;
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
+             const container = canvas.parentElement;
+             renderer.setSize(container.clientWidth, container.clientHeight);
+             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Fix for blurry rendering
+             camera.aspect = container.clientWidth / container.clientHeight;
+             camera.updateProjectionMatrix();
           };
           updateSize();
           window.addEventListener("resize", updateSize);
