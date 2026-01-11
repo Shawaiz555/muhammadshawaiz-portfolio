@@ -3237,12 +3237,20 @@
             antialias: true,
           });
 
+          // Interaction State
+          let isDragging = false;
+          let previousMousePosition = { x: 0, y: 0 };
+          let rotationVelocity = { x: 0, y: 0 };
+          let mousePointer = { x: 0, y: 0 };
+
           // Resize
           const updateSize = () => {
              const container = canvas.parentElement;
-             renderer.setSize(container.clientWidth, container.clientHeight);
-             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Fix for blurry rendering
-             camera.aspect = container.clientWidth / container.clientHeight;
+             const width = container.clientWidth;
+             const height = container.clientHeight;
+             renderer.setSize(width, height);
+             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2.5)); // Slightly higher cap for sharpness
+             camera.aspect = width / height;
              camera.updateProjectionMatrix();
           };
           updateSize();
@@ -3261,13 +3269,13 @@
 
 
           // 1. Text Sprites (High Resolution)
-          const sprites = [];
           function createTextSprite(text, color = "#34d399") {
             const fontface = "Space Grotesk";
-            const fontsize = 100; // Double font size for sharpness
+            const fontsize = 120; // Increased for better resolution
             const canvasFn = document.createElement("canvas");
             const context = canvasFn.getContext("2d");
-            // Double canvas resolution
+            
+            // Higher resolution for sprites
             canvasFn.width = 1024;
             canvasFn.height = 512;
             
@@ -3277,28 +3285,26 @@
             
             // Glow effect
             context.shadowColor = color;
-            context.shadowBlur = 20;
+            context.shadowBlur = 25;
             
-            // Text Color (White text, colored glow)
             context.fillStyle = "white";
             context.fillText(text, canvasFn.width / 2, canvasFn.height / 2);
             
             const texture = new THREE.CanvasTexture(canvasFn);
-            // Anisotropy helps with oblique viewing angles
             texture.anisotropy = renderer.capabilities.getMaxAnisotropy(); 
+            texture.minFilter = THREE.LinearFilter;
             
             const material = new THREE.SpriteMaterial({ 
                 map: texture,
                 transparent: true,
-                opacity: 1,
-                // blending: THREE.AdditiveBlending // makes it glowy but maybe washes out
+                opacity: 1
             });
             const sprite = new THREE.Sprite(material);
-            // Scale down to match previous size but with higher res texture
             sprite.scale.set(6, 3, 1); 
             return sprite;
           }
 
+          const sprites = [];
           const phi = Math.PI * (3 - Math.sqrt(5)); 
           skills.forEach((skill, i) => {
             const y = 1 - (i / (skills.length - 1)) * 2;
@@ -3307,27 +3313,25 @@
             const x = Math.cos(theta) * radiusAtY * radius;
             const yPos = y * radius;
             const z = Math.sin(theta) * radiusAtY * radius;
-            const color = i % 2 === 0 ? "#22d3ee" : "#34d399"; // Cyan & Emerald
+            const color = i % 2 === 0 ? "#22d3ee" : "#34d399";
             const sprite = createTextSprite(skill, color);
             sprite.position.set(x, yPos, z);
             group.add(sprite);
             sprites.push(sprite.position);
           });
 
-          // 2. Connecting Lines (Brighter & Thinner)
+          // 2. Connecting Lines
           const lineMaterial = new THREE.LineBasicMaterial({
               color: 0x22d3ee,
               transparent: true,
-              opacity: 0.25 // Slightly more visible
+              opacity: 0.2
           });
           const lineGeometry = new THREE.BufferGeometry();
           const linePositions = [];
-          
-          // Connect nearby sprites
           for (let i = 0; i < sprites.length; i++) {
               for (let j = i + 1; j < sprites.length; j++) {
                   const dist = sprites[i].distanceTo(sprites[j]);
-                  if (dist < radius * 0.9) { // Threshold for connection
+                  if (dist < radius * 0.9) {
                       linePositions.push(sprites[i].x, sprites[i].y, sprites[i].z);
                       linePositions.push(sprites[j].x, sprites[j].y, sprites[j].z);
                   }
@@ -3337,126 +3341,111 @@
           const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
           group.add(lines);
 
-          // 3. Glowing Core + Outer Shell
-          // Inner Core
-          const coreGeometry = new THREE.IcosahedronGeometry(radius * 0.15, 1); 
-          const coreMaterial = new THREE.MeshBasicMaterial({
-              color: 0x34d399,
-              transparent: true,
-              opacity: 0.5,
-              wireframe: true
-          });
-          const core = new THREE.Mesh(coreGeometry, coreMaterial);
+          // 3. Core & Shell
+          const core = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(radius * 0.15, 1),
+            new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.5, wireframe: true })
+          );
           group.add(core);
           
-          // Outer Faint Shell (Adds volume)
-          const shellGeo = new THREE.IcosahedronGeometry(radius, 2);
-          const shellMat = new THREE.MeshBasicMaterial({
-              color: 0x22d3ee,
-              transparent: true,
-              opacity: 0.03,
-              wireframe: true
-          });
-          const shell = new THREE.Mesh(shellGeo, shellMat);
+          const shell = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(radius, 2),
+            new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.03, wireframe: true })
+          );
           group.add(shell);
 
-
-          // Core Glow Sprite
-          const glowTextureCanvas = document.createElement("canvas");
-          const gtContext = glowTextureCanvas.getContext("2d");
-          glowTextureCanvas.width = 128;
-          glowTextureCanvas.height = 128;
-          const grd = gtContext.createRadialGradient(64,64,0, 64,64,64);
-          grd.addColorStop(0, "rgba(34, 211, 238, 0.6)"); // Cyan glow
-          grd.addColorStop(1, "rgba(0,0,0,0)");
-          gtContext.fillStyle = grd;
-          gtContext.fillRect(0,0,128,128);
-          const glowTexture = new THREE.CanvasTexture(glowTextureCanvas);
-          const glowMaterial = new THREE.SpriteMaterial({ 
-             map: glowTexture, 
-             transparent: true,
-             blending: THREE.AdditiveBlending 
-          });
-          const glowSprite = new THREE.Sprite(glowMaterial);
-          glowSprite.scale.set(radius * 1.8, radius * 1.8, 1);
-          group.add(glowSprite);
-
-          // 4. Floating Particles (More & Smaller)
+          // Particles
           const particlesGeo = new THREE.BufferGeometry();
-          const particlesCount = 400; // Increased count
+          const particlesCount = 400;
           const posArray = new Float32Array(particlesCount * 3);
           for(let i = 0; i < particlesCount * 3; i++) {
-              posArray[i] = (Math.random() - 0.5) * (radius * 3.5); 
+              posArray[i] = (Math.random() - 0.5) * (radius * 4); 
           }
           particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-          const particlesMat = new THREE.PointsMaterial({
-              size: 0.04, // Sharper particles
-              color: 0xffffff,
-              transparent: true,
-              opacity: 0.6,
-              blending: THREE.AdditiveBlending
-          });
-          const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+          const particlesMesh = new THREE.Points(particlesGeo, new THREE.PointsMaterial({
+              size: 0.04, color: 0xffffff, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending
+          }));
           group.add(particlesMesh);
 
           camera.position.z = 22;
 
-          // Interaction (Mouse & Touch)
-          let mouseX = 0;
-          let mouseY = 0;
+          // Drag to Rotate Logic
+          const handleDown = (x, y) => {
+            isDragging = true;
+            previousMousePosition = { x, y };
+          };
 
-          if (canvasId === "skills-3d") {
-             // Desktop: Window-based parallax
-             document.addEventListener("mousemove", (e) => {
-                 mouseX = ( e.clientX / window.innerWidth ) * 2 - 1;
-                 mouseY = - ( e.clientY / window.innerHeight ) * 2 + 1;
-             });
-          } else {
-             // Mobile: Touch-based interaction
-             canvas.addEventListener("touchmove", (e) => {
-                 // Prevent default only if horizontal scroll to avoid blocking vertical page scroll too much?
-                 // Or just let it be loose. "moveable" usually implies dragging.
-                 // let's try not preventing default first to see if it's smoother for scrolling, 
-                 // but might need it if they want to 'spin' it.
-                 // Actually, for a nice effect, let's track touch relative to canvas.
-                 const rect = canvas.getBoundingClientRect();
-                 const touch = e.touches[0];
-                 mouseX = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
-                 mouseY = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
-             }, { passive: true });
-             
-             canvas.addEventListener("touchend", () => {
-                 mouseX = 0;
-                 mouseY = 0;
-             });
-          }
+          const handleMove = (x, y) => {
+            const rect = canvas.getBoundingClientRect();
+            mousePointer.x = ((x - rect.left) / rect.width) * 2 - 1;
+            mousePointer.y = -((y - rect.top) / rect.height) * 2 + 1;
+
+            if (isDragging) {
+              const deltaX = x - previousMousePosition.x;
+              const deltaY = y - previousMousePosition.y;
+
+              // Increased sensitivity from 0.010 to 0.010
+              rotationVelocity.y = deltaX * 0.010;
+              rotationVelocity.x = deltaY * 0.010;
+
+              previousMousePosition = { x, y };
+            }
+          };
+
+          const handleUp = () => {
+            isDragging = false;
+          };
+
+          // Desktop Events
+          canvas.addEventListener('mousedown', (e) => handleDown(e.clientX, e.clientY));
+          window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+          window.addEventListener('mouseup', handleUp);
+
+          // Mobile Events
+          canvas.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            handleDown(touch.clientX, touch.clientY);
+          }, { passive: true });
+          canvas.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            handleMove(touch.clientX, touch.clientY);
+          }, { passive: true });
+          canvas.addEventListener('touchend', handleUp);
 
           // Animation Loop
           const animate = () => {
             requestAnimationFrame(animate);
-            group.rotation.y += 0.0015; // Slightly slower base rotation
-            group.rotation.x += 0.0003;
 
-            // Core pulse
-            const time = Date.now() * 0.001;
-            core.scale.setScalar(1 + Math.sin(time * 2) * 0.1);
+            if (!isDragging) {
+              // Apply inertia and slow decay (changed from 0.95 back to 0.98 for longer spin)
+              group.rotation.y += rotationVelocity.y;
+              group.rotation.x += rotationVelocity.x;
+              rotationVelocity.y *= 0.98;
+              rotationVelocity.x *= 0.98;
+
+              // Base auto-rotation (increased from 0.0015 to 0.003)
+              group.rotation.y += 0.003;
+              group.rotation.x += 0.0005;
+
+              // Gentle parallax based on mouse pointer
+              const targetParallaxY = mousePointer.x * 0.1;
+              const targetParallaxX = -mousePointer.y * 0.1;
+              group.rotation.y += (targetParallaxY - (group.rotation.y % (Math.PI * 2))) * 0.01;
+              group.rotation.x += (targetParallaxX - (group.rotation.x % (Math.PI * 2))) * 0.01;
+            } else {
+              group.rotation.y += rotationVelocity.y;
+              group.rotation.x += rotationVelocity.x;
+            }
+
+            core.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.1);
             core.rotation.y -= 0.02;
-            
-            // Shell rotation (opposing)
             shell.rotation.y -= 0.001;
-            
-            // Particles drift
             particlesMesh.rotation.y -= 0.0005;
-
-            // Interactive rotation
-            const targetRotY = mouseX * 0.8; // Increased sensitivity
-            const targetRotX = mouseY * 0.8;
-            group.rotation.y += (targetRotY - group.rotation.y) * 0.05;
-            group.rotation.x += (targetRotX - group.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
           };
           animate();
+
        };
 
       // Initialize Desktop Sphere
