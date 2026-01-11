@@ -3424,10 +3424,16 @@
 
           camera.position.z = 22;
 
+          // Interaction Settings
+          const isTouchDevice = 'ontouchstart' in window;
+          const sensitivity = isTouchDevice ? 0.004 : 0.008; // Lower sensitivity for touch
+          const decay = 0.95; // Faster decay for better control
+
           // Drag to Rotate Logic
           const handleDown = (x, y) => {
             isDragging = true;
             previousMousePosition = { x, y };
+            rotationVelocity = { x: 0, y: 0 }; // Reset velocity on start to prevent jumps
           };
 
           const handleMove = (x, y) => {
@@ -3439,9 +3445,13 @@
               const deltaX = x - previousMousePosition.x;
               const deltaY = y - previousMousePosition.y;
 
-              // Increased sensitivity from 0.010 to 0.010
-              rotationVelocity.y = deltaX * 0.010;
-              rotationVelocity.x = deltaY * 0.010;
+              // Apply rotation directly
+              group.rotation.y += deltaX * sensitivity;
+              group.rotation.x += deltaY * sensitivity;
+
+              // Store velocity for inertia
+              rotationVelocity.y = deltaX * sensitivity;
+              rotationVelocity.x = deltaY * sensitivity;
 
               previousMousePosition = { x, y };
             }
@@ -3472,13 +3482,13 @@
             requestAnimationFrame(animate);
 
             if (!isDragging) {
-              // Apply inertia and slow decay (changed from 0.95 back to 0.98 for longer spin)
+              // Apply inertia and slow decay
               group.rotation.y += rotationVelocity.y;
               group.rotation.x += rotationVelocity.x;
-              rotationVelocity.y *= 0.98;
-              rotationVelocity.x *= 0.98;
+              rotationVelocity.y *= decay;
+              rotationVelocity.x *= decay;
 
-              // Base auto-rotation (increased from 0.0015 to 0.003)
+              // Base auto-rotation
               group.rotation.y += 0.003;
               group.rotation.x += 0.0005;
 
@@ -3488,8 +3498,10 @@
               group.rotation.y += (targetParallaxY - (group.rotation.y % (Math.PI * 2))) * 0.01;
               group.rotation.x += (targetParallaxX - (group.rotation.x % (Math.PI * 2))) * 0.01;
             } else {
-              group.rotation.y += rotationVelocity.y;
-              group.rotation.x += rotationVelocity.x;
+              // While dragging, we dampen the stored velocity so it doesn't "jump" 
+              // if handleMove stops firing but isDragging is still true.
+              rotationVelocity.y *= 0.1;
+              rotationVelocity.x *= 0.1;
             }
 
             core.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.1);
