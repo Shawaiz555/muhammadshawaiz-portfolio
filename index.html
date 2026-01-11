@@ -480,6 +480,17 @@
       .about-card-3d:hover::after {
         opacity: 1;
       }
+      /* Enhanced CSS 3D Depth */
+      .about-card-3d {
+        box-shadow: 
+          0 10px 30px -10px rgba(0, 0, 0, 0.5),
+          0 20px 40px -15px rgba(0, 0, 0, 0.3);
+      }
+      @media (hover: hover) {
+        .about-card-3d:hover {
+          transform: translateY(-10px) rotateX(4deg) rotateY(-2deg);
+        }
+      }
       .about-layer {
         position: absolute;
         inset: 0;
@@ -517,9 +528,15 @@
         overflow: hidden;
         border-left: 2px solid #10b981;
         background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), transparent);
-        padding: 1.5rem;
-        margin: 1.5rem 0;
+        padding: 1.25rem;
+        margin: 1.25rem 0;
         border-radius: 0 1rem 1rem 0;
+      }
+      @media (max-width: 640px) {
+        .highlight-box {
+          padding: 1rem;
+          margin: 1rem 0;
+        }
       }
 
       /* Premium Content Aesthetics */
@@ -567,6 +584,27 @@
       .data-module:hover {
         border-left-color: #10b981;
         background: rgba(16, 185, 129, 0.03);
+      }
+
+      /* Fluid Typography for About Section */
+      .about-title {
+        font-size: clamp(2.5rem, 8vw, 6rem);
+      }
+      .about-sub-title {
+        font-size: clamp(1.25rem, 4vw, 2rem);
+      }
+      .about-text {
+        font-size: clamp(0.95rem, 2vw, 1.125rem);
+      }
+
+      @media (max-width: 1024px) {
+        .about-3d-container {
+          perspective: 1000px;
+        }
+        .about-tech-icon {
+          width: 40px;
+          height: 40px;
+        }
       }
 
       /* Base Settings */
@@ -1063,99 +1101,99 @@
     <!-- About Section - Overhauled 3D Professional Layout -->
     <section
       id="about"
-      class="relative z-10 py-28 sm:py-36 md:py-48 px-4 sm:px-6 lg:px-16 overflow-hidden about-3d-container"
+      class="relative z-10 py-20 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-16 overflow-hidden about-3d-container"
     >
       <!-- Background Decorations -->
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-1/4 left-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[150px] animate-pulse"></div>
-        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s"></div>
+        <div class="absolute top-1/4 left-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-emerald-500/5 rounded-full blur-[100px] sm:blur-[150px] animate-pulse"></div>
+        <div class="absolute bottom-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-500/5 rounded-full blur-[80px] sm:blur-[120px] animate-pulse" style="animation-delay: 2s"></div>
       </div>
 
       <div class="max-w-8xl mx-auto relative">
         <!-- Section Header -->
-        <div class="text-center mb-16 sm:mb-24 scroll-reveal">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 group">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-            <span class="text-xs font-semibold tracking-widest uppercase text-emerald-400">About Me</span>
+        <div class="text-center mb-12 sm:mb-20 scroll-reveal">
+          <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4 sm:mb-6 group">
+            <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-emerald-400">About Me</span>
           </div>
-          <h2 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter" style="font-family: 'Space Grotesk', sans-serif">
+          <h2 class="about-title font-black tracking-tighter leading-[1.1] mb-2" style="font-family: 'Space Grotesk', sans-serif">
             Digital <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent italic">Identity</span>
           </h2>
         </div>
 
         <!-- Main Content Matrix -->
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           <!-- Perspective Visual Area (Left) -->
           <div class="lg:col-span-12 xl:col-span-5 relative order-2 xl:order-1">
-             <div class="relative w-full aspect-square max-w-[550px] mx-auto about-card-3d group">
+             <div class="relative w-full aspect-square max-w-[450px] sm:max-w-[550px] mx-auto about-card-3d group">
                 <!-- 3D Visualization Container -->
-                <div class="absolute inset-0 rounded-[40px] bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/10 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden">
+                <div class="absolute inset-0 rounded-[32px] sm:rounded-[40px] bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/10 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden">
                     <canvas id="about-3d-enhanced" class="w-full h-full"></canvas>
                     
                     <!-- Floating Data Points Overlay (CSS) -->
                     <div class="about-layer about-layer-2 flex flex-col items-center justify-center pointer-events-none">
                         <div class="text-center">
-                             <div class="text-emerald-400 text-sm font-mono tracking-tighter opacity-50 mb-1">SYSTEM_STATUS</div>
-                             <div class="text-white text-2xl font-bold tracking-widest uppercase">OPTIMIZED</div>
+                             <div class="text-emerald-400 text-[10px] sm:text-sm font-mono tracking-tighter opacity-50 mb-1">SYSTEM_STATUS</div>
+                             <div class="text-white text-xl sm:text-2xl font-bold tracking-widest uppercase">OPTIMIZED</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Floating Tech Satellites -->
-                <div class="about-tech-icon floating-anim-1 -top-6 -left-6" title="React">
-                    <span class="iconify text-[#61DAFB]" data-icon="simple-icons:react" data-width="24"></span>
+                <div class="about-tech-icon floating-anim-1 -top-4 -left-4 sm:-top-6 sm:-left-6" title="React">
+                    <span class="iconify text-[#61DAFB]" data-icon="simple-icons:react" data-width="20"></span>
                 </div>
-                <div class="about-tech-icon floating-anim-2 top-1/4 -right-10" title="Node.js">
-                    <span class="iconify text-[#6cc24a]" data-icon="simple-icons:nodedotjs" data-width="24"></span>
+                <div class="about-tech-icon floating-anim-2 top-1/4 -right-6 sm:-right-10" title="Node.js">
+                    <span class="iconify text-[#6cc24a]" data-icon="simple-icons:nodedotjs" data-width="20"></span>
                 </div>
-                <div class="about-tech-icon floating-anim-3 bottom-10 -left-12" title="MongoDB">
-                    <span class="iconify text-[#47A248]" data-icon="simple-icons:mongodb" data-width="24"></span>
+                <div class="about-tech-icon floating-anim-3 bottom-8 -left-8 sm:bottom-10 sm:-left-12" title="MongoDB">
+                    <span class="iconify text-[#47A248]" data-icon="simple-icons:mongodb" data-width="20"></span>
                 </div>
              </div>
           </div>
 
           <!-- Content Intel Area (Right) -->
-          <div class="lg:col-span-12 xl:col-span-7 space-y-8 order-1 xl:order-2">
+          <div class="lg:col-span-12 xl:col-span-7 space-y-6 sm:space-y-8 order-1 xl:order-2">
             
             <!-- Biography Card - Premium Redesign -->
-            <div class="about-card-3d glass-card-premium p-8 sm:p-12 sm-py-16 rounded-[40px] border border-white/10 relative group">
+            <div class="about-card-3d glass-card-premium p-6 sm:p-10 lg:p-12 rounded-[32px] sm:rounded-[40px] border border-white/10 relative group">
               <div class="about-layer about-layer-1 bg-emerald-500/5 rounded-inherit"></div>
               
               <div class="relative z-10">
-                <div class="flex items-center justify-between mb-8">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-black shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                            <span class="iconify" data-icon="lucide:user-check" data-width="24"></span>
+                <div class="flex items-center justify-between mb-6 sm:mb-8">
+                    <div class="flex items-center gap-3 sm:gap-4">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-black shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                            <span class="iconify" data-icon="lucide:user-check" data-width="20"></span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white tracking-tight">Muhammad Shawaiz</h3>
-                            <div class="module-tag mt-1">Status: Active_Developer</div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Muhammad Shawaiz</h3>
+                            <div class="module-tag mt-1 text-[8px] sm:text-[9px]">Status: Active_Developer</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-8">
+                <div class="space-y-6 sm:space-y-8">
                     <div class="data-module">
-                        <h4 class="text-emerald-400 font-mono text-[10px] uppercase tracking-[0.3em] mb-2">Core_Specialization</h4>
-                        <p class="text-2xl text-white font-semibold leading-tight tracking-tight">
-                            Full-Stack Architecture & <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">System Innovation</span>
+                        <h4 class="text-emerald-400 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] mb-2">Core_Specialization</h4>
+                        <p class="about-sub-title text-white font-semibold leading-tight tracking-tight">
+                            Full-Stack Architecture & <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Innovation</span>
                         </p>
                     </div>
                     
                     <div class="data-module">
-                        <h4 class="text-white/40 font-mono text-[10px] uppercase tracking-[0.3em] mb-2">Technical_Summary</h4>
-                        <p class="text-white/60 leading-relaxed font-light text-lg">
+                        <h4 class="text-white/40 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] mb-2">Technical_Summary</h4>
+                        <p class="about-text text-white/60 leading-relaxed font-light">
                             I bridge the gap between academic theory and industry-grade application development. Every project is an opportunity to push the boundaries of what's possible in the <span class="text-white font-medium">MERN ecosystem</span>.
                         </p>
                     </div>
 
                     <div class="highlight-box glass-card bg-emerald-500/5">
-                        <div class="flex items-start gap-4">
+                        <div class="flex items-start gap-3 sm:gap-4">
                             <div class="text-emerald-400 mt-1">
-                                <span class="iconify" data-icon="lucide:award" data-width="20"></span>
+                                <span class="iconify" data-icon="lucide:award" data-width="18"></span>
                             </div>
-                            <p class="text-white/80 leading-relaxed italic">
+                            <p class="text-sm sm:text-base text-white/80 leading-relaxed italic">
                                 "Solving complex technical challenges with elegant, scalable code while maintaining a rigorous 3.78 Academic standard."
                             </p>
                         </div>
@@ -1163,40 +1201,40 @@
                 </div>
 
                 <!-- Stats Matrix - High Contrast -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12">
-                    <div class="p-6 rounded-3xl bg-black/20 border border-white/5 group-hover:border-emerald-500/20 transition-all text-center">
-                        <div class="text-4xl font-bold text-white mb-1 tracking-tighter text-glow-emerald">3.78</div>
-                        <p class="text-[9px] text-emerald-400/60 uppercase tracking-widest font-mono">Academic_GPA</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mt-8 sm:mt-12">
+                    <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/20 border border-white/5 group-hover:border-emerald-500/20 transition-all text-center">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-tighter text-glow-emerald">3.78</div>
+                        <p class="text-[8px] sm:text-[9px] text-emerald-400/60 uppercase tracking-widest font-mono">Academic_GPA</p>
                     </div>
-                    <div class="p-6 rounded-3xl bg-black/20 border border-white/5 group-hover:border-cyan-500/20 transition-all text-center">
-                        <div class="text-4xl font-bold text-white mb-1 tracking-tighter">8+</div>
-                        <p class="text-[9px] text-cyan-400/60 uppercase tracking-widest font-mono">Global_Deployments</p>
+                    <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/20 border border-white/5 group-hover:border-cyan-500/20 transition-all text-center">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-tighter">8+</div>
+                        <p class="text-[8px] sm:text-[9px] text-cyan-400/60 uppercase tracking-widest font-mono">Deployments</p>
                     </div>
-                    <div class="p-6 rounded-3xl bg-black/20 border border-white/5 group-hover:border-purple-500/20 transition-all text-center col-span-2 md:col-span-1">
-                        <div class="text-4xl font-bold text-white mb-1 tracking-tighter">2+</div>
-                        <p class="text-[9px] text-purple-400/60 uppercase tracking-widest font-mono">Exp_Years</p>
+                    <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/20 border border-white/5 group-hover:border-purple-500/20 transition-all text-center col-span-2 md:col-span-1">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-tighter">2+</div>
+                        <p class="text-[8px] sm:text-[9px] text-purple-400/60 uppercase tracking-widest font-mono">Exp_Years</p>
                     </div>
                 </div>
               </div>
             </div>
 
             <!-- Highlights Quick-Access -->
-            <div class="grid md:grid-cols-2 gap-4">
-               <div class="glass-card p-6 rounded-3xl border border-white/5 flex items-center justify-between group/item hover:bg-emerald-500/5 transition-all cursor-default">
-                  <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover/item:scale-110 transition-transform">
-                        <span class="iconify" data-icon="lucide:layout-template" data-width="20"></span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+               <div class="glass-card p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 flex items-center justify-between group/item hover:bg-emerald-500/5 transition-all cursor-default">
+                  <div class="flex items-center gap-3 sm:gap-4">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover/item:scale-110 transition-transform">
+                        <span class="iconify" data-icon="lucide:layout-template" data-width="18"></span>
                     </div>
-                    <span class="text-sm font-medium text-white/80">Premium UI Integration</span>
+                    <span class="text-xs sm:text-sm font-medium text-white/80">Premium UI Integration</span>
                   </div>
                   <span class="iconify text-white/20 group-hover/item:text-emerald-400 transition-colors" data-icon="lucide:chevron-right" data-width="16"></span>
                </div>
-               <div class="glass-card p-6 rounded-3xl border border-white/5 flex items-center justify-between group/item hover:bg-cyan-500/5 transition-all cursor-default">
-                  <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover/item:scale-110 transition-transform">
-                        <span class="iconify" data-icon="lucide:cpu" data-width="20"></span>
+               <div class="glass-card p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 flex items-center justify-between group/item hover:bg-cyan-500/5 transition-all cursor-default">
+                  <div class="flex items-center gap-3 sm:gap-4">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover/item:scale-110 transition-transform">
+                        <span class="iconify" data-icon="lucide:cpu" data-width="18"></span>
                     </div>
-                    <span class="text-sm font-medium text-white/80">Performance Optimization</span>
+                    <span class="text-xs sm:text-sm font-medium text-white/80">Performance Focus</span>
                   </div>
                   <span class="iconify text-white/20 group-hover/item:text-cyan-400 transition-colors" data-icon="lucide:chevron-right" data-width="16"></span>
                </div>
@@ -3080,10 +3118,16 @@
         function animateAbout() {
             requestAnimationFrame(animateAbout);
             
+            // Mouse Interaction (Desktop)
             targetX = mouseX * 0.5;
             targetY = mouseY * 0.5;
 
-            coreGroup.rotation.y += 0.005 + (targetX - coreGroup.rotation.y) * 0.05;
+            // Scroll-based parallax for 3D feel on mobile/tablet
+            const scrollY = window.scrollY;
+            const sectionTop = aboutCanvas.parentElement.offsetTop;
+            const parallaxFactor = (scrollY - sectionTop) * 0.0005;
+            
+            coreGroup.rotation.y += 0.005 + (targetX - coreGroup.rotation.y) * 0.05 + parallaxFactor;
             coreGroup.rotation.x += 0.002 + (targetY - coreGroup.rotation.x) * 0.05;
 
             // Internal animations
