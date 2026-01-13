@@ -88,7 +88,6 @@
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       .glass-card:hover {
         background: linear-gradient(
@@ -128,9 +127,7 @@
 
       .project-card-inner {
         position: relative;
-        transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         transform-style: preserve-3d;
-        will-change: transform;
         backface-visibility: hidden;
       }
 
@@ -160,6 +157,26 @@
 
       .project-card:hover .project-glow {
         opacity: 1;
+      }
+
+      /* Mobile Performance Overrides */
+      @media (max-width: 1024px) {
+        .project-card, .project-card-inner {
+          transform-style: flat !important;
+          perspective: none !important;
+          will-change: auto !important;
+        }
+        .project-glow, .project-shine, .glass-card, .glass-card-high {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          will-change: auto !important;
+        }
+        .project-orb-1, .project-orb-2 {
+          display: none !important; /* Entirely remove heavy blurs on mobile */
+        }
+        .animate-pulse, .animate-bounce {
+          animation-duration: 2s !important; /* Slow down animations */
+        }
       }
 
       @keyframes glow-sweep {
@@ -2948,21 +2965,17 @@
           });
         },
 
-        // Mobile/Tablet: Snappier Entrance and High-Quality Focus
+        // Mobile/Tablet: Simplified Entrance ONLY
         "(max-width: 1023px)": function () {
           projectCards.forEach((card) => {
-            const inner = card.querySelector(".project-card-inner");
-            const glow = card.querySelector(".project-glow");
-            const shine = card.querySelector(".project-shine");
-
             // 1. Snappier Entrance (Simplified)
             gsap.fromTo(
               card,
-              { opacity: 0, y: 30 },
+              { opacity: 0, y: 20 },
               {
                 opacity: 1,
                 y: 0,
-                duration: 0.3,
+                duration: 0.4,
                 ease: "power2.out",
                 scrollTrigger: {
                   trigger: card,
@@ -2971,45 +2984,6 @@
                 },
               }
             );
-
-            // 2. Premium Active State (Simulate Hover)
-            const activeTl = gsap.timeline({
-              scrollTrigger: {
-                trigger: card,
-                start: "top 40%", 
-                end: "bottom 60%",
-                toggleActions: "play reverse play reverse",
-              },
-            });
-
-            activeTl
-              .to(
-                inner,
-                {
-                  y: -8,
-                  scale: 1.01,
-                  borderColor: "rgba(16, 185, 129, 0.4)",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
-                  duration: 0.3,
-                  ease: "power3.out",
-                  force3D: true
-                },
-                0
-              )
-              .to(
-                glow,
-                {
-                  opacity: 1,
-                  duration: 0.3,
-                },
-                0
-              )
-              .fromTo(
-                shine,
-                { x: "-100%" },
-                { x: "100%", duration: 0.8, ease: "power1.inOut" },
-                0
-              );
           });
         },
       });
@@ -3039,10 +3013,13 @@
       const renderer = new THREE.WebGLRenderer({
         canvas,
         alpha: true,
-        antialias: true,
+        antialias: false, // Disable antialias for mobile performance if possible
       });
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      
+      // Cap pixel ratio for mobile performance
+      const pixelRatio = window.innerWidth < 1024 ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2);
+      renderer.setPixelRatio(pixelRatio);
 
       const particlesGeometry = new THREE.BufferGeometry();
       const particlesCount = window.innerWidth < 768 ? 500 : 1500;
@@ -3107,7 +3084,8 @@
           const width = container.clientWidth;
           const height = container.clientHeight;
           aboutRenderer.setSize(width, height);
-          aboutRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          const pr = window.innerWidth < 1024 ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2);
+          aboutRenderer.setPixelRatio(pr);
           aboutCamera.aspect = width / height;
           aboutCamera.updateProjectionMatrix();
         };
@@ -3404,7 +3382,8 @@
              const width = container.clientWidth;
              const height = container.clientHeight;
              renderer.setSize(width, height);
-             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2.5)); // Slightly higher cap for sharpness
+             const pr = window.innerWidth < 1024 ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2);
+             renderer.setPixelRatio(pr);
              camera.aspect = width / height;
              camera.updateProjectionMatrix();
           };
