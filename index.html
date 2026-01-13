@@ -607,6 +607,90 @@
         }
       }
 
+      /* --- V2 RADICAL HUD STYLES --- */
+      .hud-grid {
+        background-size: 40px 40px;
+        background-image: 
+          linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+        mask-image: radial-gradient(circle, black, transparent 80%);
+      }
+
+      .hud-module {
+        background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .hud-module:hover {
+        border-color: #10b981;
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .hud-bracket {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-color: #10b981;
+        border-style: solid;
+        pointer-events: none;
+      }
+      .top-left { top: 0; left: 0; border-width: 2px 0 0 2px; }
+      .top-right { top: 0; right: 0; border-width: 2px 2px 0 0; }
+      .bottom-left { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+      .bottom-right { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+      .scanning-bar {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #10b981, transparent);
+        top: 0;
+        left: 0;
+        animation: scan-vertical 3s linear infinite;
+        opacity: 0.3;
+      }
+      @keyframes scan-vertical {
+        0% { top: 0%; }
+        100% { top: 100%; }
+      }
+
+      .hud-tag {
+        font-family: 'Space Grotesk', mono;
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15rem;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.1);
+        padding: 2px 8px;
+        border-radius: 2px;
+      }
+
+      .neon-glow-emerald {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+      }
+
+      /* Circular HUD Rings */
+      .hud-ring {
+        position: absolute;
+        border: 1px dashed rgba(16, 185, 129, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .ring-rotate {
+        animation: rotate-ring 10s linear infinite;
+      }
+      .ring-rotate-reverse {
+        animation: rotate-ring 15s linear infinite reverse;
+      }
+      @keyframes rotate-ring {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
       /* Base Settings */
       html {
         scroll-behavior: smooth;
@@ -971,7 +1055,7 @@
 
             <!-- Profile Image Card Container -->
             <div
-              class="relative z-10 w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[480px] aspect-[4/5] group perspective-1000"
+              class="relative z-10 w-full max-w-[290px] sm:max-w-[420px] lg:max-w-[480px] aspect-[4/5] group perspective-1000"
             >
               <!-- Card Glow -->
               <div
@@ -1098,149 +1182,118 @@
       </div>
     </section>
 
-    <!-- About Section - Overhauled 3D Professional Layout -->
-    <section
-      id="about"
-      class="relative z-10 py-20 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-16 overflow-hidden about-3d-container"
-    >
-      <!-- Background Decorations -->
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-1/4 left-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-emerald-500/5 rounded-full blur-[100px] sm:blur-[150px] animate-pulse"></div>
-        <div class="absolute bottom-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-500/5 rounded-full blur-[80px] sm:blur-[120px] animate-pulse" style="animation-delay: 2s"></div>
-      </div>
-
-      <div class="max-w-8xl mx-auto relative">
-        <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-20 scroll-reveal">
-          <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4 sm:mb-6 group">
-            <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-ping"></span>
-            <span class="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-emerald-400">About Me</span>
-          </div>
-          <h2 class="about-title font-black tracking-tighter leading-[1.1] mb-2" style="font-family: 'Space Grotesk', sans-serif">
-            Digital <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent italic">Identity</span>
+    <!-- About Section - Radical V2 HUD Redesign -->
+    <section id="about" class="relative z-10 py-24 sm:py-32 md:py-48 px-4 overflow-hidden">
+      <!-- Cyber HUD Background -->
+      <div class="absolute inset-0 hud-grid opacity-20 pointer-events-none"></div>
+      
+      <div class="max-w-7xl mx-auto relative z-10">
+        <h2 class="text-center text-4xl md:text-6xl font-black tracking-tighter leading-[1.1] mb-2" style="font-family: 'Space Grotesk', sans-serif">
+            About <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent italic">Me</span>
           </h2>
-        </div>
-
-        <!-- Main Content Matrix -->
-        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <!-- Main HUD Container -->
+        <div class="relative grid lg:grid-cols-12 gap-8 items-center min-h-[600px]">
           
-          <!-- Perspective Visual Area (Left) -->
-          <div class="lg:col-span-12 xl:col-span-5 relative order-2 xl:order-1">
-             <div class="relative w-full aspect-square max-w-[450px] sm:max-w-[550px] mx-auto about-card-3d group">
-                <!-- 3D Visualization Container -->
-                <div class="absolute inset-0 rounded-[32px] sm:rounded-[40px] bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/10 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden">
-                    <canvas id="about-3d-enhanced" class="w-full h-full"></canvas>
-                    
-                    <!-- Floating Data Points Overlay (CSS) -->
-                    <div class="about-layer about-layer-2 flex flex-col items-center justify-center pointer-events-none">
-                        <div class="text-center">
-                             <div class="text-emerald-400 text-[10px] sm:text-sm font-mono tracking-tighter opacity-50 mb-1">SYSTEM_STATUS</div>
-                             <div class="text-white text-xl sm:text-2xl font-bold tracking-widest uppercase">OPTIMIZED</div>
-                        </div>
-                    </div>
+          <!-- LEFT COLUMN: Data Modules -->
+          <div class="lg:col-span-4 space-y-4 sm:space-y-6 order-2 lg:order-1">
+            <!-- Module 1: Identity -->
+            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[-50px] translate-y-[30px] lg:translate-y-0" id="hud-identity">
+              <div class="hud-bracket top-left"></div>
+              <div class="hud-bracket top-right"></div>
+              <div class="hud-bracket bottom-left"></div>
+              <div class="hud-bracket bottom-right"></div>
+              <div class="scanning-bar"></div>
+              
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <span class="iconify" data-icon="lucide:user" data-width="18"></span>
                 </div>
+                <span class="hud-tag">System.Identity</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Muhammad Shawaiz</h3>
+              <p class="text-xs text-white/50 leading-relaxed">
+                Expert MERN developer focused on high-performance digital architecture.
+              </p>
+            </div>
 
-                <!-- Floating Tech Satellites -->
-                <div class="about-tech-icon floating-anim-1 -top-4 -left-4 sm:-top-6 sm:-left-6" title="React">
-                    <span class="iconify text-[#61DAFB]" data-icon="simple-icons:react" data-width="20"></span>
+            <!-- Module 2: Metrics -->
+            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[-50px] translate-y-[30px] lg:translate-y-0" id="hud-metrics">
+              <div class="hud-bracket top-left"></div>
+              <div class="hud-bracket top-right"></div>
+              <div class="scanning-bar" style="animation-delay: 1.5s"></div>
+              
+              <span class="hud-tag mb-4 inline-block">System.Metrics</span>
+              <div class="grid grid-cols-2 gap-4 mt-2">
+                <div class="border-l-2 border-emerald-500/30 pl-3">
+                  <div class="text-2xl font-black text-white">3.78</div>
+                  <div class="text-[10px] text-emerald-400/50">ACADEMIC_GPA</div>
                 </div>
-                <div class="about-tech-icon floating-anim-2 top-1/4 -right-6 sm:-right-10" title="Node.js">
-                    <span class="iconify text-[#6cc24a]" data-icon="simple-icons:nodedotjs" data-width="20"></span>
+                <div class="border-l-2 border-cyan-500/30 pl-3">
+                  <div class="text-2xl font-black text-white">8+</div>
+                  <div class="text-[10px] text-cyan-400/50">PROJECTS</div>
                 </div>
-                <div class="about-tech-icon floating-anim-3 bottom-8 -left-8 sm:bottom-10 sm:-left-12" title="MongoDB">
-                    <span class="iconify text-[#47A248]" data-icon="simple-icons:mongodb" data-width="20"></span>
-                </div>
-             </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Content Intel Area (Right) -->
-          <div class="lg:col-span-12 xl:col-span-7 space-y-6 sm:space-y-8 order-1 xl:order-2">
+          <!-- CENTER: Neural Core -->
+          <div class="lg:col-span-4 flex justify-center items-center relative order-1 lg:order-2 py-10 lg:py-0">
+            <!-- HUD Deco Rings -->
+            <div class="hud-ring ring-rotate w-[300px] h-[300px] sm:w-[400px] sm:h-[400px]"></div>
+            <div class="hud-ring ring-rotate-reverse w-[350px] h-[350px] sm:w-[450px] sm:h-[450px]" style="border-style: solid; opacity: 0.1"></div>
             
-            <!-- Biography Card - Premium Redesign -->
-            <div class="about-card-3d glass-card-premium p-6 sm:p-10 lg:p-12 rounded-[32px] sm:rounded-[40px] border border-white/10 relative group">
-              <div class="about-layer about-layer-1 bg-emerald-500/5 rounded-inherit"></div>
+            <div class="relative w-full aspect-square max-w-[400px] flex items-center justify-center">
+              <canvas id="about-3d-enhanced" class="w-full h-full relative z-20"></canvas>
               
-              <div class="relative z-10">
-                <div class="flex items-center justify-between mb-6 sm:mb-8">
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-black shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                            <span class="iconify" data-icon="lucide:user-check" data-width="20"></span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Muhammad Shawaiz</h3>
-                            <div class="module-tag mt-1 text-[8px] sm:text-[9px]">Status: Active_Developer</div>
-                        </div>
-                    </div>
+              <!-- Core Data Tag -->
+              <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-black/80 border border-emerald-500/50 px-4 py-1 rounded-full z-30 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                <span class="text-[10px] font-mono text-emerald-400 animate-pulse">NEURAL_CORE_ACTIVE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Capabilities -->
+          <div class="lg:col-span-4 space-y-4 sm:space-y-6 order-3">
+            <!-- Module 3: Process Log -->
+            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[50px] translate-y-[30px] lg:translate-y-0" id="hud-process">
+              <div class="hud-bracket top-left"></div>
+              <div class="hud-bracket bottom-right"></div>
+              
+              <span class="hud-tag mb-4 inline-block">Process.Execution</span>
+              <div class="font-mono text-[10px] space-y-2 text-white/60">
+                <div class="flex gap-2">
+                  <span class="text-emerald-500">[OK]</span>
+                  <span>Synthesizing technical solutions...</span>
                 </div>
-
-                <div class="space-y-6 sm:space-y-8">
-                    <div class="data-module">
-                        <h4 class="text-emerald-400 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] mb-2">Core_Specialization</h4>
-                        <p class="about-sub-title text-white font-semibold leading-tight tracking-tight">
-                            Full-Stack Architecture & <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Innovation</span>
-                        </p>
-                    </div>
-                    
-                    <div class="data-module">
-                        <h4 class="text-white/40 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] mb-2">Technical_Summary</h4>
-                        <p class="about-text text-white/60 leading-relaxed font-light">
-                            I bridge the gap between academic theory and industry-grade application development. Every project is an opportunity to push the boundaries of what's possible in the <span class="text-white font-medium">MERN ecosystem</span>.
-                        </p>
-                    </div>
-
-                    <div class="highlight-box glass-card bg-emerald-500/5">
-                        <div class="flex items-start gap-3 sm:gap-4">
-                            <div class="text-emerald-400 mt-1">
-                                <span class="iconify" data-icon="lucide:award" data-width="18"></span>
-                            </div>
-                            <p class="text-sm sm:text-base text-white/80 leading-relaxed italic">
-                                "Solving complex technical challenges with elegant, scalable code while maintaining a rigorous 3.78 Academic standard."
-                            </p>
-                        </div>
-                    </div>
+                <div class="flex gap-2">
+                  <span class="text-emerald-500">[OK]</span>
+                  <span>Optimizing MERN architecture...</span>
                 </div>
-
-                <!-- Stats Matrix - High Contrast -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mt-8 sm:mt-12">
-                    <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/20 border border-white/5 group-hover:border-emerald-500/20 transition-all text-center">
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-tighter text-glow-emerald">3.78</div>
-                        <p class="text-[8px] sm:text-[9px] text-emerald-400/60 uppercase tracking-widest font-mono">Academic_GPA</p>
-                    </div>
-                    <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/20 border border-white/5 group-hover:border-cyan-500/20 transition-all text-center">
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-tighter">8+</div>
-                        <p class="text-[8px] sm:text-[9px] text-cyan-400/60 uppercase tracking-widest font-mono">Deployments</p>
-                    </div>
-                    <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/20 border border-white/5 group-hover:border-purple-500/20 transition-all text-center col-span-2 md:col-span-1">
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-tighter">2+</div>
-                        <p class="text-[8px] sm:text-[9px] text-purple-400/60 uppercase tracking-widest font-mono">Exp_Years</p>
-                    </div>
+                <div class="flex gap-2">
+                  <span class="text-cyan-500">[RUN]</span>
+                  <span>Bridging academic & industry...</span>
                 </div>
               </div>
             </div>
 
-            <!-- Highlights Quick-Access -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-               <div class="glass-card p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 flex items-center justify-between group/item hover:bg-emerald-500/5 transition-all cursor-default">
-                  <div class="flex items-center gap-3 sm:gap-4">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover/item:scale-110 transition-transform">
-                        <span class="iconify" data-icon="lucide:layout-template" data-width="18"></span>
-                    </div>
-                    <span class="text-xs sm:text-sm font-medium text-white/80">Premium UI Integration</span>
-                  </div>
-                  <span class="iconify text-white/20 group-hover/item:text-emerald-400 transition-colors" data-icon="lucide:chevron-right" data-width="16"></span>
-               </div>
-               <div class="glass-card p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 flex items-center justify-between group/item hover:bg-cyan-500/5 transition-all cursor-default">
-                  <div class="flex items-center gap-3 sm:gap-4">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover/item:scale-110 transition-transform">
-                        <span class="iconify" data-icon="lucide:cpu" data-width="18"></span>
-                    </div>
-                    <span class="text-xs sm:text-sm font-medium text-white/80">Performance Focus</span>
-                  </div>
-                  <span class="iconify text-white/20 group-hover/item:text-cyan-400 transition-colors" data-icon="lucide:chevron-right" data-width="16"></span>
-               </div>
+            <!-- Module 4: Specialization -->
+            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[50px] translate-y-[30px] lg:translate-y-0" id="hud-specialization">
+              <div class="hud-bracket top-right"></div>
+              <div class="hud-bracket bottom-left"></div>
+              <div class="scanning-bar" style="animation-delay: 0.5s"></div>
+              
+              <span class="hud-tag mb-4 inline-block">System.Capabilities</span>
+              <p class="text-sm text-white/80 leading-relaxed italic mb-4">
+                "Elegant code, scalable architecture, rigorous engineering standards."
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] text-white/50">Frontend</span>
+                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] text-white/50">Backend</span>
+                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] text-white/50">Database</span>
+              </div>
             </div>
-
           </div>
+
         </div>
       </div>
     </section>
@@ -1295,7 +1348,7 @@
           </div>
 
           <!-- Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:px-4">
             <!-- Frontend Mobile -->
             <div
               class="p-6 rounded-3xl glass-card"
@@ -3030,7 +3083,7 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
       });
 
-      // 3D Enhanced About Section Logic (Holographic Core)
+      // --- Radical V2 Neural Core (Generative Nodes & Links) ---
       const aboutCanvas = document.getElementById("about-3d-enhanced");
       if (aboutCanvas) {
         const aboutScene = new THREE.Scene();
@@ -3057,45 +3110,79 @@
         const coreGroup = new THREE.Group();
         aboutScene.add(coreGroup);
 
-        // 1. Main Octahedron (Holographic Frame)
-        const octaGeo = new THREE.OctahedronGeometry(2.5, 0);
-        const octaMat = new THREE.MeshBasicMaterial({
-          color: 0x10b981,
-          wireframe: true,
-          transparent: true,
-          opacity: 0.3,
-        });
-        const octahedron = new THREE.Mesh(octaGeo, octaMat);
-        coreGroup.add(octahedron);
+        // 1. Generative Node Network
+        const nodeCount = 60;
+        const nodes = [];
+        const nodeGeometry = new THREE.IcosahedronGeometry(0.08, 1);
+        const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0x10b981 });
 
-        // 2. Inner Solid Core (Pulsing)
-        const innerGeo = new THREE.IcosahedronGeometry(1.2, 1);
-        const innerMat = new THREE.MeshBasicMaterial({
-          color: 0x22d3ee,
-          transparent: true,
-          opacity: 0.4,
-          wireframe: true
-        });
-        const innerCore = new THREE.Mesh(innerGeo, innerMat);
-        coreGroup.add(innerCore);
-
-        // 3. Floating Points (Data Stream)
-        const pointsCount = 150;
-        const pointsGeo = new THREE.BufferGeometry();
-        const positions = new Float32Array(pointsCount * 3);
-        for(let i = 0; i < pointsCount * 3; i++) {
-            positions[i] = (Math.random() - 0.5) * 6;
+        for (let i = 0; i < nodeCount; i++) {
+          const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+          // Random spherical distribution
+          const phi = Math.acos(-1 + (2 * i) / nodeCount);
+          const theta = Math.sqrt(nodeCount * Math.PI) * phi;
+          const r = 2.5 + (Math.random() - 0.5) * 1;
+          
+          node.position.set(
+            r * Math.cos(theta) * Math.sin(phi),
+            r * Math.sin(theta) * Math.sin(phi),
+            r * Math.cos(phi)
+          );
+          node.userData.originalPos = node.position.clone();
+          node.userData.phase = Math.random() * Math.PI * 2;
+          coreGroup.add(node);
+          nodes.push(node);
         }
-        pointsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const pointsMat = new THREE.PointsMaterial({
-            size: 0.05,
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
+
+        // 2. Dynamic Connections (Lines)
+        const lineMaterial = new THREE.LineBasicMaterial({
+          color: 0x10b981,
+          transparent: true,
+          opacity: 0.2,
         });
-        const points = new THREE.Points(pointsGeo, pointsMat);
-        coreGroup.add(points);
+        
+        const connections = [];
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            if (nodes[i].position.distanceTo(nodes[j].position) < 1.8) {
+              const geo = new THREE.BufferGeometry().setFromPoints([nodes[i].position, nodes[j].position]);
+              const line = new THREE.Line(geo, lineMaterial);
+              coreGroup.add(line);
+              connections.push({ line, a: nodes[i], b: nodes[j] });
+            }
+          }
+        }
+
+        // 3. Central Pulsing Sphere
+        const coreGeo = new THREE.SphereGeometry(1.2, 32, 32);
+        const coreMat = new THREE.ShaderMaterial({
+          uniforms: {
+            time: { value: 0 },
+            color: { value: new THREE.Color(0x10b981) }
+          },
+          vertexShader: `
+            varying vec2 vUv;
+            void main() {
+              vUv = uv;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+          `,
+          fragmentShader: `
+            uniform float time;
+            uniform vec3 color;
+            varying vec2 vUv;
+            void main() {
+              float pulse = 0.5 + 0.5 * sin(time * 3.0);
+              float dist = distance(vUv, vec2(0.5));
+              float alpha = smoothstep(0.5, 0.2, dist) * pulse * 0.4;
+              gl_FragColor = vec4(color, alpha);
+            }
+          `,
+          transparent: true,
+          blending: THREE.AdditiveBlending
+        });
+        const centerSphere = new THREE.Mesh(coreGeo, coreMat);
+        coreGroup.add(centerSphere);
 
         aboutCamera.position.z = 8;
 
@@ -3105,39 +3192,44 @@
 
         const container = aboutCanvas.parentElement;
         container.addEventListener("mousemove", (e) => {
-            const rect = container.getBoundingClientRect();
-            mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-            mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-        });
-
-        container.addEventListener("mouseleave", () => {
-            mouseX = 0;
-            mouseY = 0;
+          const rect = container.getBoundingClientRect();
+          mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+          mouseY = (e.clientY - rect.top) / rect.height - 0.5;
         });
 
         function animateAbout() {
-            requestAnimationFrame(animateAbout);
-            
-            // Mouse Interaction (Desktop)
-            targetX = mouseX * 0.5;
-            targetY = mouseY * 0.5;
+          requestAnimationFrame(animateAbout);
+          const time = Date.now() * 0.001;
+          
+          targetX += (mouseX * 0.5 - targetX) * 0.05;
+          targetY += (mouseY * 0.5 - targetY) * 0.05;
 
-            // Scroll-based parallax for 3D feel on mobile/tablet
-            const scrollY = window.scrollY;
-            const sectionTop = aboutCanvas.parentElement.offsetTop;
-            const parallaxFactor = (scrollY - sectionTop) * 0.0005;
-            
-            coreGroup.rotation.y += 0.005 + (targetX - coreGroup.rotation.y) * 0.05 + parallaxFactor;
-            coreGroup.rotation.x += 0.002 + (targetY - coreGroup.rotation.x) * 0.05;
+          coreGroup.rotation.y += 0.002 + targetX;
+          coreGroup.rotation.x += 0.001 + targetY;
 
-            // Internal animations
-            octahedron.rotation.y -= 0.01;
-            innerCore.rotation.z += 0.02;
-            innerCore.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.1);
-            
-            points.rotation.y += 0.003;
+          // Animate nodes (gentle float)
+          nodes.forEach(node => {
+            const p = node.userData.originalPos;
+            const ph = node.userData.phase;
+            node.position.x = p.x + Math.sin(time + ph) * 0.1;
+            node.position.y = p.y + Math.cos(time + ph) * 0.1;
+            node.position.z = p.z + Math.sin(time * 1.2 + ph) * 0.1;
+          });
 
-            aboutRenderer.render(aboutScene, aboutCamera);
+          // Update connection lines
+          connections.forEach(conn => {
+            const posArray = conn.line.geometry.attributes.position.array;
+            posArray[0] = conn.a.position.x;
+            posArray[1] = conn.a.position.y;
+            posArray[2] = conn.a.position.z;
+            posArray[3] = conn.b.position.x;
+            posArray[4] = conn.b.position.y;
+            posArray[5] = conn.b.position.z;
+            conn.line.geometry.attributes.position.needsUpdate = true;
+          });
+
+          coreMat.uniforms.time.value = time;
+          aboutRenderer.render(aboutScene, aboutCamera);
         }
         animateAbout();
       }
@@ -3606,6 +3698,81 @@
           });
         }
         animateOrbits();
+      }
+      // --- Radical V2 About Section Orchestration (HUD Power-On) ---
+      if (typeof gsap !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const aboutTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#about",
+            start: "top 60%",
+            once: true
+          }
+        });
+
+        // 1. Grid Fade In
+        aboutTl.to(".hud-grid", { opacity: 0.4, duration: 1.5 });
+
+        // 2. Power-on sequence for Left Modules
+        aboutTl.to("#hud-identity", { 
+          opacity: 1, 
+          x: 0, 
+          y: 0,
+          duration: 0.8, 
+          ease: "expo.out" 
+        }, "-=1");
+        
+        aboutTl.to("#hud-metrics", { 
+          opacity: 1, 
+          x: 0, 
+          y: 0,
+          duration: 0.8, 
+          ease: "expo.out" 
+        }, "-=0.6");
+
+        // 3. Power-on sequence for Right Modules
+        aboutTl.to("#hud-process", { 
+          opacity: 1, 
+          x: 0, 
+          y: 0,
+          duration: 0.8, 
+          ease: "expo.out" 
+        }, "-=0.6");
+        
+        aboutTl.to("#hud-specialization", { 
+          opacity: 1, 
+          x: 0, 
+          y: 0,
+          duration: 0.8, 
+          ease: "expo.out" 
+        }, "-=0.6");
+
+        // 4. Parallax Effect on Scroll
+        gsap.to(".hud-grid", {
+          scrollTrigger: {
+            trigger: "#about",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          },
+          backgroundPositionY: "100px",
+          ease: "none"
+        });
+
+        // Sub-module parallax for depth
+        gsap.utils.toArray(".hud-module").forEach((mod, i) => {
+          gsap.to(mod, {
+            scrollTrigger: {
+              trigger: "#about",
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true
+            },
+            y: (i % 2 === 0 ? -30 : 30),
+            ease: "none"
+          });
+        });
       }
     </script>
   </body>
