@@ -123,12 +123,15 @@
         will-change: transform, opacity;
         transform-style: preserve-3d;
         perspective: 1000px;
+        backface-visibility: hidden;
       }
 
       .project-card-inner {
         position: relative;
         transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         transform-style: preserve-3d;
+        will-change: transform;
+        backface-visibility: hidden;
       }
 
       .project-card:hover .project-card-inner {
@@ -152,6 +155,7 @@
         opacity: 0;
         transition: opacity 0.5s ease;
         z-index: -1;
+        will-change: opacity, transform;
       }
 
       .project-card:hover .project-glow {
@@ -270,6 +274,7 @@
         transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
         pointer-events: none;
         z-index: 10;
+        will-change: transform;
       }
 
       .project-card:hover .project-shine {
@@ -2920,57 +2925,59 @@
       const projectCards = gsap.utils.toArray(".project-card");
 
       ScrollTrigger.matchMedia({
-        // Desktop: Stacking Effect
+        // Desktop: Stacking Effect with speed and perspective
         "(min-width: 1024px)": function () {
           projectCards.forEach((card, i) => {
             const nextCard = projectCards[i + 1];
+            
             if (nextCard) {
               gsap.to(card, {
-                scale: 0.9,
-                opacity: 0,
-                ease: "none",
+                scale: 0.95,
+                autoAlpha: 0, // Fades out completely and sets visibility: hidden
+                rotateX: -10,
+                ease: "power1.inOut",
                 scrollTrigger: {
                   trigger: nextCard,
                   start: "top bottom",
-                  end: "top 20%",
-                  scrub: 0.5,
+                  end: "top 40%",
+                  scrub: 0.3,
+                  fastScrollEnd: 500, // Helps with rapid scrolling
                 },
               });
             }
           });
         },
 
-        // Mobile/Tablet: Focus Effect (Simulate Hover)
+        // Mobile/Tablet: Snappier Entrance and High-Quality Focus
         "(max-width: 1023px)": function () {
           projectCards.forEach((card) => {
             const inner = card.querySelector(".project-card-inner");
             const glow = card.querySelector(".project-glow");
             const shine = card.querySelector(".project-shine");
 
-            // 1. Fade Up & Scale In (Entrance)
+            // 1. Snappier Entrance (Simplified)
             gsap.fromTo(
               card,
-              { opacity: 0, scale: 0.9, y: 50 },
+              { opacity: 0, y: 30 },
               {
                 opacity: 1,
-                scale: 1,
                 y: 0,
-                duration: 0.6,
+                duration: 0.3,
+                ease: "power2.out",
                 scrollTrigger: {
                   trigger: card,
-                  start: "top 85%",
-                  end: "top 60%",
-                  scrub: 0.5,
+                  start: "top 95%",
+                  toggleActions: "play none none reverse",
                 },
               }
             );
 
-            // 2. Active State (Simulate Hover) when Centered
+            // 2. Premium Active State (Simulate Hover)
             const activeTl = gsap.timeline({
               scrollTrigger: {
                 trigger: card,
-                start: "top 60%", // Starts when card is near center
-                end: "bottom 40%", // Ends when card leaves center
+                start: "top 40%", 
+                end: "bottom 60%",
                 toggleActions: "play reverse play reverse",
               },
             });
@@ -2979,12 +2986,13 @@
               .to(
                 inner,
                 {
-                  y: -5,
-                  rotateX: 2,
-                  borderColor: "rgba(16, 185, 129, 0.3)", // Emerald hint
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-                  duration: 0.4,
-                  ease: "power2.out",
+                  y: -8,
+                  scale: 1.01,
+                  borderColor: "rgba(16, 185, 129, 0.4)",
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
+                  duration: 0.3,
+                  ease: "power3.out",
+                  force3D: true
                 },
                 0
               )
@@ -2992,15 +3000,15 @@
                 glow,
                 {
                   opacity: 1,
-                  duration: 0.4,
+                  duration: 0.3,
                 },
                 0
               )
               .fromTo(
                 shine,
                 { x: "-100%" },
-                { x: "100%", duration: 1.5, ease: "power2.inOut" },
-                0 // Play shine immediately on focus
+                { x: "100%", duration: 0.8, ease: "power1.inOut" },
+                0
               );
           });
         },
