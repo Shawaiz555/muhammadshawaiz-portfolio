@@ -669,88 +669,142 @@
         }
       }
 
-      /* --- V2 RADICAL HUD STYLES --- */
-      .hud-grid {
-        background-size: 40px 40px;
-        background-image: 
-          linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
-        mask-image: radial-gradient(circle, black, transparent 80%);
+      /* --- EDITORIAL SPLIT LAYOUT STYLES --- */
+      .editorial-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      @media (min-width: 1024px) {
+        .editorial-wrapper {
+          flex-direction: row;
+          align-items: flex-start; /* Important for sticky */
+        }
+        .sticky-side {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          width: 45%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .scroll-side {
+          width: 55%;
+          padding-left: 4rem;
+          padding-top: 8rem;
+          padding-bottom: 8rem;
+        }
       }
 
-      .hud-module {
-        background: rgba(10, 10, 10, 0.6);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(16, 185, 129, 0.2);
+      .about-big-text {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1.1;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 2rem;
+      }
+
+      .text-highlight {
+        color: #34d399; /* Emerald 400 */
         position: relative;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-block;
       }
-      .hud-module:hover {
-        border-color: #10b981;
-        box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
-        transform: translateY(-5px);
-      }
-
-      .hud-bracket {
+      
+      .text-highlight::after {
+        content: '';
         position: absolute;
-        width: 15px;
-        height: 15px;
-        border-color: #10b981;
-        border-style: solid;
-        pointer-events: none;
-      }
-      .top-left { top: 0; left: 0; border-width: 2px 0 0 2px; }
-      .top-right { top: 0; right: 0; border-width: 2px 2px 0 0; }
-      .bottom-left { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
-      .bottom-right { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
-
-      .scanning-bar {
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #10b981, transparent);
-        top: 0;
+        bottom: 0;
         left: 0;
-        animation: scan-vertical 3s linear infinite;
-        opacity: 0.3;
-      }
-      @keyframes scan-vertical {
-        0% { top: 0%; }
-        100% { top: 100%; }
-      }
-
-      .hud-tag {
-        font-family: 'Space Grotesk', mono;
-        font-size: 0.6rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15rem;
-        color: #10b981;
-        background: rgba(16, 185, 129, 0.1);
-        padding: 2px 8px;
-        border-radius: 2px;
+        width: 100%;
+        height: 10px;
+        background: rgba(52, 211, 153, 0.2);
+        z-index: -1;
+        transform: skewX(-12deg);
       }
 
-      .neon-glow-emerald {
-        box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+      .stat-minimal {
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+        padding-left: 1.5rem;
+        margin-top: 2rem;
       }
 
-      /* Circular HUD Rings */
-      .hud-ring {
+      /* --- TIMELINE STYLES --- */
+      .timeline-container {
+        position: relative;
+        padding-left: 2rem;
+        margin-top: 4rem;
+      }
+      
+      .timeline-line {
         position: absolute;
-        border: 1px dashed rgba(16, 185, 129, 0.3);
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, #10b981, rgba(16, 185, 129, 0.1));
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 4rem;
+        padding-left: 2rem;
+      }
+
+      .timeline-node {
+        position: absolute;
+        left: -2.55rem;
+        top: 0;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
-        pointer-events: none;
+        background: #000;
+        border: 2px solid #10b981;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
       }
-      .ring-rotate {
-        animation: rotate-ring 10s linear infinite;
+      
+      .year-highlight {
+        font-family: 'Space Mono', monospace;
+        color: #34d399;
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+        display: block;
       }
-      .ring-rotate-reverse {
-        animation: rotate-ring 15s linear infinite reverse;
+
+      .timeline-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
       }
-      @keyframes rotate-ring {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+
+      .timeline-desc {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .glass-pill {
+        display: inline-flex;
+        padding: 0.5rem 1.25rem;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+      }
+      .glass-pill:hover {
+        background: rgba(16, 185, 129, 0.1);
+        border-color: rgba(16, 185, 129, 0.3);
+        color: #34d399;
       }
 
       /* Base Settings */
@@ -795,7 +849,7 @@
     <nav
       class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4 transition-all duration-300 backdrop-blur-md bg-black/50 border-b border-white/5"
     >
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="max-w-8xl mx-auto flex items-center justify-between lg:px-16">
         <a href="#" class="group flex items-center gap-2 magnetic-btn">
           <div
             class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center font-bold text-black transform transition-transform group-hover:rotate-12"
@@ -1244,119 +1298,128 @@
       </div>
     </section>
 
-    <!-- About Section - Radical V2 HUD Redesign -->
-    <section id="about" class="relative z-10 py-24 sm:py-32 md:py-48 px-4 overflow-hidden">
-      <!-- Cyber HUD Background -->
-      <div class="absolute inset-0 hud-grid opacity-20 pointer-events-none"></div>
+    <!-- About Section - Editorial Split Layout -->
+    <section id="about" class="relative z-10 bg-black text-white">
       
-      <div class="max-w-7xl mx-auto relative z-10">
-        <h2 class="text-center text-4xl md:text-6xl font-black tracking-tighter leading-[1.1] mb-2" style="font-family: 'Space Grotesk', sans-serif">
-            About <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent italic">Me</span>
-          </h2>
-        <!-- Main HUD Container -->
-        <div class="relative grid lg:grid-cols-12 gap-8 items-center min-h-[600px]">
+      <div class="max-w-[1400px] mx-auto px-6 editorial-wrapper">
+        
+        <!-- STICKY LEFT COLUMN (Visual & Title) -->
+        <div class="sticky-side">
+          <div class="relative w-full h-full flex flex-col justify-center items-center">
+             <!-- Big Rotated Title or Background Text -->
+             <h2 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-bold text-white/[0.03] select-none pointer-events-none" style="font-family: 'Space Grotesk'">
+               ABOUT
+             </h2>
+             
+             <!-- 3D Canvas Container -->
+             <div class="relative w-full aspect-square max-w-[500px] flex items-center justify-center">
+                <canvas id="about-3d-enhanced" class="w-full h-full relative z-20"></canvas>
+                <!-- Central Label -->
+                <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center">
+                  <div class="text-[10px] tracking-[0.3em] font-mono text-emerald-500 uppercase mb-2">Neural Architecture</div>
+                  <div class="w-px h-12 bg-gradient-to-b from-emerald-500 to-transparent mx-auto"></div>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        <!-- SCROLL RIGHT COLUMN (Content Narrative) -->
+        <div class="scroll-side">
           
-          <!-- LEFT COLUMN: Data Modules -->
-          <div class="lg:col-span-4 space-y-4 sm:space-y-6 order-2 lg:order-1">
-            <!-- Module 1: Identity -->
-            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[-50px] translate-y-[30px] lg:translate-y-0" id="hud-identity">
-              <div class="hud-bracket top-left"></div>
-              <div class="hud-bracket top-right"></div>
-              <div class="hud-bracket bottom-left"></div>
-              <div class="hud-bracket bottom-right"></div>
-              <div class="scanning-bar"></div>
-              
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-                  <span class="iconify" data-icon="lucide:user" data-width="18"></span>
-                </div>
-                <span class="hud-tag">System.Identity</span>
-              </div>
-              <h3 class="text-xl font-bold text-white mb-2">Muhammad Shawaiz</h3>
-              <p class="text-xs text-white/50 leading-relaxed">
-                Expert MERN developer focused on high-performance digital architecture.
-              </p>
-            </div>
-
-            <!-- Module 2: Metrics -->
-            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[-50px] translate-y-[30px] lg:translate-y-0" id="hud-metrics">
-              <div class="hud-bracket top-left"></div>
-              <div class="hud-bracket top-right"></div>
-              <div class="scanning-bar" style="animation-delay: 1.5s"></div>
-              
-              <span class="hud-tag mb-4 inline-block">System.Metrics</span>
-              <div class="grid grid-cols-2 gap-4 mt-2">
-                <div class="border-l-2 border-emerald-500/30 pl-3">
-                  <div class="text-2xl font-black text-white">3.78</div>
-                  <div class="text-[10px] text-emerald-400/50">ACADEMIC_GPA</div>
-                </div>
-                <div class="border-l-2 border-cyan-500/30 pl-3">
-                  <div class="text-2xl font-black text-white">8+</div>
-                  <div class="text-[10px] text-cyan-400/50">PROJECTS</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CENTER: Neural Core -->
-          <div class="lg:col-span-4 flex justify-center items-center relative order-1 lg:order-2 py-10 lg:py-0">
-            <!-- HUD Deco Rings -->
-            <div class="hud-ring ring-rotate w-[300px] h-[300px] sm:w-[400px] sm:h-[400px]"></div>
-            <div class="hud-ring ring-rotate-reverse w-[350px] h-[350px] sm:w-[450px] sm:h-[450px]" style="border-style: solid; opacity: 0.1"></div>
+          <!-- Intro Block with Timeline -->
+          <div class="mb-24 scroll-reveal">
             
-            <div class="relative w-full aspect-square max-w-[400px] flex items-center justify-center">
-              <canvas id="about-3d-enhanced" class="w-full h-full relative z-20"></canvas>
-              
-              <!-- Core Data Tag -->
-              <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-black/80 border border-emerald-500/50 px-4 py-1 rounded-full z-30 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                <span class="text-[10px] font-mono text-emerald-400 animate-pulse">NEURAL_CORE_ACTIVE</span>
-              </div>
+            <h3 class="about-big-text mb-12">
+              What <span class="text-highlight">About Me?</span>
+            </h3>
+
+            <div class="timeline-container">
+               <div class="timeline-line"></div>
+               <!-- Milestone 1 -->
+               <div class="timeline-item">
+                 <div class="timeline-node"></div>
+                 <span class="year-highlight">2023 // EVOLUTION</span>
+                 <h4 class="timeline-title">MERN Stack Mastery</h4>
+                 <p class="timeline-desc">
+                   I dove deep into the Javascript ecosystem. Mastering React, Node.js, and MongoDB allowed me to build complete, scalable applications. This was the year I transitioned from "coding scripts" to "building products."
+                 </p>
+               </div>
+               <!-- Milestone 2 -->
+               <div class="timeline-item">
+                 <div class="timeline-node"></div>
+                 <span class="year-highlight">2024 // PROFESSIONAL</span>
+                 <h4 class="timeline-title">Scale & Architecture</h4>
+                 <p class="timeline-desc">
+                   Worked on 8+ major projects, focusing on performance, security, and clean architecture. I learned that good code isn't just about functioning—it's about maintainability and user experience.
+                 </p>
+               </div>
+
+               <!-- Milestone 3 -->
+               <div class="timeline-item">
+                 <div class="timeline-node bg-emerald-500 shadow-[0_0_15px_#10b981]"></div>
+                 <span class="year-highlight text-white">NOW // INNOVATION</span>
+                 <h4 class="timeline-title">Expanding Horizons</h4>
+                 <p class="timeline-desc">
+                   Currently exploring the intersection of Web 3D (Three.js) and AI integration. My goal is to build the next generation of web interfaces that are not just tools, but experiences.
+                 </p>
+               </div>
+
+            </div>
+
+            <div class="mt-12">
+              <a href="#contact" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors uppercase tracking-widest text-xs font-bold border-b border-emerald-500/30 pb-1 hover:border-emerald-400">
+                Let's Build Something Together <span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span>
+              </a>
             </div>
           </div>
 
-          <!-- RIGHT COLUMN: Capabilities -->
-          <div class="lg:col-span-4 space-y-4 sm:space-y-6 order-3">
-            <!-- Module 3: Process Log -->
-            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[50px] translate-y-[30px] lg:translate-y-0" id="hud-process">
-              <div class="hud-bracket top-left"></div>
-              <div class="hud-bracket bottom-right"></div>
-              
-              <span class="hud-tag mb-4 inline-block">Process.Execution</span>
-              <div class="font-mono text-[10px] space-y-2 text-white/60">
-                <div class="flex gap-2">
-                  <span class="text-emerald-500">[OK]</span>
-                  <span>Synthesizing technical solutions...</span>
-                </div>
-                <div class="flex gap-2">
-                  <span class="text-emerald-500">[OK]</span>
-                  <span>Optimizing MERN architecture...</span>
-                </div>
-                <div class="flex gap-2">
-                  <span class="text-cyan-500">[RUN]</span>
-                  <span>Bridging academic & industry...</span>
-                </div>
-              </div>
-            </div>
+          <!-- Philosophy Block -->
+          <div class="mb-24 scroll-reveal">
+             <div class="p-8 border-l border-white/10 bg-gradient-to-r from-white/5 to-transparent backdrop-blur-sm">
+               <span class="iconify text-emerald-500 mb-4" data-icon="lucide:quote" data-width="32"></span>
+               <p class="text-2xl italic font-light text-white/90 leading-normal mb-4">
+                 "Great software is born from the intersection of clean architecture, user-centric design, and relentless optimization."
+               </p>
+               <div class="text-sm font-mono text-white/40">— Engineering Philosophy</div>
+             </div>
+          </div>
 
-            <!-- Module 4: Specialization -->
-            <div class="hud-module p-5 sm:p-6 rounded-lg opacity-0 lg:translate-x-[50px] translate-y-[30px] lg:translate-y-0" id="hud-specialization">
-              <div class="hud-bracket top-right"></div>
-              <div class="hud-bracket bottom-left"></div>
-              <div class="scanning-bar" style="animation-delay: 0.5s"></div>
-              
-              <span class="hud-tag mb-4 inline-block">System.Capabilities</span>
-              <p class="text-sm text-white/80 leading-relaxed italic mb-4">
-                "Elegant code, scalable architecture, rigorous engineering standards."
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] text-white/50">Frontend</span>
-                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] text-white/50">Backend</span>
-                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] text-white/50">Database</span>
-              </div>
+          <!-- Stats / Impact -->
+          <div class="mb-24 scroll-reveal">
+             <h4 class="text-2xl font-bold mb-8 font-space">Impact & Metrics</h4>
+             <div class="grid grid-cols-2 gap-12">
+               <div class="stat-minimal">
+                 <div class="text-5xl font-light text-white mb-2">3.78</div>
+                 <div class="text-xs tracking-widest text-emerald-500 uppercase">CGPA (Academic)</div>
+               </div>
+               <div class="stat-minimal">
+                 <div class="text-5xl font-light text-white mb-2">8+</div>
+                 <div class="text-xs tracking-widest text-cyan-500 uppercase">Major Projects</div>
+               </div>
+               <div class="stat-minimal">
+                 <div class="text-5xl font-light text-white mb-2">100%</div>
+                 <div class="text-xs tracking-widest text-purple-500 uppercase">Commitment</div>
+               </div>
+             </div>
+          </div>
+
+          <!-- Tech Ticker / Skills -->
+          <div class="mb-12 scroll-reveal">
+            <h4 class="text-2xl font-bold mb-6 font-space">Core Stack</h4>
+            <div class="flex flex-wrap">
+              <span class="glass-pill">React</span>
+              <span class="glass-pill">Node.js</span>
+              <span class="glass-pill">Next.js</span>
+              <span class="glass-pill">MongoDB</span>
+              <span class="glass-pill">TypeScript</span>
+              <span class="glass-pill">Tailwind CSS</span>
+              <span class="glass-pill">Python</span>
+              <span class="glass-pill">AWS</span>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -2377,124 +2440,161 @@
             class="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500 via-cyan-500 to-transparent"
           ></div>
 
-          <div
-            class="experience-card relative mb-8 sm:mb-12 md:mb-16 scroll-reveal-card"
-          >
-            <div
-              class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8"
-            >
-              <div
-                class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0"
-              >
-                <div
-                  class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-emerald-500/20 rounded-full text-emerald-300 text-xs sm:text-sm mb-3 sm:mb-4"
-                >
-                  November 2025 - Present
-                </div>
-                <h3
-                  class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2"
-                  style="font-family: 'Space Grotesk', sans-serif"
-                >
-                  Full-Stack Developer
-                </h3>
-                <p class="text-base sm:text-lg text-cyan-400 mb-3 sm:mb-4">
-                  Lahore, Pakistan
-                </p>
-              </div>
-              <div
-                class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2 z-10 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
-              ></div>
-              <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
-                <div
-                  class="card-spotlight p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-colors"
-                >
-                  <ul class="space-y-3 sm:space-y-4">
-                    <li class="flex items-start gap-2 sm:gap-3">
-                      <span
-                        class="iconify text-emerald-400 mt-0.5 flex-shrink-0"
-                        data-icon="lucide:chevron-right"
-                        data-width="14"
-                        style="stroke-width: 1.5"
-                      ></span>
-                      <p class="text-xs sm:text-sm text-white/70">
-                        Developed dynamic web applications using the MERN stack
-                      </p>
-                    </li>
-                    <li class="flex items-start gap-2 sm:gap-3">
-                      <span
-                        class="iconify text-emerald-400 mt-0.5 flex-shrink-0"
-                        data-icon="lucide:chevron-right"
-                        data-width="14"
-                        style="stroke-width: 1.5"
-                      ></span>
-                      <p class="text-xs sm:text-sm text-white/70">
-                        Designed responsive UIs using React and Next.js
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="experience-card relative scroll-reveal-card">
-            <div
-              class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8"
-            >
-              <div
-                class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0"
-              >
-                <div
-                  class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-cyan-500/20 rounded-full text-cyan-300 text-xs sm:text-sm mb-3 sm:mb-4"
-                >
-                  August 2025 October 2025
-                </div>
-                <h3
-                  class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2"
-                  style="font-family: 'Space Grotesk', sans-serif"
-                >
-                  Intern (Agentic AI &amp; React)
-                </h3>
-                <p class="text-base sm:text-lg text-teal-400 mb-3 sm:mb-4">
-                  Cyber Silo
-                </p>
-              </div>
-              <div
-                class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-cyan-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2 z-10 shadow-[0_0_15px_rgba(6,182,212,0.5)]"
-              ></div>
-              <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
-                <div
-                  class="card-spotlight p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-colors"
-                >
-                  <ul class="space-y-3 sm:space-y-4">
-                    <li class="flex items-start gap-2 sm:gap-3">
-                      <span
-                        class="iconify text-cyan-400 mt-0.5 flex-shrink-0"
-                        data-icon="lucide:chevron-right"
-                        data-width="14"
-                        style="stroke-width: 1.5"
-                      ></span>
-                      <p class="text-xs sm:text-sm text-white/70">
-                        Contributed to Agentic AI systems and React projects
-                      </p>
-                    </li>
-                    <li class="flex items-start gap-2 sm:gap-3">
-                      <span
-                        class="iconify text-cyan-400 mt-0.5 flex-shrink-0"
-                        data-icon="lucide:chevron-right"
-                        data-width="14"
-                        style="stroke-width: 1.5"
-                      ></span>
-                      <p class="text-xs sm:text-sm text-white/70">
-                        Developed AI-driven applications
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <!-- Item 1: Full-Stack Developer (Right Side Content) -->
+           <div class="experience-card relative mb-8 sm:mb-12 md:mb-16 scroll-reveal-card">
+             <div class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8">
+               <div class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0">
+                 <div class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-emerald-500/20 rounded-full text-emerald-300 text-xs sm:text-sm mb-3 sm:mb-4">
+                   November 2025 - Present
+                 </div>
+                 <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif">
+                   Full-Stack Developer
+                 </h3>
+                 <p class="text-base sm:text-lg text-cyan-400 mb-3 sm:mb-4">
+                   Lahore, Pakistan
+                 </p>
+               </div>
+               <div class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2 z-10 shadow-[0_0_15px_rgba(16,185,129,0.5)]"></div>
+               <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
+                 <div class="card-spotlight p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-emerald-500/30 transition-colors">
+                   <ul class="space-y-3 sm:space-y-4">
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-emerald-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Developed dynamic web applications using the MERN stack
+                       </p>
+                     </li>
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-emerald-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Designed responsive UIs using React and Next.js
+                       </p>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
+ 
+           <!-- Item 2: Intern (Left Side Content) -->
+           <div class="experience-card relative mb-8 sm:mb-12 md:mb-16 scroll-reveal-card">
+             <div class="flex flex-col md:flex-row-reverse items-start gap-4 sm:gap-6 md:gap-8">
+               
+               <!-- Title/Date (Now on Right) -->
+               <div class="md:w-1/2 md:text-left md:pl-12 lg:pl-16 pl-12 sm:pl-16 md:pr-0">
+                 <div class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-cyan-500/20 rounded-full text-cyan-300 text-xs sm:text-sm mb-3 sm:mb-4">
+                   August 2025 - October 2025
+                 </div>
+                 <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif">
+                   Intern (Agentic AI &amp; React)
+                 </h3>
+                 <p class="text-base sm:text-lg text-teal-400 mb-3 sm:mb-4">
+                   Cyber Silo
+                 </p>
+               </div>
+               
+               <!-- Center Dot -->
+               <div class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-cyan-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2 z-10 shadow-[0_0_15px_rgba(6,182,212,0.5)]"></div>
+               
+               <!-- Content Card (Now on Left) -->
+               <div class="md:w-1/2 md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0">
+                 <div class="card-spotlight p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-colors">
+                   <ul class="space-y-3 sm:space-y-4">
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-cyan-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Contributed to Agentic AI systems and React projects
+                       </p>
+                     </li>
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-cyan-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Developed AI-driven applications
+                       </p>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
+ 
+           <!-- Item 3: Creative Developer (Right Side Content) -->
+           <div class="experience-card relative mb-8 sm:mb-12 md:mb-16 scroll-reveal-card">
+             <div class="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8">
+               <div class="md:w-1/2 md:text-right md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0">
+                 <div class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-purple-500/20 rounded-full text-purple-300 text-xs sm:text-sm mb-3 sm:mb-4">
+                   January 2024 - December 2024
+                 </div>
+                 <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif">
+                   Creative Developer
+                 </h3>
+                 <p class="text-base sm:text-lg text-purple-400 mb-3 sm:mb-4">
+                   Independent / Open Source
+                 </p>
+               </div>
+               <div class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-purple-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2 z-10 shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
+               <div class="md:w-1/2 md:pl-12 lg:pl-16 pl-12 sm:pl-16">
+                 <div class="card-spotlight p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-colors">
+                   <ul class="space-y-3 sm:space-y-4">
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-purple-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Explored the intersection of Web 3D (Three.js) and AI integration
+                       </p>
+                     </li>
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-purple-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Built next-generation immersive web interfaces and experiences
+                       </p>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
+ 
+           <!-- Item 4: MERN Stack (Left Side Content) -->
+           <div class="experience-card relative scroll-reveal-card">
+             <div class="flex flex-col md:flex-row-reverse items-start gap-4 sm:gap-6 md:gap-8">
+               
+               <!-- Title/Date (Now on Right) -->
+               <div class="md:w-1/2 md:text-left md:pl-12 lg:pl-16 pl-12 sm:pl-16 md:pr-0">
+                 <div class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-500/20 rounded-full text-blue-300 text-xs sm:text-sm mb-3 sm:mb-4">
+                   January 2023 - December 2023
+                 </div>
+                 <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2" style="font-family: 'Space Grotesk', sans-serif">
+                   MERN Stack Developer
+                 </h3>
+                 <p class="text-base sm:text-lg text-blue-400 mb-3 sm:mb-4">
+                   Freelance
+                 </p>
+               </div>
+               
+               <!-- Center Dot -->
+               <div class="absolute left-4 sm:left-6 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-blue-500 rounded-full border-2 sm:border-4 border-black transform md:-translate-x-1/2 mt-2 z-10 shadow-[0_0_15px_rgba(59,130,246,0.5)]"></div>
+               
+               <!-- Content Card (Now on Left) -->
+               <div class="md:w-1/2 md:pr-12 lg:pr-16 pl-12 sm:pl-16 md:pl-0">
+                 <div class="card-spotlight p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm hover:border-blue-500/30 transition-colors">
+                   <ul class="space-y-3 sm:space-y-4">
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-blue-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Mastered React, Node.js, and MongoDB for full-stack development
+                       </p>
+                     </li>
+                     <li class="flex items-start gap-2 sm:gap-3">
+                       <span class="iconify text-blue-400 mt-0.5 flex-shrink-0" data-icon="lucide:chevron-right" data-width="14" style="stroke-width: 1.5"></span>
+                       <p class="text-xs sm:text-sm text-white/70">
+                         Transitioned from simple scripting to building scalable products
+                       </p>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
       </div>
     </section>
 
@@ -4005,68 +4105,38 @@
           }
         });
 
-        // 1. Grid Fade In
-        aboutTl.to(".hud-grid", { opacity: 0.4, duration: 1.5 });
+        // --- Modern Bento Grid Animation --- 
+          // --- Editorial Layout Animation ---
+        if (typeof gsap !== "undefined") {
+          gsap.registerPlugin(ScrollTrigger);
 
-        // 2. Power-on sequence for Left Modules
-        aboutTl.to("#hud-identity", { 
-          opacity: 1, 
-          x: 0, 
-          y: 0,
-          duration: 0.8, 
-          ease: "expo.out" 
-        }, "-=1");
-        
-        aboutTl.to("#hud-metrics", { 
-          opacity: 1, 
-          x: 0, 
-          y: 0,
-          duration: 0.8, 
-          ease: "expo.out" 
-        }, "-=0.6");
+          // Reveal Content Blocks on Scroll
+          gsap.utils.toArray(".scroll-reveal").forEach((elem) => {
+            gsap.from(elem, {
+              scrollTrigger: {
+                trigger: elem,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+              },
+              y: 50,
+              opacity: 0,
+              duration: 1.0,
+              ease: "power3.out"
+            });
+          });
 
-        // 3. Power-on sequence for Right Modules
-        aboutTl.to("#hud-process", { 
-          opacity: 1, 
-          x: 0, 
-          y: 0,
-          duration: 0.8, 
-          ease: "expo.out" 
-        }, "-=0.6");
-        
-        aboutTl.to("#hud-specialization", { 
-          opacity: 1, 
-          x: 0, 
-          y: 0,
-          duration: 0.8, 
-          ease: "expo.out" 
-        }, "-=0.6");
-
-        // 4. Parallax Effect on Scroll
-        gsap.to(".hud-grid", {
-          scrollTrigger: {
-            trigger: "#about",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-          },
-          backgroundPositionY: "100px",
-          ease: "none"
-        });
-
-        // Sub-module parallax for depth
-        gsap.utils.toArray(".hud-module").forEach((mod, i) => {
-          gsap.to(mod, {
+          // 3D Core Rotate on Scroll
+          gsap.to("#about-3d-enhanced", {
             scrollTrigger: {
-              trigger: "#about",
+              trigger: ".editorial-wrapper",
               start: "top bottom",
               end: "bottom top",
-              scrub: true
+              scrub: 1
             },
-            y: (i % 2 === 0 ? -30 : 30),
+            rotation: 360, 
             ease: "none"
           });
-        });
+        }
       }
     </script>
   </body>
