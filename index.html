@@ -8,6 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
       rel="stylesheet"
@@ -88,6 +90,7 @@
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .glass-card:hover {
         background: linear-gradient(
@@ -96,7 +99,7 @@
           rgba(15, 15, 15, 1) 100%
         );
         border: 1px solid rgba(16, 185, 129, 0.3); /* Emerald tint on hover */
-        transform: translateY(-5px);
+        transform: translate(var(--tw-translate-x, 0), calc(var(--tw-translate-y, 0) - 5px)) rotate(var(--tw-rotate, 0deg)) scale(var(--tw-scale-x, 1), var(--tw-scale-y, 1));
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
           0 0 20px rgba(16, 185, 129, 0.1);
       }
@@ -608,7 +611,7 @@
       .glass-card-premium {
         background: linear-gradient(135deg, rgba(20, 20, 20, 0.7) 0%, rgba(10, 10, 10, 0.8) 100%);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.4);
         position: relative;
         overflow: hidden;
       }
@@ -1096,8 +1099,8 @@
                 </div>
               </a>
               <a
-                href="/MuhammadShawaizCV.pdf"
-                download="MuhammadShawaizCV"
+                href="/MuhammadShawaizResume.pdf"
+                download="MuhammadShawaizResume"
                 class="magnetic-btn px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/20 transition-all hover:scale-105 flex items-center justify-center gap-2 backdrop-blur-sm"
               >
                 <span
@@ -1715,7 +1718,7 @@
     <!-- Projects Section -->
     <section
       id="projects"
-      class="relative z-10 py-24 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-16 overflow-hidden lg:overflow-visible"
+      class="relative z-10 pt-24 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-16 overflow-visible"
     >
       <div class="max-w-8xl mx-auto">
         <div
@@ -1755,6 +1758,164 @@
               class="project-orb-2 absolute -bottom-40 -right-20 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl"
             ></div>
           </div>
+
+          <!-- Mobile Projects Slider (Swiper) -->
+          <div class="lg:hidden w-full relative z-30">
+            <div class="swiper projectsSwiper w-full h-full overflow-visible" style="overflow: visible !important;">
+              <div class="swiper-wrapper">
+                
+                <!-- Slide 1: MS-EventSphere -->
+                <div class="swiper-slide w-[90vw] max-w-[340px] h-auto relative group">
+                    <div class="relative h-72 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-cyan-950/30">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/15 via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center -mt-8">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-cyan-500/10 flex items-center justify-center shadow-lg shadow-cyan-500/20 border border-cyan-500/20 backdrop-blur-md">
+                                <span class="iconify text-cyan-400" data-icon="lucide:ticket" data-width="32"></span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                             <span class="px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-cyan-300 shadow-lg">Full Stack</span>
+                        </div>
+                        <div class="absolute top-4 right-4"><span class="text-cyan-400/20 font-mono font-bold text-4xl">01</span></div>
+                    </div>
+                    <div class="relative -mt-20 mx-4 p-5 bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50">
+                        <h3 class="text-xl font-bold text-white font-space mb-2">MS-EventSphere</h3>
+                        <p class="text-xs text-white/50 mb-3 leading-relaxed line-clamp-2">Dynamic event management platform with server-side rendering.</p>
+                        <ul class="space-y-1.5 mb-4">
+                            <li class="flex items-start gap-2"><span class="iconify text-cyan-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">Server-side rendering for SEO.</span></li>
+                            <li class="flex items-start gap-2"><span class="iconify text-cyan-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">Admin moderation dashboard.</span></li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                             <span class="text-[10px] px-2 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">Next.js</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">MongoDB</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">Express</span>
+                        </div>
+                        <a href="https://github.com/Shawaiz555/ms-eventsphere" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-300 font-bold text-xs uppercase tracking-widest border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors">
+                            View Project <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Culinary AI -->
+                <div class="swiper-slide w-[90vw] max-w-[350px] relative group h-auto">
+                    <div class="relative h-72 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-emerald-950/30">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center -mt-8">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-emerald-500/10 flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-500/20 backdrop-blur-md">
+                                <span class="iconify text-emerald-400" data-icon="lucide:bot" data-width="32"></span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4"><span class="px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-emerald-300 shadow-lg">AI Integrated</span></div>
+                        <div class="absolute top-4 right-4"><span class="text-emerald-400/20 font-mono font-bold text-4xl">02</span></div>
+                    </div>
+                    <div class="relative -mt-20 mx-4 p-5 py-10 bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50">
+                        <h3 class="text-xl font-bold text-white font-space mb-2">Culinary AI</h3>
+                        <p class="text-xs text-white/50 mb-3 leading-relaxed line-clamp-2">AI-powered restaurant management with GPT-4 assistant.</p>
+                        <ul class="space-y-1.5 mb-4">
+                            <li class="flex items-start gap-2"><span class="iconify text-emerald-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">GPT-4 Conversational Assistant.</span></li>
+                            <li class="flex items-start gap-2"><span class="iconify text-emerald-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">Real-time WebSocket tracking.</span></li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                             <span class="text-[10px] px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">React</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">Node</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">OpenAI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Concert Booking -->
+                <div class="swiper-slide w-[90vw] max-w-[350px] relative group h-auto">
+                    <div class="relative h-72 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-orange-950/30">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/15 via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center -mt-8">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/30 to-orange-500/10 flex items-center justify-center shadow-lg shadow-orange-500/20 border border-orange-500/20 backdrop-blur-md">
+                                <span class="iconify text-orange-400" data-icon="lucide:ticket" data-width="32"></span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4"><span class="px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-orange-300 shadow-lg">Web App</span></div>
+                        <div class="absolute top-4 right-4"><span class="text-orange-400/20 font-mono font-bold text-4xl">03</span></div>
+                    </div>
+                    <div class="relative -mt-20 mx-4 p-5 bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50">
+                        <h3 class="text-xl font-bold text-white font-space mb-2">Concert Booking</h3>
+                        <p class="text-xs text-white/50 mb-3 leading-relaxed line-clamp-2">Responsive concert booking platform with dynamic tickets.</p>
+                        <ul class="space-y-1.5 mb-4">
+                            <li class="flex items-start gap-2"><span class="iconify text-orange-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">Secure PHP/MySQL authentication.</span></li>
+                            <li class="flex items-start gap-2"><span class="iconify text-orange-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">Dynamic responsive Bootstrap UI.</span></li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                             <span class="text-[10px] px-2 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-orange-300">PHP</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-orange-300">MySQL</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-orange-300">Bootstrap</span>
+                        </div>
+                        <a href="https://github.com/Shawaiz555/Web_Semester_Project" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-orange-300 font-bold text-xs uppercase tracking-widest border border-orange-500/30 hover:bg-orange-500/30 transition-colors">
+                            View Project <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Pharmacy Management -->
+                <div class="swiper-slide w-[90vw] max-w-[350px] relative group h-auto">
+                    <div class="relative h-72 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/90 to-purple-950/30">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/15 via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center -mt-8">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/30 to-purple-500/10 flex items-center justify-center shadow-lg shadow-purple-500/20 border border-purple-500/20 backdrop-blur-md">
+                                <span class="iconify text-purple-400" data-icon="lucide:pill" data-width="32"></span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4"><span class="px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-purple-300 shadow-lg">Desktop App</span></div>
+                        <div class="absolute top-4 right-4"><span class="text-purple-400/20 font-mono font-bold text-4xl">04</span></div>
+                    </div>
+                    <div class="relative -mt-20 mx-4 p-5 bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50">
+                        <h3 class="text-xl font-bold text-white font-space mb-2">Pharmacy Manager</h3>
+                        <p class="text-xs text-white/50 mb-3 leading-relaxed line-clamp-2">Desktop app for pharmacy operations & inventory.</p>
+                        <ul class="space-y-1.5 mb-4">
+                            <li class="flex items-start gap-2"><span class="iconify text-purple-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">Automated billing system.</span></li>
+                            <li class="flex items-start gap-2"><span class="iconify text-purple-400 mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="12"></span><span class="text-[10px] text-white/70">SQL Server database integration.</span></li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                             <span class="text-[10px] px-2 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">C#</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">SQL</span>
+                             <span class="text-[10px] px-2 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">.NET</span>
+                        </div>
+                        <a href="https://github.com/Shawaiz555/Pharmacy_Project" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 font-bold text-xs uppercase tracking-widest border border-purple-500/30 hover:bg-purple-500/30 transition-colors">
+                            View Project <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              new Swiper(".projectsSwiper", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                initialSlide: 0,
+                spaceBetween: 20,
+                speed: 600,
+                autoHeight: false,
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 40,
+                  modifier: 1,
+                  slideShadows: false,
+                },
+                pagination: {
+                  el: ".swiper-pagination",
+                  clickable: true,
+                  dynamicBullets: true,
+                },
+              });
+            });
+          </script>
+
+          <!-- Desktop Projects List (Hidden on Mobile) -->
+          <div class="hidden lg:block">
 
           <!-- Project 1: Ms-EventSphere -->
           <div
@@ -1858,22 +2019,6 @@
                     >
                   </div>
                   <div class="flex items-center gap-4 pt-4">
-                    <a
-                      href="https://ms-eventsphere-o175xb820-muhammad-shawaizs-projects-658e206e.vercel.app/"
-                      target="_blank"
-                      class="group/btn relative flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-cyan-400 text-black text-sm font-bold rounded-full shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 hover:scale-105 overflow-hidden"
-                    >
-                      <span class="relative z-10 flex items-center gap-2">
-                        View Live
-                        <span
-                          class="iconify transition-transform group-hover/btn:translate-x-1"
-                          data-icon="lucide:arrow-right"
-                        ></span>
-                      </span>
-                      <div
-                        class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"
-                      ></div>
-                    </a>
                     <a
                       href="https://github.com/Shawaiz555/ms-eventsphere"
                       target="_blank"
@@ -2394,6 +2539,8 @@
               </div>
             </div>
           </div>
+
+        </div>
 
         <div class="text-center mt-24 sm:mt-40">
           <a
